@@ -3,17 +3,21 @@ import java.util.regex.Pattern;
 
 public class Time24HourTester {
 
-	private Pattern pattern;
-	private Matcher matcher;
-	private final String TIME24_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+	private Pattern pattern1, pattern2;
+	private Matcher matcher1, matcher2;
+	private final String TIME24_PATTERN_1 = "([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]";
+	//private final String TIME24_PATTERN_2 = "([01]?[0-9]|2[0-3])[0-5][0-9]";
+	
 	
 	public Time24HourTester() {
-		pattern = Pattern.compile(TIME24_PATTERN);
+		pattern1 = Pattern.compile(TIME24_PATTERN_1);
+		//pattern2 = Pattern.compile(TIME24_PATTERN_2);
 	}
 	
 	public boolean isValid (String time) {
-		matcher = pattern.matcher(time);
-		return matcher.matches();
+		matcher1 = pattern1.matcher(time);
+		//matcher2 = pattern2.matcher(time);
+		return (matcher1.matches());
 	}
 }
 
@@ -24,6 +28,9 @@ Time format that match:
 2. “1:00″, “2:00″, “13:01″,
 3. “23:59″,”15:00″
 4. “00:00″,”0:00″
+
+-  : or .
+- 1600
 
 Time format doesn’t match:
 
