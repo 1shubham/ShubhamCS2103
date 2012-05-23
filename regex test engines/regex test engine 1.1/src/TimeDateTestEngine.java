@@ -13,6 +13,25 @@ public class TimeDateTestEngine {
 		BufferedReader reader;
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		
+		System.out.print("Input test string: ");
+		try {
+			input = reader.readLine();
+		}
+		catch(IOException ioe) {
+			System.out.println("An unexpected error occured for your input");
+		}
+		
+		CmdTester testerCmd = new CmdTester();
+		
+		if (testerCmd.isValid(input))
+			System.out.println("VALID command!");
+		else
+			System.out.println("INVALID command!");
+		
+	}
+}
+/*
+
 		System.out.print("Input Time to compare with the acceptable format: ");
 		try {
 			input = reader.readLine();
@@ -33,12 +52,4 @@ public class TimeDateTestEngine {
 		else
 			System.out.println("The time you entered was not matched with any recognizable formats");
 		
-	}
-	/*
-	public static boolean shubhendraTester (String testString) {
-		final String TIME12_PATTERN_1 = "((((0?[1-9])|(1[0-2]))(([:\\.][0-5][0-9])?(\\s?[AP]M)))|"+"((([01][0-9])|(2[0-3]))([:\\.][0-5][0-9])))";
-		return testString.matches(TIME12_PATTERN_1);
-	}
-	*/
-	
-}
+*/

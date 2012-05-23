@@ -3,22 +3,23 @@ import java.util.regex.Pattern;
 
 public class Time12HourTester {
 
-	private Pattern pattern1, pattern2;
-	private Matcher matcher1, matcher2;
+	private Pattern pattern1;
+	private Matcher matcher1;
 	private final String TIME12_PATTERN_1 = "(1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm)";
-	private final String TIME12_PATTERN_2 = "(1[012]|[1-9])(\\s)?(?i)(am|pm)";
+	//private final String TIME12_PATTERN_2 = "(1[012]|[1-9])(\\s)?(?i)(am|pm)";
 	
+	//update: the following are combined to one now
 	//TIME12_PATTERN_1 checks for input of the format 12:00am / 12.00am
 	//TIME12_PATTERN_1 checks for input of the format 12am
 	
 	public Time12HourTester() {
 		pattern1 = Pattern.compile(TIME12_PATTERN_1);
-		pattern2 = Pattern.compile(TIME12_PATTERN_2);
+		//pattern2 = Pattern.compile(TIME12_PATTERN_2);
 	}
 	
 	public boolean isValid (String time) {
 		matcher1 = pattern1.matcher(time);
-		matcher2 = pattern2.matcher(time);
+		//matcher2 = pattern2.matcher(time);
 		return (matcher1.matches());//|| matcher2.matches());
 	}
 
