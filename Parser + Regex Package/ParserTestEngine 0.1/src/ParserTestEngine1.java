@@ -30,13 +30,14 @@ public static void main (String args[]) {
 		
 		Time12HourTester test12hour = new Time12HourTester();
 		Time24HourTester test24hour = new Time24HourTester();
+		
 		DateIsoValidator isoDateTester = new DateIsoValidator();
 		
-		
-		if(isoDateTester.validateGeneral(inputString))
-			System.out.println("valid DDMMYYY format");
+		if(isoDateTester.validateMonthInDigitWithoutYear(inputString))
+			System.out.println("valid!");
 		else
-			System.out.println("invalid DDMMYYY format");
+			System.out.println("invalid!");
+		
 		
 		/*
 		if(test12hour.isValid(inputString))
