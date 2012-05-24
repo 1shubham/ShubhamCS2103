@@ -32,7 +32,8 @@ public static void main (String args[]) {
 		Time24HourTester test24hour = new Time24HourTester();
 		DateIsoValidator isoDateTester = new DateIsoValidator();
 		
-		if(isoDateTester.validate(inputString))
+		
+		if(isoDateTester.validateGeneral(inputString))
 			System.out.println("valid DDMMYYY format");
 		else
 			System.out.println("invalid DDMMYYY format");
