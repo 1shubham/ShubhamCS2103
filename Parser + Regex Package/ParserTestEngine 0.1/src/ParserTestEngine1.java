@@ -33,11 +33,22 @@ public static void main (String args[]) {
 		
 		DateIsoValidator isoDateTester = new DateIsoValidator();
 		
-		if(isoDateTester.validateMonthInDigitWithoutYear(inputString))
-			System.out.println("valid!");
-		else
-			System.out.println("invalid!");
+		//isoDateTester.dummyFunction(inputString);
 		
+		if (isoDateTester.validateGeneral(inputString)) {
+			System.out.println("The date format is acceptable. :)");
+			
+			if (isoDateTester.validateMonthInDigitWithYear(inputString))
+				System.out.println("You specified a year and input month in digits!");
+			if (isoDateTester.validateMonthInDigitWithoutYear(inputString))
+				System.out.println("You did NOT specify a year and input month in digits!");
+			if (isoDateTester.validateMonthInTextWithYear(inputString))
+				System.out.println("You specified a year and input month in text!");
+			if (isoDateTester.validateMonthInTextWithoutYear(inputString))
+				System.out.println("You did NOT specify a year and input month in text!");
+		}
+		else
+			System.out.println("The date is not in an acceptable format.");
 		
 		/*
 		if(test12hour.isValid(inputString))
