@@ -24,17 +24,17 @@ public class DateIsoValidator{
    * @param date date address for validation
    * @return true valid date format, false invalid date format
    */
-  public boolean validateGeneral (final String date) {
+  public boolean isValidGeneral (final String date) {
 	  boolean format1, format2, format3, format4;
-	  format1 = validateMonthInDigitWithYear(date);
-	  format2 = validateMonthInTextWithYear(date);
-	  format3 = validateMonthInDigitWithoutYear(date);
-	  format4 = validateMonthInTextWithoutYear(date);
+	  format1 = isValidMonthInDigitWithYear(date);
+	  format2 = isValidMonthInTextWithYear(date);
+	  format3 = isValidMonthInDigitWithoutYear(date);
+	  format4 = isValidMonthInTextWithoutYear(date);
 	  
 	  return (format1||format2||format3||format4);		  
   }
   
-  public boolean validateMonthInDigitWithYear(final String date){
+  public boolean isValidMonthInDigitWithYear(final String date){
 	  
 	  matcher1 = pattern1.matcher(date);
 	  
@@ -77,7 +77,7 @@ public class DateIsoValidator{
 	   
   }
 
-  public boolean validateMonthInTextWithYear(final String date){
+  public boolean isValidMonthInTextWithYear(final String date){
 	   final String FEB = "(?i)(Feb|February)";
 	   final String APR = "(?i)(Apr|April)";
 	   final String JUN = "(?i)(Jun|June)";
@@ -127,7 +127,7 @@ public class DateIsoValidator{
 
    }
   
-  public boolean validateMonthInDigitWithoutYear(final String date){
+  public boolean isValidMonthInDigitWithoutYear(final String date){
 	  matcher3 = pattern3.matcher(date);
 	    
 	  if(matcher3.matches()){
@@ -188,7 +188,7 @@ public class DateIsoValidator{
 	  return false;	  
   }
   
-  public boolean validateMonthInTextWithoutYear(final String date){
+  public boolean isValidMonthInTextWithoutYear(final String date){
 	  final String JAN = "(?i)(Jan|January)";
 	  final String FEB = "(?i)(Feb|February)";
 	  final String MAR = "(?i)(Mar|March)";

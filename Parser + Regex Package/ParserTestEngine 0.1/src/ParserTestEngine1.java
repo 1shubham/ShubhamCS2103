@@ -35,6 +35,7 @@ public static void main (String args[]) {
 		
 		//isoDateTester.dummyFunction(inputString);
 		
+		/*
 		if (isoDateTester.validateGeneral(inputString)) {
 			System.out.println("The date format is acceptable. :)");
 			
@@ -49,6 +50,8 @@ public static void main (String args[]) {
 		}
 		else
 			System.out.println("The date is not in an acceptable format.");
+			
+		*/
 		
 		/*
 		if(test12hour.isValid(inputString))
