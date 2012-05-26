@@ -26,16 +26,10 @@ public class Parser {
 	}
 	
 	public static void main (String args[]) {
+		/*
 		String inputString = null;
 		BufferedReader reader;
 		reader = new BufferedReader(new InputStreamReader(System.in));
-
-		/*
-		if ("@   sdafads     , dsfds , sdfds".matches(LABEL_REGEX))
-			System.out.println("matches");
-		else
-			System.out.println("DOES NOT match");
-		*/
 		
 		System.out.print("Input string:");
 		try {
@@ -46,7 +40,15 @@ public class Parser {
 		}
 		
 		startParsing (inputString);
+		*/
 		
+		TimeParser timeParser = new TimeParser();
+		
+		if (timeParser.setStartTime("12:59pm")) {
+			timeParser.printTimes();
+		}
+		else
+			System.out.println("parsing not successful");
 	}
 	
 	public static void startParsing(String inputS) {
@@ -87,7 +89,7 @@ public class Parser {
 		TimeParser timeParser = new TimeParser();
 		//DateParser dateParser = new DateParser();
 		
-		if(timeParser.extractTime(inputS))
+		if(timeParser.extractStartEnd(inputS))
 			System.out.println("time/date extracted!");
 		else
 			System.out.println("time/date NOT extracted!");
