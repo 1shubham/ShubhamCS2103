@@ -14,9 +14,9 @@ public class DateParser {
 	private static int dummyDay=-1, dummyMonth=-1, dummyYear=-1;
 	
 	private static final String MONTH_IN_DIGIT_DATE_WITH_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ -](0?[1-9]|1[012])[/ -]((19|20)\\d\\d)";
-	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|Jule|Aug|August|Sep|September|Oct|October|Nov|November|Dec|December))[/ - \\s \\,](\\s)?((19|20)\\d\\d)";
+	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))[/ - \\s \\,](\\s)?((19|20)\\d\\d)";
 	private static final String MONTH_IN_DIGIT_DATE_WITHOUT_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ -](0?[1-9]|1[012])";
-	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|Jule|Aug|August|Sep|September|Oct|October|Nov|November|Dec|December))";
+	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))";
 	private static final String GENERAL_DATE_PATTERN = "(((?i)(on))[\\s])?(("
 			+ MONTH_IN_DIGIT_DATE_WITH_YEAR + ")|("
 			+ MONTH_IN_TEXT_DATE_WITH_YEAR + ")|("

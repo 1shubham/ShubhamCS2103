@@ -10,21 +10,27 @@ public class TimeParser {
 	
 	static int startHour = -1, endHour = -1, startMin = -1, endMin = -1;
 	static int dummyHour = -1, dummyMin = -1;
-	
+	private String inputS;
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
 	
 	private final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
-	private final String TIME_24_PATTERN = "([01]?[0-9]|2[0-3])[:.]?([0-5][0-9])";
-	private final String TIME_12_OR_24_PATTERN = "((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])";
+	private final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
+	private final String TIME_12_OR_24_PATTERN = "((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?[0-5][0-9])";
 			//"("++")|("++")"
 			
-	public TimeParser() {
+	public TimeParser(String userCommand) {
+		inputS=userCommand;
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
 		pattern = Pattern.compile(TIME_12_OR_24_PATTERN);
 	}
-	
+	public TimeParser( ) {
+		inputS=null;
+		pattern12 = Pattern.compile(TIME_12_PATTERN);
+		pattern24 = Pattern.compile(TIME_24_PATTERN);
+		pattern = Pattern.compile(TIME_12_OR_24_PATTERN);
+	}
 	public int[] getStartTime() {
 		int[] startTimeArr = {-1,-1};
 		
@@ -70,8 +76,10 @@ public class TimeParser {
 		
 		System.out.println("no attributes exist!");
 	}
-	
-	public boolean extractStartEnd (String inputS) {
+	public String getinputCommand(){
+		return inputS;
+	}
+	public boolean extractStartEnd () {
 		final String AT_TIME = "((at)|(AT))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
 		final String BY_TIME = "((by)|(BY))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
 		final String TO_TIME = "((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
@@ -92,6 +100,9 @@ public class TimeParser {
 			String startTimeString=null, endTimeString=null;
 			String dummyTime = matcher.group();
 			
+			System.out.println("dummytimeString:"+dummyTime);
+			System.out.println("group1:"+matcher.group(1));
+			System.out.println("group2:"+matcher.group(2));
 			/*
 			 * meeting at 5 pm 
 			 */

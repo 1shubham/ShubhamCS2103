@@ -80,10 +80,10 @@ public class Parser {
 		/*
 		 * recurring 
 		 */	
-		String recurString = getRecurString (inputS);
+		String recurring = getRecurString (inputS);
 		
-		if (recurString != null)
-			System.out.println("this task is "+recurString);
+		if (recurring != null)
+			System.out.println("this task is "+recurring);
 		else
 			System.out.println("this task is not recurring");
 		
@@ -115,10 +115,10 @@ public class Parser {
 		
 		
 		
-		TimeParser timeParser = new TimeParser();
+		TimeParser timeParser = new TimeParser(inputS);
 		//DateParser dateParser = new DateParser();
 		
-		if(timeParser.extractStartEnd(inputS))
+		if(timeParser.extractStartEnd())
 			System.out.println("time/date extracted!");
 		else
 			System.out.println("time/date NOT extracted!");
@@ -132,19 +132,20 @@ public class Parser {
 			System.out.println("is important!");
 		else
 			System.out.println("is NOT important!");
+		
 		if(recurring!=null)
 			System.out.println("has to be done: "+recurring);
 		else
 			System.out.println("it is not recurring");
-		if(recurring!=null)
-			System.out.println("has to be done: "+recurring);
+		
+		System.out.println("task details: "+timeParser.getinputCommand());
+		
+		setDeadline ();
+		
+		if(deadline)
+			System.out.println("this task has a deadline you dumbass!");
 		else
-			System.out.println("it is not recurring");
-		
-		System.out.println("task details: "+inputS);
-		
-		
-		
+			System.out.println("this task does NOT have deadline you numbskull!");
 
 	}
 	
@@ -187,7 +188,7 @@ public class Parser {
 		int i=0;
 		while(m.find()) {
 				labelString = m.group();
-				labelString.replace('@',' ');
+				labelString = labelString.replace('@',' ');
 				labelString = labelString.trim();
 				labelArr[i]=labelString;
 				i++;
@@ -221,8 +222,16 @@ public class Parser {
 		 * tester print functions
 		 */
 		
-		System.out.println("start date time: "+startDateTime.formattedToString());
-		System.out.println("end date time: "+endDateTime.formattedToString());
+		if (startDateTime!=null)
+			System.out.println("start date time: "+startDateTime.formattedToString());
+		
+		if(endDateTime!=null)
+			System.out.println("end date time: "+endDateTime.formattedToString());
+	}
+	
+	public static void setDeadline () {
+		if (startDateTime==null && endDateTime!=null)
+			deadline=true;
 	}
 
 }

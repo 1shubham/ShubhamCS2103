@@ -46,14 +46,14 @@ public DateTime(int year,int month,int day)
 }
 public DateTime(int year,int month,int day,int hours,int minutes)
 {
-	calendar=new GregorianCalendar(year,month,day,hours,minutes);
+	calendar=new GregorianCalendar(year,month-1,day,hours,minutes);
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=true;
 }
 public DateTime(int year,int month,int day,int hours,int minutes,int seconds)
 {
-	calendar=new GregorianCalendar(year,month,day,hours,minutes,seconds);
+	calendar=new GregorianCalendar(year,month-1,day,hours,minutes,seconds);
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=true;
