@@ -1,4 +1,4 @@
-package ParserPackage;
+package parserPackage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,26 +33,6 @@ public class Parser {
 		return s.replaceAll("\\s+", " ");
 	}
 	
-	public static void main (String args[]) {
-		
-		String inputS = null;
-		BufferedReader reader;
-		reader = new BufferedReader(new InputStreamReader(System.in));
-		
-		System.out.print("Input string:");
-		try {
-			inputS = reader.readLine();
-		}
-		catch(IOException ioe) {
-			System.out.println("An unexpected error occured for your input");
-		}
-		
-	}
-	/*
-	p void startParsing(String inputS) {
-
-	}
-	*/
 	public boolean markImportant (String s) {
 		if (s.startsWith("*")){
 			//s = s.replace('*', '\0');
@@ -230,5 +210,4 @@ public class Parser {
 	}
 
 }
-
 
