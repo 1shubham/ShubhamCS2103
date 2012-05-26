@@ -9,9 +9,9 @@ public class DateParser {
 	private Pattern pattern1, pattern2, pattern3, pattern4, pattern;
 	private Matcher matcher1, matcher2, matcher3, matcher4, matcher;
 	
-	private int startDay=-1, startMonth=-1, startYear=-1;
-	private int endDay=-1, endMonth=-1, endYear=-1;
-	private int dummyDay=-1, dummyMonth=-1, dummyYear=-1;
+	private static int startDay=-1, startMonth=-1, startYear=-1;
+	private static int endDay=-1, endMonth=-1, endYear=-1;
+	private static int dummyDay=-1, dummyMonth=-1, dummyYear=-1;
 	
 	private static final String MONTH_IN_DIGIT_DATE_WITH_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ -](0?[1-9]|1[012])[/ -]((19|20)\\d\\d)";
 	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(Jan|January|Feb|February|Mar|March|Apr|April|May|Jun|June|Jul|Jule|Aug|August|Sep|September|Oct|October|Nov|November|Dec|December))[/ - \\s \\,](\\s)?((19|20)\\d\\d)";
@@ -25,6 +25,30 @@ public class DateParser {
 
 	public void resetDummyDate() {
 		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
+	}
+	
+	public int[] getStartDate() {
+		int[] startDateArr = {-1,-1,-1};
+		
+		if (startDay>0 && startMonth>0 && startYear>0) {
+			startDateArr[0] =startDay;
+			startDateArr[1] =startMonth;
+			startDateArr[2] =startYear;
+		}
+		
+		return startDateArr;
+	}
+	
+	public int[] getEndDate() {
+		int[] endDateArr = {-1,-1,-1};
+		
+		if (endDay>0 && endMonth>0 && endYear>0) {
+			endDateArr[0] =endDay;
+			endDateArr[1] =endMonth;
+			endDateArr[2] =endYear;
+		}
+		
+		return endDateArr;
 	}
 	
 	public DateParser() {

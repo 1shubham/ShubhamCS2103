@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 public class TimeParser {
 	
-	int startHour = -1, endHour = -1, startMin = -1, endMin = -1;
-	int dummyHour = -1, dummyMin = -1;
+	static int startHour = -1, endHour = -1, startMin = -1, endMin = -1;
+	static int dummyHour = -1, dummyMin = -1;
 	
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
@@ -23,6 +23,28 @@ public class TimeParser {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
 		pattern = Pattern.compile(TIME_12_OR_24_PATTERN);
+	}
+	
+	public int[] getStartTime() {
+		int[] startTimeArr = {-1,-1};
+		
+		if (startHour>=0 && startMin>=0) {
+			startTimeArr[0] =startHour;
+			startTimeArr[1] =startMin;
+		}
+		
+		return startTimeArr;
+	}
+	
+	public int[] getEndTime() {
+		int[] endTimeArr = {-1,-1};
+		
+		if (endHour>=0 && endMin>=0) {
+			endTimeArr[0] =endHour;
+			endTimeArr[1] =endMin;
+		}
+		
+		return endTimeArr;
 	}
 	
 	private void resetDummyTime() {
@@ -81,6 +103,11 @@ public class TimeParser {
 				System.out.println("start time: "+startTimeString);
 				System.out.println("left over: "+inputS);
 				
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
 				startDateString=dateParser.extractDate(inputS);
 				
 				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
@@ -88,6 +115,12 @@ public class TimeParser {
 				
 				System.out.println("start date: "+startDateString);
 				System.out.println("left over: "+inputS);
+				
+				
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
 				
 				//setTime (startTimeString, endTimeString);
 				return true;
@@ -104,6 +137,12 @@ public class TimeParser {
 				System.out.println("end time: "+endTimeString);
 				System.out.println("left over: "+inputS);
 				
+				if (setEndTime(endTimeString)) 
+					System.out.println("End time is set!");
+				else
+					System.out.println("End time could NOT be set!");
+				
+				
 				endDateString=dateParser.extractDate(inputS);
 				
 				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
@@ -111,6 +150,11 @@ public class TimeParser {
 
 				System.out.println("end date: "+endDateString);
 				System.out.println("left over: "+inputS);
+				
+				if (dateParser.setEndDate(endDateString)) 
+					System.out.println("end date is set!");
+				else
+					System.out.println("end date could NOT be set!");
 				
 				//setTime (startTimeString, endTimeString);
 				return true;
@@ -132,6 +176,19 @@ public class TimeParser {
 				System.out.println("end time: "+endTimeString);
 				System.out.println("left over: "+inputS);
 				
+
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
+				if (setEndTime(endTimeString)) 
+					System.out.println("End time is set!");
+				else
+					System.out.println("End time could NOT be set!");
+				
+				
+				
 				startDateString=dateParser.extractDate(inputS);
 				endDateString=dateParser.extractDate(inputS);
 				
@@ -144,6 +201,16 @@ public class TimeParser {
 				System.out.println("end date: "+endDateString);
 				System.out.println("left over: "+inputS);
 				
+				
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				
+				if (dateParser.setEndDate(endDateString))
+					System.out.println("end date is set!");
+				else
+					System.out.println("end date could NOT be set!");
 				
 				//setTime (startTimeString, endTimeString);
 				return true;
@@ -163,8 +230,21 @@ public class TimeParser {
 				System.out.println("end time: "+endTimeString);
 				System.out.println("left over: "+inputS);
 				
+
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
+				if (setEndTime(endTimeString)) 
+					System.out.println("End time is set!");
+				else
+					System.out.println("End time could NOT be set!");
+				
+				
 				startDateString=dateParser.extractDate(inputS);
 				endDateString=dateParser.extractDate(inputS);
+						
 				
 				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
 				inputS = removeExtraSpaces(inputS);
@@ -174,6 +254,18 @@ public class TimeParser {
 				System.out.println("start date: "+startDateString);
 				System.out.println("end date: "+endDateString);
 				System.out.println("left over: "+inputS);
+				
+
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				
+				if (dateParser.setEndDate(endDateString))
+					System.out.println("end date is set!");
+				else
+					System.out.println("end date could NOT be set!");
+				
 				
 				//setTime (startTimeString, endTimeString);
 				return true;
@@ -190,6 +282,14 @@ public class TimeParser {
 				System.out.println("start time: "+startTimeString);
 				System.out.println("left over: "+inputS);
 				
+				
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
+				
+				
 				startDateString=dateParser.extractDate(inputS);
 				
 				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
@@ -198,7 +298,14 @@ public class TimeParser {
 				System.out.println("start date: "+startDateString);
 				System.out.println("left over: "+inputS);
 				
-				//setTime (startTimeString, endTimeString);
+				
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				
+				
+				
 				return true;
 			}
 			
@@ -227,46 +334,28 @@ public class TimeParser {
 		return false;
 	}
 	
-	/*
-	private boolean setTime (String startTime, String endTime) {
-		return false;
-		
-		if (startTime != null) {
-			if (isValid12Hour(startTime)) {
-				matcher12 = pattern12.matcher(startTime);
+	public boolean setEndTime (String endT) {
+		if (endT != null) {
+			if (set12Hour(endT) || (set24Hour(endT))) {
+				if (dummyHour>=0 && dummyMin>=0){
+					endHour = dummyHour;
+					endMin = dummyMin;
+					resetDummyTime();
+					return true;
+				}
 				
-				//System.out.println("groupcount "+matcher12.groupCount());
-				
-				String hour = matcher12.group(1);
-				String min = matcher12.group(2);
-				String AMPM = matcher12.group(4);
-				
-				min.replaceAll("[:.]", "");
-				
-				System.out.println("Start time is "+hour+":"+min+AMPM);
-				
-				//startHour = Integer.parseInt(hour);
-				//startMin = Integer.parseInt(min);
-				
-				//System.out.println("Start time is "+startHour+":"+startMin);
-				return true;
+				else {
+					//System.out.println("1st return of setStartDate: false");
+					return false;
+				}
 			}
+			//System.out.println("2nd return of setStartDate: false");
+			return false;
 		}
 		return false;
-		
-		
-		if (isValid24Hour(startTime)) {
-			
-		}
-		if (isValid12Hour(endTime)) {
-			
-		}
-		if (isValid24Hour(endTime)) {
-			
-		}
-		
-	}*/
-
+	}
+	
+	
 	public boolean isValid(String time) {
 		//return isValid12Hour(time) || isValid24Hour(time);
 		return time.matches(TIME_12_OR_24_PATTERN);
