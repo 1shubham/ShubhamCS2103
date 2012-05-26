@@ -44,7 +44,7 @@ public class Parser {
 		
 		TimeParser timeParser = new TimeParser();
 		
-		if (timeParser.setStartTime("12:59pm")) {
+		if (timeParser.setStartTime("23.40")) {
 			timeParser.printTimes();
 		}
 		else
