@@ -14,9 +14,9 @@ public class TimeParser {
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
 	
-	private final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
-	private final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
-	private final String TIME_12_OR_24_PATTERN = "((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
+	private final String TIME_12_PATTERN = "[ ](1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
+	private final String TIME_24_PATTERN = "[ ](2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
+	private final String TIME_12_OR_24_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";//"((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
 			//"("++")|("++")"
 			
 	public TimeParser(String userCommand) {
@@ -89,11 +89,11 @@ public class TimeParser {
 		final String FROM_TIME_TO_TIME = "(((from)|(FROM))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))[ ](((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))";
 		final String TIME_TO_TIME = "((((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))[ ](((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))";
 		*/
-		final String AT_TIME = "((at)|(AT))[ ]("+TIME_12_OR_24_PATTERN+")";
-		final String BY_TIME = "((by)|(BY))[ ]("+TIME_12_OR_24_PATTERN+")";
-		final String TO_TIME = "((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
-		final String FROM_TIME_TO_TIME = "((from)|(FROM))[ ]("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
-		final String TIME_TO_TIME = "("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
+		final String AT_TIME = "((at)|(AT))("+TIME_12_OR_24_PATTERN+")";
+		final String BY_TIME = "((by)|(BY))("+TIME_12_OR_24_PATTERN+")";
+		final String TO_TIME = "((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
+		final String FROM_TIME_TO_TIME = "((from)|(FROM))("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
+		final String TIME_TO_TIME = "("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
 		
 		matcher = pattern.matcher(inputS);
 		
@@ -114,7 +114,7 @@ public class TimeParser {
 			/*
 			 * meeting at 5 pm 
 			 */
-			if ( (inputS.contains("at") || inputS.contains("AT") ) && ( (matcher.start() - 3) == inputS.indexOf("at") || (matcher.start() - 3) == inputS.indexOf("AT") ) ) {
+			if ( (inputS.contains("at") || inputS.contains("AT") ) && ( (matcher.start() - 2) == inputS.indexOf("at") || (matcher.start() - 2) == inputS.indexOf("AT") ) ) {
 				startTimeString = dummyTime;
 				inputS = inputS.replaceFirst(AT_TIME, "");
 				inputS = removeExtraSpaces(inputS);
@@ -148,7 +148,7 @@ public class TimeParser {
 			/*
 			 * project deadline by 6pm sdfsd
 			 */
-			else if ( (inputS.contains("by") || inputS.contains("BY") ) && ( (matcher.start() - 3) == inputS.indexOf("by") || (matcher.start() - 3) == inputS.indexOf("BY") ) ) {
+			else if ( (inputS.contains("by") || inputS.contains("BY") ) && ( (matcher.start() - 2) == inputS.indexOf("by") || (matcher.start() - 2) == inputS.indexOf("BY") ) ) {
 				endTimeString = dummyTime;
 				inputS = inputS.replaceFirst(BY_TIME, "");
 				inputS = removeExtraSpaces(inputS);
@@ -183,7 +183,7 @@ public class TimeParser {
 			 * meeting from 5pm to 6pm at utown
 			 * not combined with the next one because, you need to make sure you remove the correct "from"!
 			 */
-			else if ( (inputS.contains("from") || inputS.contains("FROM") ) && ( (matcher.start() - 5) == inputS.indexOf("from") || (matcher.start() - 5) == inputS.indexOf("FROM") ) ) {
+			else if ( (inputS.contains("from") || inputS.contains("FROM") ) && ( (matcher.start() - 4) == inputS.indexOf("from") || (matcher.start() - 4) == inputS.indexOf("FROM") ) ) {
 				startTimeString = dummyTime;
 				
 				matcher.find();
