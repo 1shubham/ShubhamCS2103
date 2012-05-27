@@ -16,7 +16,7 @@ public class TimeParser {
 	
 	private final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
 	private final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
-	private final String TIME_12_OR_24_PATTERN = "((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?[0-5][0-9])";
+	private final String TIME_12_OR_24_PATTERN = "((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
 			//"("++")|("++")"
 			
 	public TimeParser(String userCommand) {
@@ -76,16 +76,24 @@ public class TimeParser {
 		
 		System.out.println("no attributes exist!");
 	}
+	
 	public String getinputCommand(){
 		return inputS;
 	}
+	
 	public boolean extractStartEnd () {
+		/*
 		final String AT_TIME = "((at)|(AT))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
 		final String BY_TIME = "((by)|(BY))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
 		final String TO_TIME = "((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9]))";
 		final String FROM_TIME_TO_TIME = "(((from)|(FROM))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))[ ](((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))";
 		final String TIME_TO_TIME = "((((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))[ ](((to)|(TO))[ ](((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|(([01]?[0-9]|2[0-3])[:.]?[0-5][0-9])))";
-		
+		*/
+		final String AT_TIME = "((at)|(AT))[ ]("+TIME_12_OR_24_PATTERN+")";
+		final String BY_TIME = "((by)|(BY))[ ]("+TIME_12_OR_24_PATTERN+")";
+		final String TO_TIME = "((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
+		final String FROM_TIME_TO_TIME = "((from)|(FROM))[ ]("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
+		final String TIME_TO_TIME = "("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))[ ]("+TIME_12_OR_24_PATTERN+")";
 		
 		matcher = pattern.matcher(inputS);
 		

@@ -72,8 +72,21 @@ public class DateParser {
 		matcher = pattern.matcher(inputS);
 
 		if (matcher.find())
-			s = matcher.group();
-
+			s = matcher.group(4);
+		
+		/*
+		System.out.println("no. of groups in date string: "+matcher.groupCount());
+		System.out.println("group 1 string: "+matcher.group(1));
+		System.out.println("group 2 string: "+matcher.group(2));
+		System.out.println("group 3 string: "+matcher.group(3));
+		System.out.println("group 4 string: "+matcher.group(4));
+		System.out.println("group 5 string: "+matcher.group(5));
+		*/
+		
+		/*
+		 * do not include "on" if its included
+		 */
+		
 		return s;
 	}
 	
