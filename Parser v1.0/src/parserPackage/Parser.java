@@ -16,18 +16,16 @@ public class Parser {
 		return null;
 	}*/
 	
-	/*
-	 * make all helper functions non static
-	 */
 	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
 	private final  String LABEL_REGEX = "@(\\w+)";
+	private final String ID_REGEX = "($$__)(\\d+)(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
 	
-	 boolean important;
-	 boolean deadline;
-	 DateTime startDateTime, endDateTime;
-	 String recurring = null;
-	 List<String> labelList = null;
-	 String taskDetails=null;
+	boolean important;
+	boolean deadline;
+	DateTime startDateTime, endDateTime;
+	String recurring = null;
+	List<String> labelList = null;
+	String taskDetails=null;
 	
 	public  String removeExtraSpaces (String s) {
 		return s.replaceAll("\\s+", " ");
@@ -112,12 +110,37 @@ public class Parser {
 	public void setDeadline () {
 		if (startDateTime==null && endDateTime!=null)
 			deadline=true;
+		
+	}
+	
+	public String fetchTaskId (String inputS) {
+		String Id = null;
+		Pattern p = Pattern.compile(ID_REGEX);
+		Matcher m = p.matcher(inputS);
+		
+		if(m.matches())
+			Id = m.group(2);
+		
+		return Id;
+	}
+	
+	public String[] fetchTaskIds (String inputS) {
+		String[] Ids = null;
+		int i=0;
+		Pattern p = Pattern.compile(ID_REGEX);
+		Matcher m = p.matcher(inputS);
+		
+		while (m.find()) {
+			Ids[i] = m.group(2);
+			i++;
+		}
+			
+		return Ids;
 	}
 	
 	public Task parse (String inputS) {
 		
 		inputS = inputS.trim();
-		
 		
 		/*
 		 * markImportant
@@ -128,10 +151,8 @@ public class Parser {
 			inputS = inputS.trim();
 		}
 		
-		
-		
 		/*
-		 * recurring 
+		 * recurring ?
 		 */	
 		String recurring = getRecurString (inputS);
 		
@@ -145,9 +166,7 @@ public class Parser {
 		inputS = inputS.trim();
 		
 		System.out.println("left over string after checking for recurring: "+inputS);
-		
-		
-		
+				
 		/*
 		 * setLabels
 		 */
@@ -163,9 +182,6 @@ public class Parser {
 			}
 			System.out.println("left over string after fetching labels: "+inputS);
 		}
-		//--------YET TO SET TO LIST-------
-		//labelList = toList(labelVector);
-		
 		
 		
 		TimeParser timeParser = new TimeParser(inputS);
@@ -176,14 +192,17 @@ public class Parser {
 			System.out.println("time/date NOT extracted!");
 		
 		
-
 		System.out.println();
 		System.out.println();
 		setDateTimeAttributes();
+		
+		
 		if(important)
 			System.out.println("is important!");
 		else
 			System.out.println("is NOT important!");
+		
+		
 		
 		if(recurring!=null)
 			System.out.println("has to be done: "+recurring);
@@ -208,6 +227,8 @@ public class Parser {
 		
 		return t;
 	}
+	
+	
 
 }
 
