@@ -1,5 +1,5 @@
 package storagecontroller;
-import data.DateTime;
+
 import data.Task;
 import data.TaskHashMap;
 import java.beans.XMLDecoder;
@@ -9,8 +9,12 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 public class FileHandler 
 {
+	
+	private Logger logger=Logger.getLogger("Abc");
 	private static String fileName;
 	public FileHandler(String name)
 	{
@@ -22,6 +26,7 @@ public class FileHandler
 		{
 		BufferedOutputStream xmlOut=new BufferedOutputStream(new FileOutputStream(fileName));
 		XMLEncoder writeToXml=new XMLEncoder(xmlOut);
+		logger.debug(instance.getKeySet().size());
 		for(String key: instance.getKeySet())
 		{
 			writeToXml.writeObject(instance.getTaskById(key));
@@ -46,25 +51,27 @@ public class FileHandler
 		XMLDecoder readFromXml=new XMLDecoder(xmlIn);
 		
 			Task obj;
-			while((obj=(Task)readFromXml.readObject())!=null)
+			while((obj = (Task) readFromXml.readObject())!=null)
 			{
 				instance.addTaskById(obj);
 			}
 			readFromXml.close();
+			logger.debug(instance.getKeySet().size());
+			logger.debug("abc");
 		}
 		catch(FileNotFoundException e)
 		{
-			System.out.println("File Not Found!");
+			logger.debug("File Not Found!");
 			return false;
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
-			System.out.println("array out of bounds!");
+			logger.debug("array out of bounds!");
 			return false;
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("null pointer exception");
+			logger.debug("null pointer exception");
 			return false;
 		}
 		return true;

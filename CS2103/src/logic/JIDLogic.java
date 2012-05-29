@@ -8,7 +8,7 @@ import operation.*;
 import data.Task;
 //import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import gui.UIController;
+//import gui.UIController;
 
 import storagecontroller.StorageManager;
 
@@ -17,30 +17,43 @@ public class JIDLogic {
 		private static Logger logger=Logger.getLogger(JIDLogic.class);
 		public static void main(String[] args) {
 	        //logger.info("hi");
-			/*
-			System.out.println(StorageManager.loadFile());
+			
+			logger.debug(StorageManager.loadFile());
+			
+			
 	    	Add adder=new Add();
+	    	/*
+	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/5/2013  @work @home");
+	    	Task[] efg=adder.execute("add blah blah from 6am to 7am 4/5/2012");
+	    	System.out.println(StorageManager.saveFile());
 	    	
-	    	Task[] abc=adder.execute("add *go to meet bhairav weekly by 3.45pm 3/8/2012  @work @home");
-	    	
-	    	logger.debug("inside JIDLogic");
 	    	if (abc[0]!=null)
 	    	{
 	    	System.out.println(abc[0].getName());
 	    	System.out.println(abc[0].getTaskId());
-	    	}
+	    	}*/
+	    	
+	    	for (int i=0;i<StorageManager.getAllTasks().length;i++)
+    		{
+    			System.out.println(StorageManager.getAllTasks()[i].getName());
+    		}
 	    	Search searcher=new Search();
-	    	Task[] xyz=searcher.execute("find *.*");
-	    	if (abc[0]!=null)
+	    	Task[] xyz=searcher.execute("find meet");
+	    	if (xyz!=null)
+	    	logger.debug("printing search"+ xyz.length);
+	    	if (xyz!=null)
 	    	{
-	    		System.out.println(xyz[3].getTaskId());
-	    		System.out.println(xyz[2].getTaskId());
+	    		for (int i=0;i<xyz.length;i++)
+	    		{
+	    			System.out.println(xyz[i].getTaskId());
+	    		}
 	    	}
-	    	System.out.println(StorageManager.saveFile());*/
-			
+	    	logger.debug(StorageManager.saveFile());
+	    	
+			/*
 			JIDLogic_init();
 			UIController ui=new UIController();
-			
+			*/
 			
 		
 	}

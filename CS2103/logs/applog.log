@@ -49,3 +49,297 @@
 2012-05-29 12:52:46,974 - logic.JIDLogic - DEBUG - inside JIDLogic
 2012-05-29 12:54:04,330 - logic.JIDLogic - DEBUG - inside JIDLogic
 2012-05-29 12:54:32,425 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:35:04,280 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:35:35,424 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:35:54,044 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:38:48,217 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:42:54,442 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 14:44:02,738 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 14:47:35,666 - operation.Search - DEBUG - 1
+2012-05-29 14:47:35,668 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:01:10,073 - operation.Search - DEBUG - 1
+2012-05-29 15:01:10,077 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:01:55,354 - operation.Search - DEBUG - 1
+2012-05-29 15:01:55,357 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:04:07,545 - storagecontroller.FileHandler - DEBUG - 0
+2012-05-29 15:04:07,585 - operation.Search - DEBUG - 1
+2012-05-29 15:04:07,585 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:05:05,930 - storagecontroller.FileHandler - DEBUG - 0
+2012-05-29 15:05:05,967 - operation.Search - DEBUG - 1
+2012-05-29 15:05:05,967 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:06:14,617 - Abc - DEBUG - 0
+2012-05-29 15:06:14,661 - operation.Search - DEBUG - 1
+2012-05-29 15:06:14,662 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:07:18,189 - Abc - DEBUG - 0
+2012-05-29 15:07:18,193 - Abc - DEBUG - abc
+2012-05-29 15:07:18,238 - operation.Search - DEBUG - 1
+2012-05-29 15:07:18,238 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:08:30,526 - Abc - DEBUG - File Not Found!
+2012-05-29 15:08:30,564 - operation.Search - DEBUG - 1
+2012-05-29 15:08:30,565 - logic.JIDLogic - DEBUG - printing search
+2012-05-29 15:12:31,047 - Abc - DEBUG - File Not Found!
+2012-05-29 15:13:28,554 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:13:28,604 - Abc - DEBUG - 4
+2012-05-29 15:17:39,196 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:17:39,248 - Abc - DEBUG - 6
+2012-05-29 15:18:40,463 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:18:40,507 - Abc - DEBUG - 8
+2012-05-29 15:21:49,087 - operation.Add - INFO - hi
+2012-05-29 15:23:55,406 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:23:55,420 - operation.Search - DEBUG - 8
+2012-05-29 15:23:55,421 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 15:24:37,946 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:24:37,961 - operation.Search - DEBUG - 8
+2012-05-29 15:24:37,961 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 15:28:14,062 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:28:14,066 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:28:14,076 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 15:28:43,165 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:28:43,169 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:28:43,178 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 15:28:43,181 - Abc - DEBUG - 8
+2012-05-29 15:29:10,187 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:29:10,190 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:29:10,229 - logic.JIDLogic - DEBUG - printing search9
+2012-05-29 15:29:10,233 - Abc - DEBUG - 9
+2012-05-29 15:29:47,272 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:29:47,276 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:29:47,285 - logic.JIDLogic - DEBUG - printing search9
+2012-05-29 15:29:47,289 - Abc - DEBUG - 9
+2012-05-29 15:29:47,344 - logic.JIDLogic - DEBUG - true
+2012-05-29 15:30:12,983 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:30:12,988 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:30:13,025 - logic.JIDLogic - DEBUG - printing search10
+2012-05-29 15:30:13,027 - Abc - DEBUG - 10
+2012-05-29 15:30:13,091 - logic.JIDLogic - DEBUG - true
+2012-05-29 15:31:08,362 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:31:08,374 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:31:08,386 - logic.JIDLogic - DEBUG - printing search10
+2012-05-29 15:31:08,389 - Abc - DEBUG - 10
+2012-05-29 15:31:08,454 - logic.JIDLogic - DEBUG - true
+2012-05-29 15:31:48,949 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:31:48,954 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:31:48,982 - logic.JIDLogic - DEBUG - printing search11
+2012-05-29 15:31:48,984 - Abc - DEBUG - 11
+2012-05-29 15:31:49,057 - logic.JIDLogic - DEBUG - true
+2012-05-29 15:33:15,893 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:33:15,897 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:33:15,906 - logic.JIDLogic - DEBUG - printing search11
+2012-05-29 15:33:55,544 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:33:55,548 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:33:55,604 - logic.JIDLogic - DEBUG - printing search12
+2012-05-29 15:43:29,747 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:43:29,751 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:44:47,544 - Abc - DEBUG - array out of bounds!
+2012-05-29 15:44:47,548 - logic.JIDLogic - DEBUG - false
+2012-05-29 15:44:47,576 - logic.JIDLogic - DEBUG - printing search12
+2012-05-29 15:44:47,578 - Abc - DEBUG - 12
+2012-05-29 15:44:47,647 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:08:39,729 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:08:39,734 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:11:25,952 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:11:25,954 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:15:26,490 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:15:26,493 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:18:57,201 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:18:57,205 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:19:36,886 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:19:36,890 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:21:14,865 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:21:14,870 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:21:55,252 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:21:55,256 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:22:04,365 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:22:04,369 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:22:04,482 - Abc - DEBUG - 12
+2012-05-29 17:22:04,564 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:23:06,386 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:23:06,390 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:23:06,411 - Abc - DEBUG - 12
+2012-05-29 17:23:06,467 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:23:40,147 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:23:40,151 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:23:40,173 - Abc - DEBUG - 12
+2012-05-29 17:23:40,238 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:25:47,016 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:25:47,020 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:25:47,042 - Abc - DEBUG - 12
+2012-05-29 17:25:47,106 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:26:36,532 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:26:36,537 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:26:36,559 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 17:26:36,564 - Abc - DEBUG - 12
+2012-05-29 17:26:36,640 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:27:46,530 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:27:46,534 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:27:46,552 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 17:27:46,555 - Abc - DEBUG - 12
+2012-05-29 17:27:46,613 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:28:26,654 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:28:26,659 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:28:26,682 - logic.JIDLogic - DEBUG - printing search8
+2012-05-29 17:28:26,684 - Abc - DEBUG - 12
+2012-05-29 17:28:26,749 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:29:20,403 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:29:20,407 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:29:20,432 - logic.JIDLogic - DEBUG - printing search4
+2012-05-29 17:29:20,435 - Abc - DEBUG - 12
+2012-05-29 17:29:20,505 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:29:52,033 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:29:52,036 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:29:52,059 - logic.JIDLogic - DEBUG - printing search4
+2012-05-29 17:29:52,062 - Abc - DEBUG - 12
+2012-05-29 17:29:52,155 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:30:16,252 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:30:16,256 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:33:04,775 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:33:04,783 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:33:04,799 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:37:16,672 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:37:16,676 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:37:16,722 - Abc - DEBUG - 14
+2012-05-29 17:37:16,801 - Abc - DEBUG - 14
+2012-05-29 17:37:16,919 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:37:20,776 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:37:20,779 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:37:20,815 - Abc - DEBUG - 16
+2012-05-29 17:37:20,901 - Abc - DEBUG - 16
+2012-05-29 17:37:20,967 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:38:21,364 - Abc - DEBUG - File Not Found!
+2012-05-29 17:38:21,368 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:38:21,412 - Abc - DEBUG - 2
+2012-05-29 17:38:21,449 - Abc - DEBUG - 2
+2012-05-29 17:38:21,464 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:38:24,694 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:38:24,696 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:38:24,724 - Abc - DEBUG - 4
+2012-05-29 17:38:24,749 - Abc - DEBUG - 4
+2012-05-29 17:38:24,762 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:38:27,785 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:38:27,789 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:38:27,836 - Abc - DEBUG - 6
+2012-05-29 17:38:27,882 - Abc - DEBUG - 6
+2012-05-29 17:38:27,922 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:39:14,825 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:39:14,829 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:39:14,851 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:39:47,866 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:39:47,871 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:39:47,929 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:39:47,929 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:39:47,931 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:39:47,931 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:39:47,931 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:39:47,931 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:39:47,934 - Abc - DEBUG - 6
+2012-05-29 17:39:47,986 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:40:56,998 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:40:57,002 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:40:57,025 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:40:57,025 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:40:57,026 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:40:57,026 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:40:57,027 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:40:57,027 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:40:57,027 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:40:57,030 - Abc - DEBUG - 6
+2012-05-29 17:40:57,073 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:41:08,604 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:41:08,608 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:41:08,629 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:42:35,795 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:42:35,799 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:42:35,838 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:42:35,838 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:42:35,840 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:42:35,840 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:42:35,840 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:42:35,840 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:42:35,841 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:42:35,848 - Abc - DEBUG - 6
+2012-05-29 17:42:35,896 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:44:48,318 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:44:48,323 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:44:48,345 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:44:48,346 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:44:48,347 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:44:48,347 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:44:48,347 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:44:48,347 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:44:48,349 - Abc - DEBUG - 6
+2012-05-29 17:44:48,450 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:45:21,554 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:45:21,558 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:45:21,585 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:45:21,585 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:45:21,586 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:45:21,587 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:45:48,121 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:45:48,125 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:45:48,137 - logic.JIDLogic - DEBUG - printing search6
+2012-05-29 17:45:48,140 - Abc - DEBUG - 6
+2012-05-29 17:45:48,180 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:46:54,960 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:46:54,962 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:46:54,978 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:46:54,978 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:46:54,979 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:46:54,979 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:46:54,979 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:46:54,979 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:46:54,981 - Abc - DEBUG - 6
+2012-05-29 17:46:55,017 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:47:12,578 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:47:12,583 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:47:12,606 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:47:12,606 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:47:12,607 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:47:12,608 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:47:12,608 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:47:12,608 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:47:12,608 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:47:12,617 - Abc - DEBUG - 6
+2012-05-29 17:47:12,668 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:48:24,058 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:48:24,063 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:48:24,092 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:48:24,092 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:48:24,095 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:48:24,095 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:48:24,095 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:48:24,096 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:48:24,096 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:48:24,110 - Abc - DEBUG - 6
+2012-05-29 17:48:24,155 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:48:46,466 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:48:46,470 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:48:46,490 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:48:46,491 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:48:46,491 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:48:46,492 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:48:46,492 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:48:46,492 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:48:46,492 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:48:46,495 - Abc - DEBUG - 6
+2012-05-29 17:48:46,544 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:48:55,558 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:48:55,561 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:48:55,576 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:48:55,576 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:48:55,578 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:48:55,578 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:48:55,578 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:48:55,579 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:48:55,580 - Abc - DEBUG - 6
+2012-05-29 17:48:55,617 - logic.JIDLogic - DEBUG - true
+2012-05-29 17:50:15,902 - Abc - DEBUG - array out of bounds!
+2012-05-29 17:50:15,906 - logic.JIDLogic - DEBUG - false
+2012-05-29 17:50:15,932 - operation.Search - DEBUG - Matching task0
+2012-05-29 17:50:15,933 - operation.Search - DEBUG - Matching task1
+2012-05-29 17:50:15,934 - operation.Search - DEBUG - Matching task2
+2012-05-29 17:50:15,935 - operation.Search - DEBUG - Matching task3
+2012-05-29 17:50:15,935 - operation.Search - DEBUG - Matching task4
+2012-05-29 17:50:15,935 - operation.Search - DEBUG - Matching task5
+2012-05-29 17:50:15,936 - logic.JIDLogic - DEBUG - printing search3
+2012-05-29 17:50:15,945 - Abc - DEBUG - 6
+2012-05-29 17:50:15,976 - logic.JIDLogic - DEBUG - true

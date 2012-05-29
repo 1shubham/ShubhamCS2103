@@ -18,7 +18,7 @@ public class Parser {
 	
 	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
 	private final  String LABEL_REGEX = "@(\\w+)";
-	private final String ID_REGEX = "($$__)(\\d{2}-\\d{2}-\\d{14}[A-Z])(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
+	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d{10}[A-Z])(__\\$\\$)";//(\\d+[A-Z])"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
 	
 	boolean important;
 	boolean deadline;
@@ -128,31 +128,31 @@ public class Parser {
 	 * NOT TESTED!
 	 */
 	public String fetchTaskId (String inputS) {
-		String Id = null;
+		String id = null;
 		Pattern p = Pattern.compile(ID_REGEX);
 		Matcher m = p.matcher(inputS);
 		
 		if(m.matches())
-			Id = m.group();
+			id = m.group();
 		
-		return Id;
+		return id;
 	}
 	
 	/*
 	 * NOT TESTED!
 	 */
 	public String[] fetchTaskIds (String inputS) {
-		String[] Ids = null;
+		String[] ids = null;
 		int i=0;
 		Pattern p = Pattern.compile(ID_REGEX);
 		Matcher m = p.matcher(inputS);
 		
 		while (m.find()) {
-			Ids[i] = m.group();
+			ids[i] = m.group();
 			i++;
 		}
 			
-		return Ids;
+		return ids;
 	}
 	
 	public Task parse (String inputS) {
@@ -244,7 +244,14 @@ public class Parser {
 		return t;
 	}
 	
-	
+	public void dummyFunction() {
+		String id = "$$__04-05-2012070000D__$$";
+		
+		if(id.matches(ID_REGEX))
+			System.out.println("it matches!");
+		else
+			System.out.println("nope!");
+	}
 
 }
 

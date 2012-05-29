@@ -17,16 +17,18 @@ public class DateParser {
 	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))[/ - \\s \\,](\\s)?((19|20)\\d\\d)";
 	private static final String MONTH_IN_DIGIT_DATE_WITHOUT_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ -](0?[1-9]|1[012])";
 	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?[1-9]|[12][0-9]|3[01])(?i)(th)?)[/ - \\s \\,](\\s)?((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))";
+	
+	private static final String TODAY_REGEX = "(?i)(today)";
+	private static final String TOMORROW_REGEX = "(?i)(tmr|tomorrow)";
+	private static final String WEEKDAY_REGEX = "(?i)(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)";
+	private static final String TODAY_TMR_WEEKDAY_REGEX = "("+TODAY_REGEX+")|("+TOMORROW_REGEX+")|("+WEEKDAY_REGEX+")";
+	
 	private static final String GENERAL_DATE_PATTERN = "(((?i)(on))[\\s])?(("
 			+ MONTH_IN_DIGIT_DATE_WITH_YEAR + ")|("
 			+ MONTH_IN_TEXT_DATE_WITH_YEAR + ")|("
 			+ MONTH_IN_DIGIT_DATE_WITHOUT_YEAR + ")|("
-			+ MONTH_IN_TEXT_DATE_WITHOUT_YEAR + "))";
-	private final String TODAY_REGEX = "(?i)(today)";
-	private final String TOMORROW_REGEX = "(?i)(tmr|tomorrow)";
-	private final String WEEKDAY_REGEX = "(?i)(mon|monday|tue|tuesday|wed|wednesday|thu|thursday|fri|friday|sat|saturday|sun|sunday)";
-	private final String TODAY_TMR_WEEKDAY_REGEX = "("+TODAY_REGEX+")|("+TOMORROW_REGEX+")|("+WEEKDAY_REGEX+")";
-
+			+ MONTH_IN_TEXT_DATE_WITHOUT_YEAR + ")|(" + TODAY_TMR_WEEKDAY_REGEX + "))";
+	
 	public void resetDummyDate() {
 		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
 	}
@@ -118,7 +120,7 @@ public class DateParser {
 	}
 	
 	public boolean setStartDate(String startD) {
-		if (setMonthInDigitWithYear(startD) || (setMonthInTextWithYear(startD)) || (setMonthInDigitWithoutYear(startD)) || ((setMonthInTextWithoutYear(startD)))) {
+		if (setMonthInDigitWithYear(startD) || (setMonthInTextWithYear(startD)) || (setMonthInDigitWithoutYear(startD)) || (setMonthInTextWithoutYear(startD)) || (inferAndSetDate(startD))) {
 			if (dummyDay>0 && dummyMonth>0 && dummyYear>0){
 				startDay = dummyDay;
 				startMonth = dummyMonth;
@@ -137,7 +139,7 @@ public class DateParser {
 	}
 	
 	public boolean setEndDate(String endD) {
-		if (setMonthInDigitWithYear(endD) || (setMonthInTextWithYear(endD)) || (setMonthInDigitWithoutYear(endD)) || ((setMonthInTextWithoutYear(endD)))) {
+		if (setMonthInDigitWithYear(endD) || (setMonthInTextWithYear(endD)) || (setMonthInDigitWithoutYear(endD)) || (setMonthInTextWithoutYear(endD)) || (inferAndSetDate(endD))) {
 			if (dummyDay>0 && dummyMonth>0 && dummyYear>0){
 				endDay = dummyDay;
 				endMonth = dummyMonth;
@@ -566,22 +568,43 @@ public class DateParser {
 		if (matcher5.matches()) {
 			if (s.matches(TODAY_REGEX)) {
 				dummyDay = calen.get(GregorianCalendar.DATE);
-				dummyMonth = calen.get(GregorianCalendar.MONTH);
+				dummyMonth = calen.get(GregorianCalendar.MONTH) + 1 ;
 				dummyYear = calen.get(GregorianCalendar.YEAR);
-				
+				return true;
 			}
 			else if (s.matches(TOMORROW_REGEX)) {
-				
+				calen.add(GregorianCalendar.DATE, 1);
+				dummyDay = calen.get(GregorianCalendar.DATE);
+				dummyMonth = calen.get(GregorianCalendar.MONTH) + 1;
+				dummyYear = calen.get(GregorianCalendar.YEAR);
+				return true;
 			}
-			else if (s.matches(WEEKDAY_REGEX)) {
-				if (s.matches(MON))
-				if (s.matches(TUE))
-				if (s.matches(WED))
-				if (s.matches(THU))
-				if (s.matches(FRI))
-				if (s.matches(SAT))
-				if (s.matches(SUN))
-					;
+			else if (s.matches(WEEKDAY_REGEX)) { //sunday is considered day 1 of the week
+				int inputWeekDay = -1;
+
+				if (s.matches(SUN)) inputWeekDay = 1;
+				if (s.matches(MON)) inputWeekDay = 2;
+				if (s.matches(TUE)) inputWeekDay = 3;
+				if (s.matches(WED)) inputWeekDay = 4;
+				if (s.matches(THU)) inputWeekDay = 5;
+				if (s.matches(FRI)) inputWeekDay = 6;
+				if (s.matches(SAT)) inputWeekDay = 7;
+				
+				if (inputWeekDay>0) {
+					int addDay = (inputWeekDay - calen.get(GregorianCalendar.DAY_OF_WEEK));
+					
+					if (addDay<0)
+						calen.add(GregorianCalendar.DATE, (7+addDay));
+					else
+						calen.add(GregorianCalendar.DATE, (addDay));
+					
+					dummyDay = calen.get(GregorianCalendar.DATE);
+					dummyMonth = calen.get(GregorianCalendar.MONTH) + 1;
+					dummyYear = calen.get(GregorianCalendar.YEAR);
+					return true;
+				}
+				
+				return false;
 			}
 			else
 				return false;
@@ -597,11 +620,23 @@ public class DateParser {
 		
 	}
 	
-	public boolean dummyFunction(final String s) {
-		matcher1 = pattern1.matcher(s);
-
-		return matcher1.matches();
-
+	public void dummyFunction() {
+		GregorianCalendar calen = new GregorianCalendar();
+		
+		System.out.println("date:"+calen.get(GregorianCalendar.DATE));
+		System.out.println("month:"+calen.get(GregorianCalendar.MONTH));
+		System.out.println("year:"+calen.get(GregorianCalendar.YEAR));
+		System.out.println("day of month:"+calen.get(GregorianCalendar.DAY_OF_MONTH));
+		System.out.println("day of week:"+calen.get(GregorianCalendar.DAY_OF_WEEK));
+		
+		calen.add(GregorianCalendar.DATE, 5);
+		
+		System.out.println("date:"+calen.get(GregorianCalendar.DATE));
+		System.out.println("month:"+calen.get(GregorianCalendar.MONTH));
+		System.out.println("year:"+calen.get(GregorianCalendar.YEAR));
+		System.out.println("day of month:"+calen.get(GregorianCalendar.DAY_OF_MONTH));
+		System.out.println("day of week:"+calen.get(GregorianCalendar.DAY_OF_WEEK));
+		
 	}
 
 }

@@ -21,8 +21,18 @@ public class ParserEngine {
 			System.out.println("An unexpected error occured for your input");
 		}
 		
+		
 		Parser parserObject = new Parser();
 		
 		parserObject.parse(inputString);
+		
+		/*
+		DateParser dpObject = new DateParser();
+		dpObject.dummyFunction();
+		*/
+		/*
+		Parser pObject = new Parser();
+		pObject.dummyFunction();
+		*/
 	}
 }
