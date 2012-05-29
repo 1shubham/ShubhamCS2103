@@ -105,9 +105,18 @@ public class TimeParser {
 			System.out.println("dummytimeString:"+dummyTime);
 			System.out.println("group1:"+matcher.group(1));
 			System.out.println("group2:"+matcher.group(2));
+			
 			/*
-			 * meeting at 5 pm 
+			 * cases to be implemented:
+			 * 1. input cases for search results
+			 * 2. today/tmr
+			 * 3. weekdays
+			 * 4. without date/time
+			 * 5. 2 dates
+			 * 
+			 * Also, if startDateTime > endDateTime, swap them!
 			 */
+			
 			if ( (inputS.contains("at") || inputS.contains("AT") ) && ( (matcher.start() - 2) == inputS.indexOf("at") || (matcher.start() - 2) == inputS.indexOf("AT") ) ) {
 				startTimeString = dummyTime;
 				inputS = inputS.replaceFirst(AT_TIME, "");

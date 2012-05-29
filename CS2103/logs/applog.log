@@ -1,0 +1,31 @@
+2012-05-26 19:31:28,186 - parser.Main - INFO - main method called..
+2012-05-26 19:31:28,190 - parser.Main - INFO - another informative message
+2012-05-26 19:31:28,191 - parser.Main - WARN - This one is a warning!
+2012-05-26 19:31:28,191 - parser.Main - TRACE - And a trace message using log() method.
+2012-05-26 19:31:28,191 - parser.Main - DEBUG - Time taken to log the previous messages: 6 msecs
+2012-05-26 19:31:28,191 - parser.Main - ERROR - Time taken to log the previous messages: 6 msecs
+2012-05-27 06:02:44,789 - Operation.Add - INFO - main method called..
+2012-05-27 06:02:44,794 - Operation.Add - INFO - another informative message
+2012-05-27 06:02:44,794 - Operation.Add - WARN - This one is a warning!
+2012-05-27 06:02:44,794 - Operation.Add - TRACE - And a trace message using log() method.
+2012-05-27 06:02:44,795 - Operation.Add - DEBUG - Time taken to log the previous messages: 7 msecs
+2012-05-27 06:05:07,804 - Operation.Add - INFO - main method called..
+2012-05-27 06:05:07,808 - Operation.Add - INFO - another informative message
+2012-05-27 06:05:07,808 - Operation.Add - WARN - This one is a warning!
+2012-05-27 06:05:07,809 - Operation.Add - TRACE - And a trace message using log() method.
+2012-05-27 06:05:07,809 - Operation.Add - DEBUG - Time taken to log the previous messages: 6 msecs
+2012-05-27 06:10:26,686 - Operation.Add - INFO - main method called..
+2012-05-27 06:10:26,689 - Operation.Add - INFO - another informative message
+2012-05-27 06:10:26,689 - Operation.Add - WARN - This one is a warning!
+2012-05-27 06:10:26,690 - Operation.Add - TRACE - And a trace message using log() method.
+2012-05-27 06:10:26,690 - Operation.Add - DEBUG - Time taken to log the previous messages: 5 msecs
+2012-05-27 18:27:43,046 - Operation.Add - INFO - hi
+2012-05-27 18:29:12,369 - Operation.Add - INFO - hi
+2012-05-27 19:14:36,413 - Operation.Add - INFO - hi
+2012-05-27 19:15:00,284 - Operation.Add - INFO - hi
+2012-05-27 19:15:42,595 - Operation.Add - INFO - hi
+2012-05-27 19:16:16,963 - Operation.Add - INFO - hi
+2012-05-27 19:16:51,801 - Operation.Add - INFO - hi
+2012-05-27 19:17:02,963 - Operation.Add - INFO - hi
+2012-05-27 19:17:11,728 - Operation.Add - INFO - hi
+2012-05-27 19:17:31,524 - Operation.Add - INFO - hi
