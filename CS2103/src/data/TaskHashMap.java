@@ -30,14 +30,15 @@ public class TaskHashMap
 	{
 		String taskId;
 		Random random=new Random();
-		if (taskToBeAdded.getEndDateTime()!=null){
-			taskId=taskToBeAdded.getEndDateTime().generateDateCode()+taskToBeAdded.getEndDateTime().generateTimeCode()+(char)(random.nextInt('Z'-'A'+1)+'A');
-			}
-		else
+		do
 		{
-			taskId=taskToBeAdded.getStartDateTime().generateDateCode()+taskToBeAdded.getStartDateTime().generateTimeCode()+(char)(random.nextInt('Z'-'A'+1)+'A');
-			
+		if (taskToBeAdded.getEndDateTime()!=null){
+			taskId="$$__"+taskToBeAdded.getEndDateTime().generateDateCode()+taskToBeAdded.getEndDateTime().generateTimeCode()+(char)(random.nextInt('Z'-'A'+1)+'A')+"__$$";
+			}
+		else{
+			taskId="$$__"+taskToBeAdded.getStartDateTime().generateDateCode()+taskToBeAdded.getStartDateTime().generateTimeCode()+(char)(random.nextInt('Z'-'A'+1)+'A')+"__$$";
 		}
+		}while((getKeySet().contains(taskId)));
 		return taskId;
 	}
 	/** Member function to delete task
@@ -73,7 +74,6 @@ public class TaskHashMap
 	public void addTaskById(Task taskToBeAdded)
 	{
 		taskList.put(taskToBeAdded.getTaskId(), taskToBeAdded);
-		
 	}
 	public Set<String> getKeySet()
 	{
@@ -82,5 +82,9 @@ public class TaskHashMap
 	public void clearHashMap()
 	{
 		taskList.clear();
+	}
+	public int getHashMapSize()
+	{
+		return getKeySet().size();
 	}
 }

@@ -29,3 +29,23 @@
 2012-05-27 19:17:02,963 - Operation.Add - INFO - hi
 2012-05-27 19:17:11,728 - Operation.Add - INFO - hi
 2012-05-27 19:17:31,524 - Operation.Add - INFO - hi
+2012-05-27 22:32:38,401 - Operation.Add - INFO - hi
+2012-05-27 23:06:57,021 - operation.Add - INFO - hi
+2012-05-29 11:49:19,492 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 11:51:07,672 - logic.JIDLogic - DEBUG - inside execute command
+2012-05-29 11:51:07,676 - logic.JIDLogic - DEBUG - inside first cond
+2012-05-29 11:51:07,676 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:10:21,949 - parser.ParserEngine - WARN - No task Id returned
+2012-05-29 12:13:10,141 - parser.ParserEngine - WARN - No task Id returned
+2012-05-29 12:17:40,567 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:19:46,376 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:34:40,249 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:36:29,933 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:37:21,994 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:43:41,241 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:44:48,034 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:45:51,764 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:48:04,395 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:52:46,974 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:54:04,330 - logic.JIDLogic - DEBUG - inside JIDLogic
+2012-05-29 12:54:32,425 - logic.JIDLogic - DEBUG - inside JIDLogic

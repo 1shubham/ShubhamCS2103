@@ -39,6 +39,17 @@ public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,
 	end = endDateTime;
 	this.recurring=recurring;
 }
+public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring,boolean Deadline)
+{
+	this();
+	name = Name;
+	description = desc;
+	start = startDateTime;
+	end = endDateTime;
+	labels=Labels;
+	this.recurring=recurring;
+	deadline=Deadline;
+}
 public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring)
 {
 	this();
@@ -48,18 +59,6 @@ public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,
 	end = endDateTime;
 	labels=Labels;
 	this.recurring=recurring;
-}
-
-public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime, boolean _deadline,List<String> Labels,String recurring)
-{
-	this();
-	name = Name;
-	description = desc;
-	start = startDateTime;
-	end = endDateTime;
-	labels=Labels;
-	this.recurring=recurring;
-	deadline=_deadline;
 }
 public Task(String Name)
 {

@@ -1,9 +1,19 @@
-package Operation;
+package operation;
 
 import data.Task;
 
 public class Archive extends Operation{
 	
+	private String commandName;
+	public Archive(){
+		commandName="archive";
+	}
+	
+	public Archive(String intendedOperation) {
+		// TODO Auto-generated constructor stub
+		commandName=intendedOperation;
+	}
+
 	public Task[] execute(){
 		return null;
 	}

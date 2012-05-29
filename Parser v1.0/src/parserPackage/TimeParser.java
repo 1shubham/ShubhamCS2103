@@ -294,6 +294,15 @@ public class TimeParser {
 			}
 			
 			/*
+			 * for different cases for searching, first check if m.start() == index of(0) of input String {no task details given as such}
+			 * Q: where do u store the input date/time in? start/end?
+			 * 
+			 * also, for the case of if first entry is just date, declare a date time object before the testing of conditions
+			 */
+			
+			
+			
+			/*
 			 * meeting 5pm at utown
 			 */
 			else {
@@ -332,6 +341,36 @@ public class TimeParser {
 			}
 			
 		}
+		
+		//if no time format detected
+		else if (!matcher.find()) {
+			DateParser dateParser = new DateParser();
+			String startDateString=null, endDateString = null;
+			
+			/*
+			 * right now, this one is just for searching one. 
+			 */
+			startDateString=dateParser.extractDate(inputS);
+			
+			if (startDateString!=null) {
+				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
+				inputS = removeExtraSpaces(inputS);
+				
+
+				System.out.println("start date: "+startDateString);
+				System.out.println("left over: "+inputS);
+				
+				
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				return true;
+			}
+			
+			return false;
+		}
+		
 		return false;
 	}
 	

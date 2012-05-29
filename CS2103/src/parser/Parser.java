@@ -18,7 +18,7 @@ public class Parser {
 	
 	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
 	private final  String LABEL_REGEX = "@(\\w+)";
-	private final String ID_REGEX = "($$__)(\\d+[A-Z])(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
+	private final String ID_REGEX = "($$__)(\\d{2}-\\d{2}-\\d{14}[A-Z])(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
 	
 	boolean important;
 	boolean deadline;
@@ -77,25 +77,36 @@ public class Parser {
 	public void setDateTimeAttributes () {
 		TimeParser t = new TimeParser();
 		DateParser d = new DateParser();
-		boolean startDateTimeExists, endDateTimeExists;
+		boolean startDateExists, endDateExists, startTimeExists, endTimeExists;
 		
 		int[] startTimeArr = t.getStartTime();
 		int[] endTimeArr = t.getEndTime();
 		int[] startDateArr = d.getStartDate();
 		int[] endDateArr = d.getEndDate();
 		
-		startDateTimeExists = ((startTimeArr[0]>=0) && (startTimeArr[1]>=0) && (startDateArr[0]>0) && (startDateArr[1]>0) && (startDateArr[2]>0));
 		
-		if (startDateTimeExists) {
-			startDateTime = new DateTime(startDateArr[2],startDateArr[1],startDateArr[0],startTimeArr[0],startTimeArr[1]);
+		/*
+		 * now it can construct DateTime objects with just dates too!
+		 */
+		
+		startDateExists = ((startDateArr[0]>0) && (startDateArr[1]>0) && (startDateArr[2]>0));
+		endDateExists = ((endDateArr[0]>0) && (endDateArr[1]>0) && (endDateArr[2]>0));
+		startTimeExists = ((startTimeArr[0]>=0) && (startTimeArr[1]>=0));
+		endTimeExists = ((endTimeArr[0]>=0) && (endTimeArr[1]>=0));
+		
+		if (startDateExists) {
+			if (startTimeExists)
+				startDateTime = new DateTime(startDateArr[2],startDateArr[1],startDateArr[0],startTimeArr[0],startTimeArr[1]);
+			else
+				startDateTime = new DateTime(startDateArr[2],startDateArr[1],startDateArr[0]);
 		}
 		
-		endDateTimeExists = ((endTimeArr[0]>=0) && (endTimeArr[1]>=0) && (endDateArr[0]>0) && (endDateArr[1]>0) && (endDateArr[2]>0));
-		
-		if (endDateTimeExists) {
-			endDateTime = new DateTime(endDateArr[2],endDateArr[1],endDateArr[0],endTimeArr[0],endTimeArr[1]);
+		if (endDateExists) {
+			if (endTimeExists)
+				endDateTime = new DateTime(endDateArr[2],endDateArr[1],endDateArr[0],endTimeArr[0],endTimeArr[1]);
+			else
+				endDateTime = new DateTime(endDateArr[2],endDateArr[1],endDateArr[0]);
 		}
-		
 		/*
 		 * tester print functions
 		 */
@@ -226,7 +237,7 @@ public class Parser {
 		
 		List<String> labelList = Arrays.asList(labelArr);
 		
-		taskDetails = inputS;
+		taskDetails = timeParser.getinputCommand();
 		
 		Task t = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring);
 		t.setDeadline(deadline);

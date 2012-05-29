@@ -13,6 +13,7 @@ public class DateTime {
 			"dd-MM-yyyy");
 	private static final SimpleDateFormat DAY_MONTH_YEAR_HOUR_MIN = new SimpleDateFormat(
 			"dd-MM-yyyy HH:mm");
+	private static final SimpleDateFormat DAY_MONTH_YEAR_PRESENTABLE=new SimpleDateFormat("dd MMM ''yy");
 	private boolean hasTime;
 	static 
 	{
@@ -161,6 +162,10 @@ public String formattedToString()
 		return DAY_MONTH_YEAR_HOUR_MIN.format(calendar.getTimeInMillis());
 	else 
 		return DAY_MONTH_YEAR.format(calendar.getTimeInMillis());
+}
+public String presentableToString()
+{
+	return DAY_MONTH_YEAR_PRESENTABLE.format(this.calendar.getTimeInMillis());
 }
 public String generateDateCode()
 {

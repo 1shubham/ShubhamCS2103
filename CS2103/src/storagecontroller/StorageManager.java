@@ -1,4 +1,5 @@
 package storagecontroller;
+import data.DateTime;
 import data.TaskHashMap;
 import data.Task;
 
@@ -42,7 +43,7 @@ public class StorageManager
 			liveStorage.clearHashMap();
 		return handler.readFromFile(liveStorage);
 	}
-	public static boolean saveFile() throws FileNotFoundException
+	public static boolean saveFile()
 	{
 	FileHandler handler=new FileHandler("JotItDownDatabase.xml");
 	if(handler.writeToFile(liveStorage))
@@ -70,6 +71,22 @@ public class StorageManager
 	public static boolean clearArchive()
 	{
 		return false;
+	}
+	public static void main(String args[])
+	{
+		DateTime start = new DateTime(2012,5,30,18,0,0);
+		DateTime end = new DateTime(2012,5,30,18,30,0);
+		DateTime start2=new DateTime(2012,5,30,19,0,0);
+		DateTime end2=new DateTime(2012,5,30,20,0,0);
+		Task one=new Task("Go to school","for buying a nb",start,end,"monthly");
+		Task two=new Task("Wash Clothes","in R3",start2,end2,"weekly");
+		StorageManager.addTask(one);
+		StorageManager.addTask(two);
+		StorageManager.saveFile();
+		
+		
+		
+		
 	}
 }
 

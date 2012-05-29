@@ -300,16 +300,7 @@ public class TimeParser {
 			 * also, for the case of if first entry is just date, declare a date time object before the testing of conditions
 			 */
 			
-			else if (dummyTime != null) {
-				//dummyTime != null and dummyDate = null, check for today/tmr and weekdays and bla bla)
-				final String TODAY_REGEX = "(?i)(today)";
-				final String TOMORROW_REGEX = "(?i)(tmr|tomorrow)";
-				final String WEEKDAY_REGEX = "(?i)(mon|monday|tue|tuesday|wed|wednesday|thu|thursday|fri|friday|sat|saturday|sun|sunday)";
-				
-				/*
-				 * a gregorian calender instance for checking current day
-				 */
-			}
+			
 			
 			/*
 			 * meeting 5pm at utown
@@ -350,6 +341,36 @@ public class TimeParser {
 			}
 			
 		}
+		
+		//if no time format detected
+		else if (!matcher.find()) {
+			DateParser dateParser = new DateParser();
+			String startDateString=null, endDateString = null;
+			
+			/*
+			 * right now, this one is just for searching one. 
+			 */
+			startDateString=dateParser.extractDate(inputS);
+			
+			if (startDateString!=null) {
+				inputS = inputS.replaceFirst(dateParser.getGeneralPattern(), "");
+				inputS = removeExtraSpaces(inputS);
+				
+
+				System.out.println("start date: "+startDateString);
+				System.out.println("left over: "+inputS);
+				
+				
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				return true;
+			}
+			
+			return false;
+		}
+		
 		return false;
 	}
 	
@@ -521,3 +542,4 @@ public class TimeParser {
 		return false;
 	}
 	
+}

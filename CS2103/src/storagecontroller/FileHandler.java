@@ -1,4 +1,5 @@
 package storagecontroller;
+import data.DateTime;
 import data.Task;
 import data.TaskHashMap;
 import java.beans.XMLDecoder;
@@ -34,6 +35,9 @@ public class FileHandler
 			return false;
 		}
 	}
+	
+	
+	
 	public boolean readFromFile(TaskHashMap instance) 
 	{
 		try
@@ -55,10 +59,12 @@ public class FileHandler
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
+			System.out.println("array out of bounds!");
 			return false;
 		}
 		catch(NullPointerException e)
 		{
+			System.out.println("null pointer exception");
 			return false;
 		}
 		return true;

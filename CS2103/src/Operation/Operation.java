@@ -1,4 +1,4 @@
-package Operation;
+package operation;
 
 import data.Task;
 
@@ -8,7 +8,7 @@ public abstract class Operation {
 	
 	
 	
-	boolean isundoable=false;
+	boolean isUndoAble=false;
 	
 	public static Operation getOperationObj(String userCommand)
 	{
@@ -19,26 +19,26 @@ public abstract class Operation {
 		intendedOperation = intendedOperation.toLowerCase();
 		
 		if (intendedOperation.equals("add") || intendedOperation.equals("insert")){
-			object = new Add();
+			object = new Add(intendedOperation);
 			}
 		else if (intendedOperation.equals("delete") || intendedOperation.equals("remove")){
-			object = new Delete();
+			object = new Delete(intendedOperation);
 		}
 		else if (intendedOperation.equals("modify") || intendedOperation.equals("update") || 
 				intendedOperation.equals("edit")) {
-			object =new Modify();
+			object =new Modify(intendedOperation);
 		}
 		else if (intendedOperation.equals("search") || intendedOperation.equals("find")){
-			object = new Search();
+			object = new Search(intendedOperation);
 		}
 		else if (intendedOperation.equals("completed") || intendedOperation.equals("done")){
-			object = new Completed();
+			object = new Completed(intendedOperation);
 		}
 		else if (intendedOperation.equals("archive")){
-			object = new Archive();
+			object = new Archive(intendedOperation);
 		}
 		else if (intendedOperation.equals("overdue")){
-			object= new Overdue();
+			object= new Overdue(intendedOperation);
 		}
 		else
 		{
@@ -54,7 +54,12 @@ public abstract class Operation {
 	public abstract Task[] execute(String userCommand);
 	
 	public abstract Task[] undo();
+	
+	protected Task[] execute(Task taskToBeExecuted)
+	{
+		return null;
 		
+	}		
 	public abstract boolean isUndoAble();
 	
 	public abstract boolean isInputCorrect(String command);

@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class DateParser {
 
-	private Pattern pattern1, pattern2, pattern3, pattern4, pattern;
-	private Matcher matcher1, matcher2, matcher3, matcher4, matcher;
+	private Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern;
+	private Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher;
 	
 	private static int startDay=-1, startMonth=-1, startYear=-1;
 	private static int endDay=-1, endMonth=-1, endYear=-1;
@@ -22,6 +22,10 @@ public class DateParser {
 			+ MONTH_IN_TEXT_DATE_WITH_YEAR + ")|("
 			+ MONTH_IN_DIGIT_DATE_WITHOUT_YEAR + ")|("
 			+ MONTH_IN_TEXT_DATE_WITHOUT_YEAR + "))";
+	private final String TODAY_REGEX = "(?i)(today)";
+	private final String TOMORROW_REGEX = "(?i)(tmr|tomorrow)";
+	private final String WEEKDAY_REGEX = "(?i)(mon|monday|tue|tuesday|wed|wednesday|thu|thursday|fri|friday|sat|saturday|sun|sunday)";
+	private final String TODAY_TMR_WEEKDAY_REGEX = "("+TODAY_REGEX+")|("+TOMORROW_REGEX+")|("+WEEKDAY_REGEX+")";
 
 	public void resetDummyDate() {
 		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
@@ -52,10 +56,16 @@ public class DateParser {
 	}
 	
 	public DateParser() {
+		
+		/*
+		 * assign more meaningful names to these patterns
+		 */
 		pattern1 = Pattern.compile(MONTH_IN_DIGIT_DATE_WITH_YEAR);
 		pattern2 = Pattern.compile(MONTH_IN_TEXT_DATE_WITH_YEAR);
 		pattern3 = Pattern.compile(MONTH_IN_DIGIT_DATE_WITHOUT_YEAR);
 		pattern4 = Pattern.compile(MONTH_IN_TEXT_DATE_WITHOUT_YEAR);
+		pattern5 = Pattern.compile(TODAY_TMR_WEEKDAY_REGEX);
+		
 		pattern = Pattern.compile(GENERAL_DATE_PATTERN);
 	}
 
@@ -72,8 +82,21 @@ public class DateParser {
 		matcher = pattern.matcher(inputS);
 
 		if (matcher.find())
-			s = matcher.group();
-
+			s = matcher.group(4);
+		
+		/*
+		System.out.println("no. of groups in date string: "+matcher.groupCount());
+		System.out.println("group 1 string: "+matcher.group(1));
+		System.out.println("group 2 string: "+matcher.group(2));
+		System.out.println("group 3 string: "+matcher.group(3));
+		System.out.println("group 4 string: "+matcher.group(4));
+		System.out.println("group 5 string: "+matcher.group(5));
+		*/
+		
+		/*
+		 * do not include "on" if its included
+		 */
+		
 		return s;
 	}
 	
@@ -522,7 +545,58 @@ public class DateParser {
 		return false;
 
 	}
-
+	
+	// inferAndSetDate() also, include condition in setStartDate, setEndDate
+	public boolean inferAndSetDate (final String s) {
+		final String MON = "(?i)(mon|monday)";
+		final String TUE = "(?i)(tue|tuesday)";
+		final String WED = "(?i)(wed|wednesday)";
+		final String THU = "(?i)(thu|thursday)";
+		final String FRI = "(?i)(fri|friday)";
+		final String SAT = "(?i)(sat|saturday)";
+		final String SUN = "(?i)(sun|sunday)";
+		/*
+		 * set numbers to weeks for easy comparison!
+		 */
+		
+		matcher5 = pattern5.matcher(s);
+		
+		GregorianCalendar calen = new GregorianCalendar();
+		
+		if (matcher5.matches()) {
+			if (s.matches(TODAY_REGEX)) {
+				dummyDay = calen.get(GregorianCalendar.DATE);
+				dummyMonth = calen.get(GregorianCalendar.MONTH);
+				dummyYear = calen.get(GregorianCalendar.YEAR);
+				
+			}
+			else if (s.matches(TOMORROW_REGEX)) {
+				
+			}
+			else if (s.matches(WEEKDAY_REGEX)) {
+				if (s.matches(MON))
+				if (s.matches(TUE))
+				if (s.matches(WED))
+				if (s.matches(THU))
+				if (s.matches(FRI))
+				if (s.matches(SAT))
+				if (s.matches(SUN))
+					;
+			}
+			else
+				return false;
+		}
+		
+		return false;
+			
+		/*
+		int currMonth 
+		int currDay
+		int year;
+		*/
+		
+	}
+	
 	public boolean dummyFunction(final String s) {
 		matcher1 = pattern1.matcher(s);
 
