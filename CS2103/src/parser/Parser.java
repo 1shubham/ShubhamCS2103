@@ -239,8 +239,7 @@ public class Parser {
 		
 		taskDetails = timeParser.getinputCommand();
 		
-		Task t = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring);
-		t.setDeadline(deadline);
+		Task t = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
 		
 		return t;
 	}

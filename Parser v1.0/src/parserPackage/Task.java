@@ -39,6 +39,18 @@ public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,
 	end = endDateTime;
 	this.recurring=recurring;
 }
+public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring,boolean Deadline,boolean Important)
+{
+	this();
+	name = Name;
+	description = desc;
+	start = startDateTime;
+	end = endDateTime;
+	labels=Labels;
+	this.recurring=recurring;
+	deadline=Deadline;
+	important=Important;
+}
 public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring)
 {
 	this();
@@ -161,6 +173,14 @@ public boolean isEqual(Object to) {
 	thisObjString = this.toString();
 	compareToObjString = compareTo.toString();
 	return thisObjString.equals(compareToObjString);
+}
+public boolean isIdenticalTo(Task second)
+{
+	if(this.description==second.description && this.name==second.name && 
+			this.end==second.end && this.start==second.start && this.recurring==second.recurring && this.taskId==second.taskId)
+		return true;
+	else
+		return false;
 }
 /** mark the Task as important or unimportant*/
 public void toggleImportant()
