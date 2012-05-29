@@ -1,4 +1,4 @@
-package parserPackage;
+package parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Parser {
 	
 	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
 	private final  String LABEL_REGEX = "@(\\w+)";
-	private final String ID_REGEX = "($$__)(\\d+)(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
+	private final String ID_REGEX = "($$__)(\\d+[A-Z])(__$$)"; //do u wanna check if its a valid YYYYMMDD thing between the crazy signs?
 	
 	boolean important;
 	boolean deadline;
@@ -237,3 +237,4 @@ public class Parser {
 	
 
 }
+
