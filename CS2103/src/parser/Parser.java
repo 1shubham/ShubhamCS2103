@@ -80,9 +80,9 @@ public class Parser {
 		return labelArr;
 	}
 	
-	public void setDateTimeAttributes () {
-		TimeParser t = new TimeParser();
-		DateParser d = new DateParser();
+	public void setDateTimeAttributes (TimeParser t, DateParser d) {
+		//TimeParser t = new TimeParser();
+		//DateParser d = new DateParser();
 		boolean startDateExists, endDateExists, startTimeExists, endTimeExists;
 		
 		int[] startTimeArr = t.getStartTime();
@@ -161,6 +161,16 @@ public class Parser {
 	}
 	
 	public Task parse (String userCommand) {
+		important=false;
+		deadline=false;
+		startDateTime=null; endDateTime=null;
+		recurring = null;
+		labelList = null;
+		taskDetails="";
+		
+		//taskID=null;
+
+		
 		command = userCommand;
 		command = command.trim();
 		
@@ -176,7 +186,7 @@ public class Parser {
 		/*
 		 * recurring ?
 		 */	
-		String recurring = getRecurString (command);
+		recurring = getRecurString (command);
 		
 		if (recurring != null)
 			System.out.println("this task is "+recurring);
@@ -205,7 +215,10 @@ public class Parser {
 			System.out.println("left over string after fetching labels: "+command);
 		}
 		
-		if (extractDateTime())
+		TimeParser timeParser = new TimeParser();
+		DateParser dateParser = new DateParser();
+		
+		if (extractDateTime(timeParser, dateParser))
 			System.out.println("time/date extracted!");
 		else
 			System.out.println("time/date NOT extracted!");
@@ -213,7 +226,8 @@ public class Parser {
 		
 		System.out.println();
 		System.out.println();
-		setDateTimeAttributes();
+		
+		setDateTimeAttributes(timeParser, dateParser);
 		
 		
 		if(important)
@@ -246,7 +260,7 @@ public class Parser {
 		return t;
 	}
 	
-	public boolean extractDateTime () {
+	public boolean extractDateTime (TimeParser timeParser, DateParser dateParser) {
 		final String AT_TIME_DATE = "((at)|(AT))("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		final String BY_TIME_DATE = "((by)|(BY))("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		final String FROM_TIME_TO_TIME_DATE = "((from)|(FROM))("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
@@ -257,7 +271,7 @@ public class Parser {
 		final String BY_TIME = "((by)|(BY))("+TimeParser.getGeneralPattern()+")";
 		final String FROM_TIME_TO_TIME = "((from)|(FROM))("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))("+TimeParser.getGeneralPattern()+")";
 		final String TIME_TO_TIME = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))("+TimeParser.getGeneralPattern()+")";
-		//final String TIME_DATE = "";
+		final String TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		
 		Pattern pAtTimeDate = Pattern.compile(AT_TIME_DATE);
 		Pattern pByTimeDate = Pattern.compile(BY_TIME_DATE);
@@ -269,6 +283,7 @@ public class Parser {
 		Pattern pByTime = Pattern.compile(BY_TIME);
 		Pattern pFromTimeToTime = Pattern.compile(FROM_TIME_TO_TIME);
 		Pattern pTimeToTime = Pattern.compile(TIME_TO_TIME);
+		Pattern pTimeDate = Pattern.compile(TIME_DATE);
 		Pattern pTime = Pattern.compile("("+TimeParser.getGeneralPattern()+")");//"((1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))");//TimeParser.getGeneralPattern());
 		Pattern pDate = Pattern.compile("[ ]"+DateParser.getGeneralPattern());
 		
@@ -282,11 +297,10 @@ public class Parser {
 		Matcher mByTime = pByTime.matcher(command);
 		Matcher mFromTimeToTime = pFromTimeToTime.matcher(command);
 		Matcher mTimeToTime = pTimeToTime.matcher(command);
+		Matcher mTimeDate = pTimeDate.matcher(command);
 		Matcher mTime = pTime.matcher(command);
 		Matcher mDate = pDate.matcher(command);
 		
-		TimeParser timeParser = new TimeParser();
-		DateParser dateParser = new DateParser();
 		
 		String startTimeString=null, startDateString=null, endTimeString=null, endDateString=null;
 		
@@ -383,8 +397,6 @@ public class Parser {
 			System.out.println("end time string: "+endTimeString);
 			
 			
-			
-			
 			if (timeParser.setStartTime(startTimeString)) 
 				System.out.println("Start time is set!");
 			else
@@ -397,13 +409,17 @@ public class Parser {
 			
 			
 			startDateString = mFromTimeToTimeDate.group(29);
-			
 			startDateString = startDateString.trim();
+			endDateString = startDateString;
 			
 			if (dateParser.setStartDate(startDateString)) 
 				System.out.println("Start date is set!");
 			else
 				System.out.println("Start date could NOT be set!");
+			if (dateParser.setEndDate(endDateString)) 
+				System.out.println("end date is set!");
+			else
+				System.out.println("end date could NOT be set!");
 			
 			command = command.replaceFirst(FROM_TIME_TO_TIME_DATE, "");
 			command = removeExtraSpaces(command);
@@ -706,7 +722,7 @@ public class Parser {
 			
 			return true;
 		}
-		
+		/*
 		else {
 			System.out.println("-----none of the registered matches-------");
 			
@@ -725,6 +741,8 @@ public class Parser {
 				return true;
 			}
 		}
+		*/
+		return false;
 		
 	}
 	

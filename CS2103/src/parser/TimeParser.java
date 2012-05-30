@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 public class TimeParser {
 	
-	static int startHour = -1, endHour = -1, startMin = -1, endMin = -1;
-	static int dummyHour = -1, dummyMin = -1;
+	int startHour = -1, endHour = -1, startMin = -1, endMin = -1;
+	int dummyHour = -1, dummyMin = -1;
 	private String inputS;
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
@@ -31,6 +31,9 @@ public class TimeParser {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
 		pattern = Pattern.compile(GENERAL_TIME_PATTERN);
+		startHour = -1; endHour = -1; startMin = -1; endMin = -1;
+		dummyHour = -1; dummyMin = -1;
+		
 	}
 	
 	public static String getGeneralPattern() {

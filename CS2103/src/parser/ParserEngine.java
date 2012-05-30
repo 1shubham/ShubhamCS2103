@@ -23,8 +23,19 @@ public class ParserEngine {
 			System.out.println("An unexpected error occured for your input");
 		}
 	
-		
+
 		Parser parserObject = new Parser();
+		parserObject.parse(inputString);
+		
+		
+		System.out.print("Input string2:");
+		try {
+			inputString = reader.readLine();
+		}
+		catch(IOException ioe) {
+			System.out.println("An unexpected error occured for your input");
+		}
+	
 		parserObject.parse(inputString);
 		
 		/*
