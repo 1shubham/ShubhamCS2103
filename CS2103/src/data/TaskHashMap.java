@@ -38,8 +38,6 @@ public class TaskHashMap
 		else{
 			taskId="$$__"+taskToBeAdded.getStartDateTime().generateDateCode()+taskToBeAdded.getStartDateTime().generateTimeCode()+(char)(random.nextInt('Z'-'A'+1)+'A')+"__$$";
 		}
-		
-		System.out.println(getKeySet().size());
 		}while((getKeySet().contains(taskId)));
 		return taskId;
 	}

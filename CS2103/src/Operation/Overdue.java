@@ -15,10 +15,7 @@ public class Overdue extends Operation {
 		commandName=intendedOperation;
 	}
 
-	public Task[] execute(){
-		return null;
-	}
-
+	
 	@Override
 	public Task[] undo() {
 		// TODO Auto-generated method stub

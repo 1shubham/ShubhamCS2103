@@ -14,23 +14,29 @@ public class TimeParser {
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
 	
-	private final String TIME_12_PATTERN = "[ ](1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
-	private final String TIME_24_PATTERN = "[ ](2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
-	private final String TIME_12_OR_24_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";//"((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
+	private static final String TIME_12_PATTERN = "[ ](1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
+	private static final String TIME_24_PATTERN = "[ ](2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
+	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";//"((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
 			//"("++")|("++")"
-			
+	
 	public TimeParser(String userCommand) {
 		inputS=userCommand;
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
-		pattern = Pattern.compile(TIME_12_OR_24_PATTERN);
+		pattern = Pattern.compile(GENERAL_TIME_PATTERN);
 	}
+	
 	public TimeParser( ) {
 		inputS=null;
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
-		pattern = Pattern.compile(TIME_12_OR_24_PATTERN);
+		pattern = Pattern.compile(GENERAL_TIME_PATTERN);
 	}
+	
+	public static String getGeneralPattern() {
+		return GENERAL_TIME_PATTERN;
+	}
+	
 	public int[] getStartTime() {
 		int[] startTimeArr = {-1,-1};
 		
@@ -81,13 +87,25 @@ public class TimeParser {
 		return inputS;
 	}
 	
+	public String extractTime(String inputS) {
+		String s = null;
+		matcher = pattern.matcher(inputS);
+		
+		if(matcher.find())
+			s = matcher.group(0);
+		
+		return s;
+	}
+	/*
 	public boolean extractStartEnd () {
 	
-		final String AT_TIME = "((at)|(AT))("+TIME_12_OR_24_PATTERN+")";
-		final String BY_TIME = "((by)|(BY))("+TIME_12_OR_24_PATTERN+")";
-		final String TO_TIME = "((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
-		final String FROM_TIME_TO_TIME = "((from)|(FROM))("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
-		final String TIME_TO_TIME = "("+TIME_12_OR_24_PATTERN+")[ ]((to)|(TO))("+TIME_12_OR_24_PATTERN+")";
+		final String AT_TIME = "((at)|(AT))("+GENERAL_TIME_PATTERN+")";
+		final String BY_TIME = "((by)|(BY))("+GENERAL_TIME_PATTERN+")";
+		final String TO_TIME = "((to)|(TO))("+GENERAL_TIME_PATTERN+")";
+		final String FROM_TIME_TO_TIME = "((from)|(FROM))("+GENERAL_TIME_PATTERN+")[ ]((to)|(TO))("+GENERAL_TIME_PATTERN+")";
+		final String FROM_TIME_DATE_TO_TIME_DATE = "((from)|(FROM))("+GENERAL_TIME_PATTERN+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))("+GENERAL_TIME_PATTERN+")[ ]("+DateParser.getGeneralPattern()+")"; //
+		final String TIME_TO_TIME = "("+GENERAL_TIME_PATTERN+")[ ]((to)|(TO))("+GENERAL_TIME_PATTERN+")";
+		final String TIME_DATE_TO_TIME_DATE = "";
 		
 		matcher = pattern.matcher(inputS);
 		
@@ -100,24 +118,20 @@ public class TimeParser {
 			inputS = removeExtraSpaces(inputS);
 			
 			String startTimeString=null, endTimeString=null;
+			
+			
 			String dummyTime = matcher.group();
 			
 			System.out.println("dummytimeString:"+dummyTime);
-			System.out.println("group1:"+matcher.group(1));
-			System.out.println("group2:"+matcher.group(2));
 			
-			/*
-			 * cases to be implemented:
-			 * 1. input cases for search results
-			 * 2. today/tmr
-			 * 3. weekdays
-			 * 4. without date/time
-			 * 5. 2 dates
-			 * 
-			 * Also, if startDateTime > endDateTime, swap them!
-			 */
+			 if startDateTime > endDateTime, swap them!
+			 
+			Pattern pFromTimeDateToTimeDate = Pattern.compile(FROM_TIME_DATE_TO_TIME_DATE);
+			Matcher mFromTimeDateToTimeDate = pFromTimeDateToTimeDate.matcher(inputS);
 			
-			if ( (inputS.contains("at") || inputS.contains("AT") ) && ( (matcher.start() - 2) == inputS.indexOf("at") || (matcher.start() - 2) == inputS.indexOf("AT") ) ) {
+			if (inputS.matches(AT_TIME) && ( (matcher.start() - 2) == inputS.indexOf("at") || (matcher.start() - 2) == inputS.indexOf("AT") ) ) {
+				System.out.println("if statement 1");
+			//( (inputS.contains("at") || inputS.contains("AT") ) && ( (matcher.start() - 2) == inputS.indexOf("at") || (matcher.start() - 2) == inputS.indexOf("AT") ) ) {
 				startTimeString = dummyTime;
 				inputS = inputS.replaceFirst(AT_TIME, "");
 				inputS = removeExtraSpaces(inputS);
@@ -148,10 +162,12 @@ public class TimeParser {
 				return true;
 			}
 			
-			/*
-			 * project deadline by 6pm sdfsd
-			 */
-			else if ( (inputS.contains("by") || inputS.contains("BY") ) && ( (matcher.start() - 2) == inputS.indexOf("by") || (matcher.start() - 2) == inputS.indexOf("BY") ) ) {
+			
+			 //project deadline by 6pm sdfsd
+			
+			else if (inputS.matches(BY_TIME) && ( (matcher.start() - 2) == inputS.indexOf("by") || (matcher.start() - 2) == inputS.indexOf("BY") )) {
+			//( (inputS.contains("by") || inputS.contains("BY") ) && ( (matcher.start() - 2) == inputS.indexOf("by") || (matcher.start() - 2) == inputS.indexOf("BY") ) ) {
+				System.out.println("if statement 2");
 				endTimeString = dummyTime;
 				inputS = inputS.replaceFirst(BY_TIME, "");
 				inputS = removeExtraSpaces(inputS);
@@ -182,12 +198,14 @@ public class TimeParser {
 				return true;
 			}
 			
-			/*
-			 * meeting from 5pm to 6pm at utown
-			 * not combined with the next one because, you need to make sure you remove the correct "from"!
-			 */
-			else if ( (inputS.contains("from") || inputS.contains("FROM") ) && ( (matcher.start() - 4) == inputS.indexOf("from") || (matcher.start() - 4) == inputS.indexOf("FROM") ) ) {
+			 //meeting from 5pm to 6pm at utown
+			// not combined with the next one because, you need to make sure you remove the correct "from"!
+			 
+			else if (inputS.matches(FROM_TIME_TO_TIME) && ( (matcher.start() - 4) == inputS.indexOf("from") || (matcher.start() - 4) == inputS.indexOf("FROM") ) ) {
+			//( (inputS.contains("from") || inputS.contains("FROM") ) && ( (matcher.start() - 4) == inputS.indexOf("from") || (matcher.start() - 4) == inputS.indexOf("FROM") ) ) {
+				System.out.println("if statement 3");
 				startTimeString = dummyTime;
+				
 				
 				matcher.find();
 				endTimeString = matcher.group();
@@ -238,10 +256,12 @@ public class TimeParser {
 				return true;
 			}
 			
-			/*
-			 * meeting 5pm to 6pm at utown
-			 */
-			else if ((inputS.contains("to") || inputS.contains("TO") ) && ((matcher.end()+1) == inputS.indexOf("to") || (matcher.end()+1) == inputS.indexOf("TO"))) {
+			
+			 meeting 5pm to 6pm at utown
+			 
+			else if (inputS.matches(TIME_TO_TIME) && ((matcher.end()+1) == inputS.indexOf("to") || (matcher.end()+1) == inputS.indexOf("TO"))) {
+			//((inputS.contains("to") || inputS.contains("TO") ) && ((matcher.end()+1) == inputS.indexOf("to") || (matcher.end()+1) == inputS.indexOf("TO"))) {
+				System.out.println("if statement 4");
 				startTimeString = dummyTime;
 				matcher.find();
 				endTimeString = matcher.group();
@@ -293,21 +313,105 @@ public class TimeParser {
 				return true;
 			}
 			
-			/*
-			 * for different cases for searching, first check if m.start() == index of(0) of input String {no task details given as such}
-			 * Q: where do u store the input date/time in? start/end?
-			 * 
-			 * also, for the case of if first entry is just date, declare a date time object before the testing of conditions
-			 */
-			
-			
-			
-			/*
-			 * meeting 5pm at utown
-			 */
-			else {
+			else if (mFromTimeDateToTimeDate.find()) { //&& ( (matcher.start() - 4) == inputS.indexOf("from") || (matcher.start() - 4) == inputS.indexOf("FROM") ) ) {
+				
+				System.out.println("if statement 5");
 				startTimeString = dummyTime;
-				inputS = inputS.replaceFirst(TIME_12_OR_24_PATTERN, "");
+				matcher.find();
+				endTimeString = matcher.group();
+
+				System.out.println("start time: "+startTimeString);
+				System.out.println("end time: "+endTimeString);
+				System.out.println("left over: "+inputS);
+				
+
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
+				if (setEndTime(endTimeString)) 
+					System.out.println("End time is set!");
+				else
+					System.out.println("End time could NOT be set!");
+				
+				
+				startDateString=dateParser.extractDate(inputS);
+				
+				
+				endDateString=dateParser.extractDate(inputS);
+						
+				
+				inputS = inputS.replaceFirst(FROM_TIME_DATE_TO_TIME_DATE, "");
+				inputS = removeExtraSpaces(inputS);
+				
+				System.out.println("start date: "+startDateString);
+				System.out.println("end date: "+endDateString);
+				System.out.println("left over: "+inputS);
+
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				
+				if (dateParser.setEndDate(endDateString))
+					System.out.println("end date is set!");
+				else
+					System.out.println("end date could NOT be set!");
+				
+				
+				return true;		
+			}
+			
+			else if (inputS.matches(TIME_DATE_TO_TIME_DATE) && ((matcher.end()+1) == inputS.indexOf("to") || (matcher.end()+1) == inputS.indexOf("TO"))) {
+				System.out.println("if statement 6");
+				startTimeString = dummyTime;
+				matcher.find();
+				endTimeString = matcher.group();
+
+				System.out.println("start time: "+startTimeString);
+				System.out.println("end time: "+endTimeString);
+				System.out.println("left over: "+inputS);
+				
+
+				if (setStartTime(startTimeString)) 
+					System.out.println("Start time is set!");
+				else
+					System.out.println("Start time could NOT be set!");
+				
+				if (setEndTime(endTimeString)) 
+					System.out.println("End time is set!");
+				else
+					System.out.println("End time could NOT be set!");
+				
+				
+				startDateString=dateParser.extractDate(inputS);
+				endDateString=dateParser.extractDate(inputS);
+				
+				inputS = inputS.replaceFirst(TIME_DATE_TO_TIME_DATE, "");
+				inputS = removeExtraSpaces(inputS);
+				
+				System.out.println("start date: "+startDateString);
+				System.out.println("end date: "+endDateString);
+				System.out.println("left over: "+inputS);
+
+				if (dateParser.setStartDate(startDateString)) 
+					System.out.println("Start date is set!");
+				else
+					System.out.println("Start date could NOT be set!");
+				
+				if (dateParser.setEndDate(endDateString))
+					System.out.println("end date is set!");
+				else
+					System.out.println("end date could NOT be set!");
+				
+				
+			}
+			
+			else {
+				System.out.println("if statement 7");
+				startTimeString = dummyTime;
+				inputS = inputS.replaceFirst(GENERAL_TIME_PATTERN, "");
 				inputS = removeExtraSpaces(inputS);
 				
 				System.out.println("start time: "+startTimeString);
@@ -347,9 +451,9 @@ public class TimeParser {
 			DateParser dateParser = new DateParser();
 			String startDateString=null, endDateString = null;
 			
-			/*
-			 * right now, this one is just for searching one. 
-			 */
+			
+			 right now, this one is just for searching one. 
+			 
 			startDateString=dateParser.extractDate(inputS);
 			
 			if (startDateString!=null) {
@@ -373,7 +477,7 @@ public class TimeParser {
 		
 		return false;
 	}
-	
+	*/
 	public boolean setStartTime (String startT) {
 		if (startT != null) {
 			if (set12Hour(startT) || (set24Hour(startT))) {
@@ -416,10 +520,9 @@ public class TimeParser {
 		return false;
 	}
 	
-	
 	public boolean isValid(String time) {
 		//return isValid12Hour(time) || isValid24Hour(time);
-		return time.matches(TIME_12_OR_24_PATTERN);
+		return time.matches(GENERAL_TIME_PATTERN);
 	}
 	
 	private boolean set12Hour (String time) {

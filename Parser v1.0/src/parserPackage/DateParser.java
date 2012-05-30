@@ -29,7 +29,7 @@ public class DateParser {
 			+ MONTH_IN_DIGIT_DATE_WITHOUT_YEAR + ")|("
 			+ MONTH_IN_TEXT_DATE_WITHOUT_YEAR + ")|(" + TODAY_TMR_WEEKDAY_REGEX + "))";
 	
-	public void resetDummyDate() {
+	private void resetDummyDate() {
 		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
 	}
 	
@@ -71,11 +71,11 @@ public class DateParser {
 		pattern = Pattern.compile(GENERAL_DATE_PATTERN);
 	}
 
-	public String removeExtraSpaces(String s) {
+	private String removeExtraSpaces(String s) {
 		return s.replaceAll("\\s+", " ");
 	}
 
-	public String getGeneralPattern() {
+	public static String getGeneralPattern() {
 		return GENERAL_DATE_PATTERN;
 	}
 

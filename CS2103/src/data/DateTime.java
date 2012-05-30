@@ -13,8 +13,10 @@ public class DateTime {
 			"dd-MM-yyyy");
 	private static final SimpleDateFormat DAY_MONTH_YEAR_HOUR_MIN = new SimpleDateFormat(
 			"dd-MM-yyyy HH:mm");
-	private static final SimpleDateFormat DAY_MONTH_YEAR_PRESENTABLE=new SimpleDateFormat("dd MMM ''yy");
+	private static final SimpleDateFormat DAY_MONTH_YEAR_PRESENTABLE  =new SimpleDateFormat("dd MMM ''yy");
+	private static final SimpleDateFormat HOUR_MIN=new SimpleDateFormat("HH:mm");
 	private boolean hasTime;
+	private boolean hasDate;
 	static 
 	{
 		ISO_DATE_TIME.setLenient(false);
@@ -26,10 +28,11 @@ public class DateTime {
  */
 public DateTime()
 {
-	calendar=new GregorianCalendar(2000,0,1,0,0);
+	calendar=new GregorianCalendar(1970,0,1,0,0);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=false;
+	hasDate=true;
 }
 public DateTime(long timeInMillis)
 {
@@ -37,6 +40,7 @@ public DateTime(long timeInMillis)
 	calendar.setTimeInMillis(timeInMillis);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
+	hasDate=true;
 }
 public DateTime(int year,int month,int day)
 {
@@ -44,6 +48,14 @@ public DateTime(int year,int month,int day)
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=false;
+	hasDate=true;
+}
+public DateTime(int hour,int minutes)
+{
+	calendar=new GregorianCalendar(1970,0,1,hour,minutes);
+	calendar.setLenient(false);
+	timeMilli=calendar.getTimeInMillis();
+	hasTime=true;
 }
 public DateTime(int year,int month,int day,int hours,int minutes)
 {
@@ -51,6 +63,7 @@ public DateTime(int year,int month,int day,int hours,int minutes)
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=true;
+	hasDate=true;
 }
 public DateTime(int year,int month,int day,int hours,int minutes,int seconds)
 {
@@ -58,6 +71,7 @@ public DateTime(int year,int month,int day,int hours,int minutes,int seconds)
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime=true;
+	hasDate=true;
 }
 public static DateTime getCurrentDateTime()
 {
@@ -158,8 +172,10 @@ public String formattedToString()
 {
 	if(isDefaultTime())
 		return "";
-	else if(getHasTime())
+	else if(getHasTime() && getHasDate())
 		return DAY_MONTH_YEAR_HOUR_MIN.format(calendar.getTimeInMillis());
+	else if(!(getHasDate()) && getHasTime())
+		return HOUR_MIN.format(calendar.getTimeInMillis());
 	else 
 		return DAY_MONTH_YEAR.format(calendar.getTimeInMillis());
 }
@@ -208,11 +224,12 @@ public void set(int Component,int value)
 	}
 	timeMilli = calendar.getTimeInMillis();
 }
-
-public static void main(String args[])
+public void setHasDate(boolean value)
 {
-	DateTime abc=new DateTime();
-	System.out.println();
-
+	hasDate=value;
+}
+public boolean getHasDate()
+{
+	return hasDate;
 }
 }

@@ -39,7 +39,7 @@ public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,
 	end = endDateTime;
 	this.recurring=recurring;
 }
-public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring,boolean Deadline)
+public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring,boolean Deadline,boolean Important)
 {
 	this();
 	name = Name;
@@ -49,6 +49,7 @@ public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,
 	labels=Labels;
 	this.recurring=recurring;
 	deadline=Deadline;
+	important=Important;
 }
 public Task(String Name,String desc,DateTime startDateTime,DateTime endDateTime,List<String> Labels,String recurring)
 {

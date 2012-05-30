@@ -1,11 +1,13 @@
 package operation;
 
+import org.apache.log4j.Logger;
+
 import storagecontroller.StorageManager;
 import data.Task;
 
 public class Completed extends BaseSearch{
 	
-	private String commandName;
+	private static Logger logger=Logger.getLogger(BaseSearch.class);
 	private Task taskCompleted;
 	public Completed(){
 		commandName="completed";
@@ -25,6 +27,7 @@ public class Completed extends BaseSearch{
 			taskCompleted = taskToComplete;
 			Task[] resultOfComplete = new Task[1];
 			resultOfComplete[0] = taskToComplete;
+			logger.debug("completed succesfully");
 			return resultOfComplete;
 		}
 

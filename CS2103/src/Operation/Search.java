@@ -1,6 +1,7 @@
 package operation;
 
 import org.apache.log4j.Logger;
+import data.DateTime;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,6 +70,10 @@ public class Search extends Operation {
 			return returnAllTasks(params);
 		}
 		Task parsedTask=parseCommand(params);
+		if (parsedTask.getStartDateTime()!=null)
+		{
+			logger.debug(parsedTask.getStartDateTime().getDate().getTimeMilli());
+		}
 		return search(parsedTask);
 		
 		
@@ -122,21 +127,34 @@ public class Search extends Operation {
 
 	private boolean matches(Task taskToSearch, Task existingTask) {
 		// TODO Auto-generated method stub
+	
+		DateTime defaultTime=new DateTime();
+		//logger.debug(defaultTime.getTime().getTimeMilli());
+		//logger.debug(taskToSearch.getStartDateTime().getTime().getTimeMilli());
+	
 		if (("".equals(taskToSearch.getName()) || existingTask.getName().toLowerCase()
 				.contains((taskToSearch.getName())))
 						
 				&& (taskToSearch.getStartDateTime() == null
-						|| existingTask.getStartDateTime().getDate()
-						.equals(taskToSearch.getStartDateTime().getDate()))
+						|| taskToSearch.getStartDateTime().getDate().getTimeMilli()
+						== defaultTime.getDate().getTimeMilli() || (existingTask.getStartDateTime()!=null 
+						&& existingTask.getStartDateTime().getDate().getTimeMilli()
+						== taskToSearch.getStartDateTime().getDate().getTimeMilli()))
 				&& (taskToSearch.getStartDateTime() == null
-						|| existingTask.getStartDateTime().getTime()
-						.equals(taskToSearch.getStartDateTime().getTime()))
-				&& (taskToSearch.getEndDateTime() == null
-						|| existingTask.getEndDateTime().getTime()
-						.equals(taskToSearch.getEndDateTime().getTime()))
+						|| taskToSearch.getStartDateTime().getTime().getTimeMilli()
+						== defaultTime.getTime().getTimeMilli() || (existingTask.getStartDateTime()!=null 
+						&&  existingTask.getStartDateTime().getTime().getTimeMilli()
+						== taskToSearch.getStartDateTime().getTime().getTimeMilli()))
+				&& (taskToSearch.getEndDateTime() == null 
+						|| taskToSearch.getEndDateTime().getDate().getTimeMilli()
+						== defaultTime.getDate().getTimeMilli() || (existingTask.getEndDateTime()!=null 
+						&& existingTask.getEndDateTime().getDate().getTimeMilli()
+						== taskToSearch.getEndDateTime().getDate().getTimeMilli()))
 			    && (taskToSearch.getEndDateTime() == null
-						|| existingTask.getEndDateTime().getTime()
-						.equals(taskToSearch.getStartDateTime().getTime()))
+						|| taskToSearch.getEndDateTime().getTime().getTimeMilli()
+						== defaultTime.getTime().getTimeMilli() || (existingTask.getEndDateTime()!=null 
+						&& existingTask.getEndDateTime().getTime().getTimeMilli()
+						== taskToSearch.getStartDateTime().getTime().getTimeMilli()))
 				&& (taskToSearch.getDescription() == null || existingTask.getDescription()
 						.toLowerCase().contains(taskToSearch.getDescription()))
 				&& (taskToSearch.getImportant() == false || taskToSearch.getImportant() == 
@@ -173,7 +191,7 @@ public class Search extends Operation {
 			
 			}
 				
-				
+		
 		return false;
 	}
 	
