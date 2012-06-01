@@ -13,8 +13,8 @@ public class TimeParser {
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
 	
-	private static final String TIME_12_PATTERN = "[ ](1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
-	private static final String TIME_24_PATTERN = "[ ](2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
+	private static final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
+	private static final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
 	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";//"((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
 			//"("++")|("++")"
 	
@@ -86,6 +86,7 @@ public class TimeParser {
 		
 		return s;
 	}
+	
 	public boolean setStartTime (String startT) {
 		if (startT != null) {
 			if (set12Hour(startT) || (set24Hour(startT))) {
@@ -95,15 +96,15 @@ public class TimeParser {
 					resetDummyTime();
 					return true;
 				}
-				
 				else {
-					//System.out.println("1st return of setStartDate: false");
+					System.out.println("1st return of setStartDate: false");
 					return false;
 				}
 			}
-			//System.out.println("2nd return of setStartDate: false");
+			System.out.println("2nd return of setStartDate: false");
 			return false;
 		}
+		System.out.println("3rd return of setStartDate: false");
 		return false;
 	}
 	
@@ -225,10 +226,10 @@ public class TimeParser {
 				}
 			}
 			
-			//System.out.println("first false of set12hour");
+			System.out.println("first false of set12hour");
 			return false;
 		}
-		//System.out.println("second false of set12hour");
+		System.out.println("second false of set12hour");
 		return false;
 	}
 	
