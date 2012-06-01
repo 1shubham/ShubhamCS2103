@@ -238,6 +238,7 @@ public class Parser {
 	public boolean extractDateTime (TimeParser timeParser, DateParser dateParser) {
 		final String AT_TIME_DATE = "((at)|(AT))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		final String BY_TIME_DATE = "((by)|(BY))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		final String BY_DATE_TIME = "((by)|(BY))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")";
 		final String FROM_TIME_TO_TIME_DATE = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		final String FROM_TIME_DATE_TO_TIME_DATE = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")"; //
 		final String TIME_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
@@ -247,6 +248,7 @@ public class Parser {
 		final String FROM_TIME_TO_TIME = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
 		final String TIME_TO_TIME = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
 		final String TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		final String DATE_TIME = "(("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+"))";
 		
 		Pattern pAtTimeDate = Pattern.compile(AT_TIME_DATE);
 		Pattern pByTimeDate = Pattern.compile(BY_TIME_DATE);
@@ -263,6 +265,9 @@ public class Parser {
 		Pattern pOnlyDate = Pattern.compile("[ ]"+DateParser.getGeneralPattern());
 		Pattern pTimeForSearch = Pattern.compile(TimeParser.getGeneralPattern());//"((1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))"
 		Pattern pDateForSearch = Pattern.compile(DateParser.getGeneralPattern());
+		Pattern pByDate = Pattern.compile("((by)|(BY))[ ]"+DateParser.getGeneralPattern());
+		Pattern pDateTime = Pattern.compile(DATE_TIME);
+		Pattern pByDateTime = Pattern.compile(BY_DATE_TIME);
 		
 		Matcher mAtTimeDate = pAtTimeDate.matcher(command);
 		Matcher mByTimeDate = pByTimeDate.matcher(command);
@@ -279,7 +284,9 @@ public class Parser {
 		Matcher mOnlyDate = pOnlyDate.matcher(command);
 		Matcher mTimeForSearch = pTimeForSearch.matcher(command);
 		Matcher mDateForSearch = pDateForSearch.matcher(command);
-		
+		Matcher mByDate = pByDate.matcher(command);
+		Matcher mDateTime = pDateTime.matcher(command);
+		Matcher mByDateTime = pByDateTime.matcher(command);
 		
 		String startTimeString=null, startDateString=null, endTimeString=null, endDateString=null;
 		//confirm the use of removeExtraSpaces
@@ -594,7 +601,104 @@ public class Parser {
 			
 			return true;
 		}
+		
+		else if (mByDateTime.find()) {
+			System.out.println("-----by_date_time format-------");
+			
+			//just for testing
+			/*
+			System.out.println("groups: "+mByDateTime.groupCount());
+			for (int i=0; i<mByDateTime.groupCount(); i++)
+				System.out.println("group "+i+": "+mByDateTime.group(i));
+			*/
+			
+			endTimeString = mByDateTime.group(45);
+			endDateString = mByDateTime.group(8);
+			
+			endTimeString = endTimeString.trim();
+			endDateString = endDateString.trim();
+			
+			System.out.println("end time string: "+endTimeString);
+			System.out.println("end date string : "+endDateString);
+			
+			if (timeParser.setEndTime(endTimeString)) 
+				System.out.println("end time is set!");
+			else
+				System.out.println("end time could NOT be set!");
+			if (dateParser.setEndDate(endDateString)) 
+				System.out.println("end date is set!");
+			else
+				System.out.println("end date could NOT be set!");
+			
+			command = mByDateTime.replaceFirst("");
+			command = removeExtraSpaces(command);
+			
+			return true;
+		}
+		
 
+		else if (mTimeDate.find()) {
+			System.out.println("-----time date only format-------");
+			/*
+			System.out.println("groups: "+mTimeDate.groupCount());
+			for (int i=0; i<mTimeDate.groupCount(); i++)
+				System.out.println("group "+i+": "+mTimeDate.group(i));
+			*/
+			startTimeString = mTimeDate.group(1);
+			startDateString = mTimeDate.group(14);
+			
+			startTimeString = startTimeString.trim();
+			startDateString = startDateString.trim();
+			
+			System.out.println("start time string: "+startTimeString);
+			System.out.println("start date string: "+startDateString);
+			
+			if (timeParser.setStartTime(startTimeString)) 
+				System.out.println("Start time is set!");
+			else
+				System.out.println("Start time could NOT be set!");
+			if (dateParser.setStartDate(startDateString)) 
+				System.out.println("Start date is set!");
+			else
+				System.out.println("Start date could NOT be set!");
+			
+			command = mTimeDate.replaceFirst("");
+			command = removeExtraSpaces(command);
+			
+			return true;
+		}
+		
+		else if (mDateTime.find()) {
+			System.out.println("-----date time only format-------");
+			
+			System.out.println("groups: "+mDateTime.groupCount());
+			for (int i=0; i<mDateTime.groupCount(); i++)
+				System.out.println("group "+i+": "+mDateTime.group(i));
+			
+			startTimeString = mDateTime.group(43);
+			startDateString = mDateTime.group(6);
+			
+			startTimeString = startTimeString.trim();
+			startDateString = startDateString.trim();
+			
+			System.out.println("start time string: "+startTimeString);
+			System.out.println("start date string: "+startDateString);
+			
+			if (timeParser.setStartTime(startTimeString)) 
+				System.out.println("Start time is set!");
+			else
+				System.out.println("Start time could NOT be set!");
+			if (dateParser.setStartDate(startDateString)) 
+				System.out.println("Start date is set!");
+			else
+				System.out.println("Start date could NOT be set!");
+			
+			command = mDateTime.replaceFirst("");
+			command = removeExtraSpaces(command);
+			
+			return true;
+		}
+		
 		else if (mFromTimeToTime.find()) {
 			System.out.println("-----from_time_to_time format-------");
 			
@@ -713,32 +817,25 @@ public class Parser {
 			return true;
 		}
 		
-		else if (mTimeDate.find()) {
-			System.out.println("-----time date only format-------");
+		else if (mByDate.find()) {
+			System.out.println("-----by date format-------");
 			/*
-			System.out.println("groups: "+mTimeDate.groupCount());
-			for (int i=0; i<mTimeDate.groupCount(); i++)
-				System.out.println("group "+i+": "+mTimeDate.group(i));
+			System.out.println("groups: "+mByDate.groupCount());
+			for (int i=0; i<mByDate.groupCount(); i++)
+				System.out.println("group "+i+": "+mByDate.group(i));
 			*/
-			startTimeString = mTimeDate.group(1);
-			startDateString = mTimeDate.group(14);
+			endDateString = mByDate.group(7);
 			
-			startTimeString = startTimeString.trim();
-			startDateString = startDateString.trim();
+			endDateString = endDateString.trim();
 			
-			System.out.println("start time string: "+startTimeString);
-			System.out.println("start date string: "+startDateString);
+			System.out.println("end date string: "+endDateString);
 			
-			if (timeParser.setStartTime(startTimeString)) 
-				System.out.println("Start time is set!");
+			if (dateParser.setEndDate(endDateString)) 
+				System.out.println("end date is set!");
 			else
-				System.out.println("Start time could NOT be set!");
-			if (dateParser.setStartDate(startDateString)) 
-				System.out.println("Start date is set!");
-			else
-				System.out.println("Start date could NOT be set!");
+				System.out.println("end date could NOT be set!");
 			
-			command = mTimeDate.replaceFirst("");
+			command = mByDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
