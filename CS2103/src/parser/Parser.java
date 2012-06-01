@@ -2,26 +2,15 @@ package parser;
 
 import data.Task;
 import data.DateTime;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Parser {
-	/*
-	public Task[] getTasks(String command) {
-		
-		return null;
-	}*/
-	
 	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
 	private final  String LABEL_REGEX = "@(\\w+)";
 	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
-	private String command;
 	
 	boolean important;
 	boolean deadline;
@@ -30,42 +19,54 @@ public class Parser {
 	List<String> labelList = null;
 	String taskDetails=null;
 	
+	private String command;
+	
 	public Parser () {
+	}
+	
+	public void initAttributesDefault(String inputCommand) {
+		important=false;
+		deadline=false;
+		startDateTime=null; endDateTime=null;
+		recurring = null;
+		labelList = null;
+		taskDetails="";
+		
+		command = inputCommand;
+		command = command.trim();
+		removeExtraSpaces (command);	
 	}
 	
 	public String removeExtraSpaces (String s) {
 		return s.replaceAll("\\s+", " ");
 	}
 	
-	public boolean markImportant (String s) {
-		if (s.startsWith("*")){
-			//s = s.replace('*', '\0');
+	public void setImportant () {
+		if (command.startsWith("*")){
+			command = command.replace('*', '\0');
 			//s = s.trim();
 			important = true;
-			return true;
 		}
-		return false;
+		//return s;
 	}
 	
-	public String getRecurString (String s) {
+	public void extractRecurString () {
 		Pattern p = Pattern.compile(RECUR_REGEX);
-		Matcher m = p.matcher(s);
-		
-		String recurString=null;
+		Matcher m = p.matcher(command);
 		
 		if (m.find()) {
-			recurString = m.group();
-			recurString = recurString.toLowerCase();
-			//s = s.replaceFirst("(?i)(weekly|monthly|yearly)", "");
-			//s = removeExtraSpaces(s);
+			recurring = m.group();
+			recurring = recurring.toLowerCase();
+			command = command.replaceFirst(RECUR_REGEX, "");
+			command = removeExtraSpaces(command);
+			command = command.trim();
 		}
-		
-		return recurString;
+		//return s;
 	}
 	
-	public String[] getLabels(String s) {
+	public String[] getLabels() {
 		Pattern p = Pattern.compile(LABEL_REGEX);
-		Matcher m = p.matcher(s);
+		Matcher m = p.matcher(command);
 		String labelString = null;
 		String[] labelArr= new String[50];
 		
@@ -77,6 +78,7 @@ public class Parser {
 				labelArr[i]=labelString;
 				i++;
 		}
+		labelList = Arrays.asList(labelArr);
 		return labelArr;
 	}
 	
@@ -140,7 +142,7 @@ public class Parser {
 		Pattern p = Pattern.compile(ID_REGEX);
 		Matcher m = p.matcher(inputS);
 		
-		if(m.matches())
+		if(m.find())
 			id = m.group();
 		
 		return id;
@@ -161,49 +163,24 @@ public class Parser {
 	}
 	
 	public Task parse (String userCommand) {
-		important=false;
-		deadline=false;
-		startDateTime=null; endDateTime=null;
-		recurring = null;
-		labelList = null;
-		taskDetails="";
 		
-		//taskID=null;
-
+		initAttributesDefault(userCommand);
 		
-		command = userCommand;
-		command = command.trim();
+		setImportant();
 		
-		/*
-		 * markImportant
-		 */
-		if(markImportant(command)) {
-			System.out.println("IMPORTANT TASK!");
-			command = command.replace('*', '\0');
-			command = command.trim();
-		}
-		
-		/*
-		 * recurring ?
-		 */	
-		recurring = getRecurString (command);
+		//recurring?
+		extractRecurString();
 		
 		if (recurring != null)
 			System.out.println("this task is "+recurring);
 		else
 			System.out.println("this task is not recurring");
 		
-		command = command.replaceFirst(RECUR_REGEX, "");
-		command = removeExtraSpaces(command);
-		command = command.trim();
-		
 		System.out.println("left over string after checking for recurring: "+command);
 				
-		/*
-		 * setLabels
-		 */
-
-		String[] labelArr = getLabels (command);
+		
+		 //setLabels: have to change this function, check notes
+		String[] labelArr = getLabels();
 		
 		if(labelArr.length!=0) {
 			int i=0;
@@ -215,6 +192,7 @@ public class Parser {
 			System.out.println("left over string after fetching labels: "+command);
 		}
 		
+		//time and date extraction
 		TimeParser timeParser = new TimeParser();
 		DateParser dateParser = new DateParser();
 		
@@ -226,34 +204,31 @@ public class Parser {
 		
 		System.out.println();
 		System.out.println();
+		System.out.println("--------post extraction TESTING--------");
+		
 		
 		setDateTimeAttributes(timeParser, dateParser);
+
+		setDeadline ();
 		
+		if(deadline)
+			System.out.println("this task has a deadline!");
+		else
+			System.out.println("this task does NOT have deadline!");
 		
 		if(important)
 			System.out.println("is important!");
 		else
 			System.out.println("is NOT important!");
 		
-		
-		
 		if(recurring!=null)
 			System.out.println("has to be done: "+recurring);
 		else
 			System.out.println("it is not recurring");
 		
-		System.out.println("task details: "+command);
-		
-		setDeadline ();
-		
-		if(deadline)
-			System.out.println("this task has a deadline you dumbass!");
-		else
-			System.out.println("this task does NOT have deadline you numbskull!");
-		
-		List<String> labelList = Arrays.asList(labelArr);
 		
 		taskDetails = command;
+		System.out.println("task details: "+taskDetails);
 		
 		Task t = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
 		
@@ -284,8 +259,8 @@ public class Parser {
 		Pattern pFromTimeToTime = Pattern.compile(FROM_TIME_TO_TIME);
 		Pattern pTimeToTime = Pattern.compile(TIME_TO_TIME);
 		Pattern pTimeDate = Pattern.compile(TIME_DATE);
-		Pattern pTime = Pattern.compile("("+TimeParser.getGeneralPattern()+")");//"((1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))");//TimeParser.getGeneralPattern());
-		Pattern pDate = Pattern.compile("[ ]"+DateParser.getGeneralPattern());
+		Pattern pTime = Pattern.compile(TimeParser.getGeneralPattern());//"((1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))"
+		Pattern pDate = Pattern.compile(" "+DateParser.getGeneralPattern());
 		
 		Matcher mAtTimeDate = pAtTimeDate.matcher(command);
 		Matcher mByTimeDate = pByTimeDate.matcher(command);
@@ -303,7 +278,7 @@ public class Parser {
 		
 		
 		String startTimeString=null, startDateString=null, endTimeString=null, endDateString=null;
-		
+		//confirm the use of removeExtraSpaces
 		command = removeExtraSpaces(command);
 		
 		if (mAtTimeDate.find()) {
@@ -334,7 +309,7 @@ public class Parser {
 			else
 				System.out.println("Start date could NOT be set!");
 			
-			command = command.replaceFirst(AT_TIME_DATE, "");
+			command = mAtTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -351,7 +326,6 @@ public class Parser {
 			
 			
 			endTimeString = mByTimeDate.group(4);
-			
 			
 			
 			System.out.println("end time string: "+endTimeString);
@@ -374,7 +348,7 @@ public class Parser {
 			else
 				System.out.println("end date could NOT be set!");
 			
-			command = command.replaceFirst(BY_TIME_DATE, "");
+			command = mByTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -421,7 +395,7 @@ public class Parser {
 			else
 				System.out.println("end date could NOT be set!");
 			
-			command = command.replaceFirst(FROM_TIME_TO_TIME_DATE, "");
+			command = mFromTimeToTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -469,7 +443,7 @@ public class Parser {
 				System.out.println("end date could NOT be set!");
 			
 			
-			command = command.replaceFirst(FROM_TIME_DATE_TO_TIME_DATE, "");
+			command = mFromTimeDateToTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -493,8 +467,11 @@ public class Parser {
 			System.out.println("start date string: "+startDateString);
 			
 			
-			
 			startDateString = startDateString.trim();
+			endDateString = startDateString;
+			System.out.println("start date string: "+startDateString);
+			System.out.println("end date string: "+endDateString);
+			
 			
 			if (timeParser.setStartTime(startTimeString)) 
 				System.out.println("Start time is set!");
@@ -508,9 +485,13 @@ public class Parser {
 				System.out.println("Start date is set!");
 			else
 				System.out.println("Start date could NOT be set!");
+			if (dateParser.setEndDate(endDateString)) 
+				System.out.println("End date is set!");
+			else
+				System.out.println("End date could NOT be set!");
 			
 			
-			command = command.replaceFirst(TIME_TO_TIME_DATE, "");
+			command = mTimeToTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -557,8 +538,8 @@ public class Parser {
 				System.out.println("end date is set!");
 			else
 				System.out.println("end date could NOT be set!");
-			
-			command = command.replaceFirst(TIME_DATE_TO_TIME_DATE, "");
+
+			command = mTimeDateToTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -575,15 +556,14 @@ public class Parser {
 			
 			startTimeString = mAtTime.group(4);
 			System.out.println("start time string: "+startTimeString);
-			
-			
+					
 			
 			if (timeParser.setStartTime(startTimeString)) 
 				System.out.println("Start time is set!");
 			else
 				System.out.println("Start time could NOT be set!");
-			
-			command = command.replaceFirst(AT_TIME, "");
+
+			command = mAtTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -607,8 +587,8 @@ public class Parser {
 				System.out.println("end time is set!");
 			else
 				System.out.println("end time could NOT be set!");
-			
-			command = command.replaceFirst(BY_TIME, "");
+
+			command = mByTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -641,7 +621,7 @@ public class Parser {
 			else
 				System.out.println("End time could NOT be set!");
 		
-			command = command.replaceFirst(FROM_TIME_TO_TIME, "");
+			command = mFromTimeToTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -672,7 +652,35 @@ public class Parser {
 			else
 				System.out.println("End time could NOT be set!");
 		
-			command = command.replaceFirst(TIME_TO_TIME, "");
+			command = mTimeToTime.replaceFirst("");
+			command = removeExtraSpaces(command);
+			
+			return true;
+		}
+		
+		else if (mTimeDate.find()) {
+			System.out.println("-----time date only format-------");
+			
+			System.out.println("groups: "+mTimeDate.groupCount());
+			for (int i=0; i<mTimeDate.groupCount(); i++)
+				System.out.println("group "+i+": "+mTimeDate.group(i));
+			
+			startTimeString = mTimeDate.group(1);
+			startDateString = mTimeDate.group(14);
+			
+			System.out.println("start time string: "+startTimeString);
+			if (timeParser.setStartTime(startTimeString)) 
+				System.out.println("Start time is set!");
+			else
+				System.out.println("Start time could NOT be set!");
+			
+			System.out.println("start date string: "+startDateString);
+			if (dateParser.setStartDate(startDateString)) 
+				System.out.println("Start date is set!");
+			else
+				System.out.println("Start date could NOT be set!");
+			
+			command = mTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -693,7 +701,7 @@ public class Parser {
 			else
 				System.out.println("Start time could NOT be set!");
 			
-			command = command.replaceFirst(TimeParser.getGeneralPattern(), "");
+			command = mTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
@@ -717,7 +725,7 @@ public class Parser {
 			else
 				System.out.println("Start date could NOT be set!");
 			
-			command = command.replaceFirst(DateParser.getGeneralPattern(), "");
+			command = mDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 			
 			return true;
