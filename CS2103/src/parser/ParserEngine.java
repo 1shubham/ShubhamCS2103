@@ -34,8 +34,6 @@ public class ParserEngine {
 			System.out.println("An unexpected error occured for your input");
 		}
 	
-		System.out.println("this is what you entered: "+inputString);
-		
 		parserObject.parse(inputString);
 		/*
 		AtomicReference<String> inputRef = new AtomicReference(inputString);
