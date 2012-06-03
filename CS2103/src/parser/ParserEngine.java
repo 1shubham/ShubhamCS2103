@@ -20,7 +20,6 @@ public class ParserEngine {
 		catch(IOException ioe) {
 			System.out.println("An unexpected error occured for your input");
 		}
-	
 
 		Parser parserObject = new Parser();
 		parserObject.parse(inputString);

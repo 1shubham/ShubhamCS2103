@@ -13,10 +13,9 @@ public class TimeParser {
 	private Pattern pattern12, pattern24, pattern;
 	private Matcher matcher12, matcher24, matcher;
 	
-	private static final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; //([:.] not seperated out because of a good reason :D
+	private static final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; 
 	private static final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
-	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";//"((1[012]|(0?[1-9]))([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))";
-			//"("++")|("++")"
+	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";
 	
 	public TimeParser( ) {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
@@ -55,10 +54,6 @@ public class TimeParser {
 	
 	private void resetDummyTime() {
 		dummyHour = -1; dummyMin = -1;
-	}
-	
-	public String removeExtraSpaces (String s) {
-		return s.replaceAll("\\s+", " ");
 	}
 	
 	public void printTimes() { //for your testing

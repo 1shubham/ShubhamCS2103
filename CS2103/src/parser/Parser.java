@@ -78,7 +78,7 @@ public class Parser {
 		int i=0;
 		while(m.find()) {
 				labelString = m.group();
-				labelString = labelString.replace('@',' ');
+				labelString = labelString.replace('@',' ');//why not replace by null?
 				labelString = labelString.trim();
 				labelArr[i]=labelString;
 				i++;
@@ -88,15 +88,13 @@ public class Parser {
 	}
 	
 	public void setDateTimeAttributes (TimeParser t, DateParser d) {
-		//TimeParser t = new TimeParser();
-		//DateParser d = new DateParser();
+		
 		boolean startDateExists, endDateExists, startTimeExists, endTimeExists;
 		
 		int[] startTimeArr = t.getStartTime();
 		int[] endTimeArr = t.getEndTime();
 		int[] startDateArr = d.getStartDate();
 		int[] endDateArr = d.getEndDate();
-		
 		
 		startDateExists = ((startDateArr[0]>0) && (startDateArr[1]>0) && (startDateArr[2]>0));
 		endDateExists = ((endDateArr[0]>0) && (endDateArr[1]>0) && (endDateArr[2]>0));
@@ -154,7 +152,7 @@ public class Parser {
 	}
 	
 	public String[] fetchTaskIds (String inputS) {
-		String[] ids = null;
+		String[] ids = new String[50];
 		int i=0;
 		Pattern p = Pattern.compile(ID_REGEX);
 		Matcher m = p.matcher(inputS);
@@ -232,6 +230,7 @@ public class Parser {
 		
 		
 		taskDetails = command;
+		
 		logger.debug("task details: "+taskDetails);
 		
 		Task t = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
@@ -913,7 +912,11 @@ public class Parser {
 			}
 		}
 		*/
-		return false;
+		
+		//if (startTimeString==null && endTimeString==null && startDateString==null && endDateString==null)
+			return false;	
+		
+		
 		
 	}
 	
