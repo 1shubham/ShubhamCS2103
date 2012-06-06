@@ -4,8 +4,13 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DateParser {
+import logic.JIDLogic;
 
+//import org.apache.log4j.Logger;
+
+public class DateParser {
+	//private Logger logger=Logger.getLogger(JIDLogic.class);
+	
 	private Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern;
 	private Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher;
 	
@@ -78,7 +83,7 @@ public class DateParser {
 	public static String getGeneralPattern() {
 		return GENERAL_DATE_PATTERN;
 	}
-
+	/*
 	public String extractDate(String inputS) {
 		String s = null;
 		matcher = pattern.matcher(inputS);
@@ -87,39 +92,34 @@ public class DateParser {
 			if (matcher.group(4)!=null)
 				s = matcher.group(4);
 		
-		/*
-		System.out.println("no. of groups in date string: "+matcher.groupCount());
-		System.out.println("group 1 string: "+matcher.group(1));
-		System.out.println("group 2 string: "+matcher.group(2));
-		System.out.println("group 3 string: "+matcher.group(3));
-		System.out.println("group 4 string: "+matcher.group(4));
-		System.out.println("group 5 string: "+matcher.group(5));
-		*/
 		
-		/*
-		 * do not include "on" if its included
-		 */
-		
+		logger.debug("no. of groups in date string: "+matcher.groupCount());
+		logger.debug("group 1 string: "+matcher.group(1));
+		logger.debug("group 2 string: "+matcher.group(2));
+		logger.debug("group 3 string: "+matcher.group(3));
+		logger.debug("group 4 string: "+matcher.group(4));
+		logger.debug("group 5 string: "+matcher.group(5));
+	
 		return s;
 	}
 	
 	public void printDates() { //for your testing
 		if ((startDay>0 && startMonth>0 && startYear>0)) {
-			System.out.println("startDay: "+startDay);
-			System.out.println("startMon: "+startMonth);
-			System.out.println("startYear: "+startYear);
+			logger.debug("startDay: "+startDay);
+			logger.debug("startMon: "+startMonth);
+			logger.debug("startYear: "+startYear);
 		}
 		
 		if ((endDay>0 && endMonth>0 && endYear>0)) {
-			System.out.println("endDay: "+startDay);
-			System.out.println("endMon: "+endMonth);
-			System.out.println("endYear: "+endYear);
+			logger.debug("endDay: "+startDay);
+			logger.debug("endMon: "+endMonth);
+			logger.debug("endYear: "+endYear);
 		}
 		
 		else
-			System.out.println("no attributes exist!");
+			logger.debug("no attributes exist!");
 	}
-	
+	*/
 	public boolean setStartDate(String startD) {
 		if (startD==null)
 			return false;
@@ -134,11 +134,11 @@ public class DateParser {
 			}
 			
 			else {
-				//System.out.println("1st return of setStartDate: false");
+				//logger.debug("1st return of setStartDate: false");
 				return false;
 			}
 		}
-		//System.out.println("2nd return of setStartDate: false");
+		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
 	
@@ -156,11 +156,11 @@ public class DateParser {
 			}
 			
 			else {
-				//System.out.println("1st return of setStartDate: false");
+				//logger.debug("1st return of setStartDate: false");
 				return false;
 			}
 		}
-		//System.out.println("2nd return of setStartDate: false");
+		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
 	
@@ -183,10 +183,10 @@ public class DateParser {
 				int yearInt = Integer.parseInt(yearString);
 				
 				/*
-				 * System.out.println("inputDay= "+dayInt);
-				 * System.out.println("currDay= "+currDay);
-				 * System.out.println("inputMonth= "+monthInt);
-				 * System.out.println("currMonth= "+currMonth);
+				 * logger.debug("inputDay= "+dayInt);
+				 * logger.debug("currDay= "+currDay);
+				 * logger.debug("inputMonth= "+monthInt);
+				 * logger.debug("currMonth= "+currMonth);
 				 */
 				return setDummyDate(dayInt, monthInt, yearInt);
 			}
@@ -424,25 +424,6 @@ public class DateParser {
 		dummyDay = c.get(GregorianCalendar.DATE);
 		dummyMonth = c.get(GregorianCalendar.MONTH) + 1 ;
 		dummyYear = c.get(GregorianCalendar.YEAR);
-	}
-	
-	public void dummyFunction() {
-		GregorianCalendar calen = new GregorianCalendar();
-		
-		System.out.println("date:"+calen.get(GregorianCalendar.DATE));
-		System.out.println("month:"+calen.get(GregorianCalendar.MONTH));
-		System.out.println("year:"+calen.get(GregorianCalendar.YEAR));
-		System.out.println("day of month:"+calen.get(GregorianCalendar.DAY_OF_MONTH));
-		System.out.println("day of week:"+calen.get(GregorianCalendar.DAY_OF_WEEK));
-		
-		calen.add(GregorianCalendar.DATE, 5);
-		
-		System.out.println("date:"+calen.get(GregorianCalendar.DATE));
-		System.out.println("month:"+calen.get(GregorianCalendar.MONTH));
-		System.out.println("year:"+calen.get(GregorianCalendar.YEAR));
-		System.out.println("day of month:"+calen.get(GregorianCalendar.DAY_OF_MONTH));
-		System.out.println("day of week:"+calen.get(GregorianCalendar.DAY_OF_WEEK));
-		
 	}
 
 }

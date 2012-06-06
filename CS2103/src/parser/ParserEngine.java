@@ -22,7 +22,7 @@ public class ParserEngine {
 		}
 
 		Parser parserObject = new Parser();
-		parserObject.parse(inputString);
+		parserObject.parseForAdd(inputString);
 		
 		
 		System.out.print("Input string2:");
@@ -32,8 +32,9 @@ public class ParserEngine {
 		catch(IOException ioe) {
 			System.out.println("An unexpected error occured for your input");
 		}
-	
-		parserObject.parse(inputString);
+		
+		parserObject.parseForSearch(inputString);
+		
 		/*
 		AtomicReference<String> inputRef = new AtomicReference(inputString);
 		mutateString(inputRef);
