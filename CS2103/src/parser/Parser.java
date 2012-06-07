@@ -12,17 +12,31 @@ import logic.JIDLogic;
 import org.apache.log4j.Logger;
 
 public class Parser {
-	private final  String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
-	private final  String LABEL_REGEX = "@(\\w+)";
+	private final String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
+	private final String LABEL_REGEX = "@(\\w+)";
 	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
+	private String FROM_TIME_DATE_TO_TIME_DATE;
+	private String FROM_DATE_TIME_TO_DATE_TIME;
+	private String FROM_TIME_TO_TIME_DATE;
+	private String FROM_DATE_TIME_TO_TIME;
+	private String FROM_TIME_TO_TIME;
+	private String FROM_DATE_TO_DATE;
+	private String AT_TIME_DATE;
+	private String BY_TIME_DATE;
+	private String BY_DATE_TIME;
+	private String DATE_TIME;
+	private String AT_TIME;
+	private String BY_TIME;
+	private String BY_DATE;
+
 	private Logger logger=Logger.getLogger(JIDLogic.class);
 	
 	private boolean important;
 	private boolean deadline;
 	private DateTime startDateTime, endDateTime;
-	private String recurring = null;
-	private List<String> labelList = null;
-	private String taskDetails=null;
+	private String recurring;
+	private List<String> labelList;
+	private String taskDetails;
 	
 	private Task task;
 	private String command;
@@ -33,7 +47,7 @@ public class Parser {
 	 * 
 	 * @param inputCommand
 	 */
-	public void initAttributesDefault(String inputCommand) {
+	private void initCommon(String inputCommand) {
 		important=false;
 		deadline=false;
 		startDateTime=null; endDateTime=null;
@@ -46,6 +60,40 @@ public class Parser {
 		command = inputCommand;
 		command = command.trim();
 		removeExtraSpaces (command);	
+	}
+	private void initForAdd(String inputCommand) {
+		initCommon(inputCommand);
+		//add spaces all before
+		FROM_TIME_DATE_TO_TIME_DATE = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_DATE_TIME = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_TO_TIME_DATE = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_TIME = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_TO_TIME = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		FROM_DATE_TO_DATE = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")"; 
+		AT_TIME_DATE = "([ ]((?i)(at)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		BY_TIME_DATE = "([ ]((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		BY_DATE_TIME = "([ ]((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		DATE_TIME = "([ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+"))";
+		AT_TIME = "([ ]((?i)(at)))?[ ]("+TimeParser.getGeneralPattern()+")";
+		BY_TIME = "([ ]((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")";
+		BY_DATE = "([ ]((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")";
+	}
+	private void initForSearch(String inputCommand) {
+		initCommon(inputCommand);
+		
+		FROM_TIME_DATE_TO_TIME_DATE = "(((?i)(from))[ ])?("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_DATE_TIME = "(((?i)(from))[ ])?("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_TO_TIME_DATE = "(((?i)(from))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_TIME = "(((?i)(from))[ ])?("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_TO_TIME = "(((?i)(from))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		FROM_DATE_TO_DATE = "(((?i)(from))[ ])?("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")"; 
+		AT_TIME_DATE = "(((?i)(at))[ ])?("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		BY_TIME_DATE = "(((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		BY_DATE_TIME = "(((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		DATE_TIME = "(("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+"))";
+		AT_TIME = "(((?i)(at))[ ])?("+TimeParser.getGeneralPattern()+")";
+		BY_TIME = "(((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")";
+		BY_DATE = "(((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")";
 	}
 	/**
 	 * 
@@ -200,6 +248,8 @@ public class Parser {
 	
 	public Task parseForSearch (String userCommand) {
 		
+		initForSearch(userCommand);
+		
 		parse (userCommand);
 		
 		logger.debug("this is parse for SEARCH before initializing task obj");
@@ -212,6 +262,8 @@ public class Parser {
 	}
 	
 	public Task parseForAdd (String userCommand) {
+		
+		initForAdd(userCommand);
 		
 		parse (userCommand);
 		
@@ -232,6 +284,7 @@ public class Parser {
 		return task;
 	}
 	
+	/*
 	private boolean extractDateTimeForSearch (TimeParser timeParser, DateParser dateParser) {
 		final String DATE = "[ ]("+DateParser.getGeneralPattern()+")";
 		final String TIME = "[ ]("+TimeParser.getGeneralPattern()+")";
@@ -254,21 +307,15 @@ public class Parser {
 		}
 		
 		
-		/*
-		 * matches
-		 * finds
-		 */
-		
 		return false;
 	}
+*/
 	/**
 	 * 
 	 * @param userCommand
 	 * @return
 	 */
 	private void parse (String userCommand) {
-		
-		initAttributesDefault(userCommand);
 		
 		setImportant();
 		
@@ -312,7 +359,7 @@ public class Parser {
 		
 		setDateTimeAttributes(timeParser, dateParser);
 
-		setDeadline ();
+		setDeadline();
 		
 		if(deadline)
 			logger.debug("this task has a deadline!");
@@ -335,9 +382,6 @@ public class Parser {
 		
 		logger.debug("task details: "+taskDetails);
 		
-		/*
-		 * if the task returned is null, should not add it!
-		 */
 	}
 	/**
 	 * 
@@ -347,83 +391,75 @@ public class Parser {
 	 */
 	private boolean extractDateTime (TimeParser timeParser, DateParser dateParser) {
 		
-		final String FROM_TIME_DATE_TO_TIME_DATE = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String FROM_DATE_TIME_TO_DATE_TIME = "((from)|(FROM))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")";
-		final String TIME_DATE_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")"; 
-		final String DATE_TIME_TO_DATE_TIME = "("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")"; 
-		final String FROM_TIME_TO_TIME_DATE = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String FROM_DATE_TIME_TO_TIME = "((from)|(FROM))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String TIME_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String DATE_TIME_TO_TIME = "("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String FROM_TIME_TO_TIME = "((from)|(FROM))[ ]("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String FROM_DATE_TO_DATE = "((from)|(FROM))[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")"; 
-		final String DATE_TO_DATE = "("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")";
-		final String AT_TIME_DATE = "((at)|(AT))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String BY_TIME_DATE = "((by)|(BY))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String BY_DATE_TIME = "((by)|(BY))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")";
-		final String TIME_TO_TIME = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
-		final String DATE_TIME = "(("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+"))";
-		
-		final String AT_TIME = "((at)|(AT))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String BY_TIME = "((by)|(BY))[ ]("+TimeParser.getGeneralPattern()+")";
-		final String BY_DATE = "((by)|(BY))[ ]("+DateParser.getGeneralPattern()+")";
+		//obsolete regexs:
+		//final String TIME_DATE_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")"; 
+		//final String DATE_TIME_TO_DATE_TIME = "("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")"; 
+		//final String TIME_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
+		//final String DATE_TIME_TO_TIME = "("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
+		//final String TIME_TO_TIME = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")";
+		//final String DATE_TO_DATE = "("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")";
+		//final String TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";						
 		
 		
 		Pattern pFromDateTimeToDateTime = Pattern.compile(FROM_DATE_TIME_TO_DATE_TIME);
-		Pattern pDateTimeToDateTime = Pattern.compile(DATE_TIME_TO_DATE_TIME);
 		Pattern pFromDateTimeToTime = Pattern.compile(FROM_DATE_TIME_TO_TIME);
-		Pattern pDateTimeToTime = Pattern.compile(DATE_TIME_TO_TIME);
 		Pattern pFromDateToDate = Pattern.compile(FROM_DATE_TO_DATE);
-		Pattern pDateToDate = Pattern.compile(DATE_TO_DATE);
 		Pattern pByDate = Pattern.compile(BY_DATE);
 		
 		Pattern pAtTimeDate = Pattern.compile(AT_TIME_DATE);
 		Pattern pByTimeDate = Pattern.compile(BY_TIME_DATE);
 		Pattern pFromTimeToTimeDate = Pattern.compile(FROM_TIME_TO_TIME_DATE);
 		Pattern pFromTimeDateToTimeDate = Pattern.compile(FROM_TIME_DATE_TO_TIME_DATE);
-		Pattern pTimeToTimeDate = Pattern.compile(TIME_TO_TIME_DATE);
-		Pattern pTimeDateToTimeDate = Pattern.compile(TIME_DATE_TO_TIME_DATE);
 		Pattern pAtTime = Pattern.compile(AT_TIME);
 		Pattern pByTime = Pattern.compile(BY_TIME);
 		Pattern pFromTimeToTime = Pattern.compile(FROM_TIME_TO_TIME);
-		Pattern pTimeToTime = Pattern.compile(TIME_TO_TIME);
-		Pattern pTimeDate = Pattern.compile(TIME_DATE);
 		Pattern pDateTime = Pattern.compile(DATE_TIME);
 		Pattern pByDateTime = Pattern.compile(BY_DATE_TIME);
 		
-		Pattern pOnlyTime = Pattern.compile("[ ]("+TimeParser.getGeneralPattern()+")");
 		Pattern pOnlyDate = Pattern.compile("[ ]("+DateParser.getGeneralPattern()+")");
 		Pattern pTimeForSearch = Pattern.compile(TimeParser.getGeneralPattern());//"((1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm))|((2[0-3]|[01]?[0-9])[:.]?([0-5][0-9]))"
 		Pattern pDateForSearch = Pattern.compile(DateParser.getGeneralPattern());
 		
+		//obsolete patterns:
+		//Pattern pDateTimeToDateTime = Pattern.compile(DATE_TIME_TO_DATE_TIME);
+		//Pattern pDateTimeToTime = Pattern.compile(DATE_TIME_TO_TIME);
+		//Pattern pDateToDate = Pattern.compile(DATE_TO_DATE);
+		//Pattern pTimeToTimeDate = Pattern.compile(TIME_TO_TIME_DATE);
+		//Pattern pTimeDateToTimeDate = Pattern.compile(TIME_DATE_TO_TIME_DATE);
+		//Pattern pTimeToTime = Pattern.compile(TIME_TO_TIME);
+		//Pattern pTimeDate = Pattern.compile(TIME_DATE);
+		//Pattern pOnlyTime = Pattern.compile("[ ]("+TimeParser.getGeneralPattern()+")");
+				
 		
 		
 		Matcher mFromDateTimeToDateTime = pFromDateTimeToDateTime.matcher(command);
-		Matcher mDateTimeToDateTime = pDateTimeToDateTime.matcher(command);
 		Matcher mFromDateTimeToTime = pFromDateTimeToTime.matcher(command);
-		Matcher mDateTimeToTime = pDateTimeToTime.matcher(command);
 		Matcher mFromDateToDate = pFromDateToDate.matcher(command);
-		Matcher mDateToDate = pDateToDate.matcher(command);
-	
+		
 		Matcher mAtTimeDate = pAtTimeDate.matcher(command);
 		Matcher mByTimeDate = pByTimeDate.matcher(command);
 		Matcher mFromTimeToTimeDate = pFromTimeToTimeDate.matcher(command);
 		Matcher mFromTimeDateToTimeDate = pFromTimeDateToTimeDate.matcher(command);
-		Matcher mTimeToTimeDate = pTimeToTimeDate.matcher(command);
-		Matcher mTimeDateToTimeDate = pTimeDateToTimeDate.matcher(command);
 		Matcher mAtTime = pAtTime.matcher(command);
 		Matcher mByTime = pByTime.matcher(command);
 		Matcher mFromTimeToTime = pFromTimeToTime.matcher(command);
-		Matcher mTimeToTime = pTimeToTime.matcher(command);
-		Matcher mTimeDate = pTimeDate.matcher(command);
-		Matcher mOnlyTime = pOnlyTime.matcher(command);
 		Matcher mOnlyDate = pOnlyDate.matcher(command);
 		Matcher mTimeForSearch = pTimeForSearch.matcher(command);
 		Matcher mDateForSearch = pDateForSearch.matcher(command);
 		Matcher mByDate = pByDate.matcher(command);
 		Matcher mDateTime = pDateTime.matcher(command);
 		Matcher mByDateTime = pByDateTime.matcher(command);
+		
+		//obsolete matchers:
+		//Matcher mDateTimeToDateTime = pDateTimeToDateTime.matcher(command);
+		//Matcher mDateTimeToTime = pDateTimeToTime.matcher(command);
+		//Matcher mDateToDate = pDateToDate.matcher(command);
+		//Matcher mTimeToTimeDate = pTimeToTimeDate.matcher(command);
+		//Matcher mTimeDateToTimeDate = pTimeDateToTimeDate.matcher(command);
+		//Matcher mTimeToTime = pTimeToTime.matcher(command);
+		//Matcher mTimeDate = pTimeDate.matcher(command);
+		//Matcher mOnlyTime = pOnlyTime.matcher(command);
+						
 		
 		String startTimeString=null, startDateString=null, endTimeString=null, endDateString=null;
 		command = removeExtraSpaces(command);
@@ -558,7 +594,7 @@ public class Parser {
 			command = mFromDateTimeToTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		/*
 		else if (mTimeDateToTimeDate.find()) {
 			logger.debug("-----time_date_to_time_date format-------");
 			
@@ -655,7 +691,7 @@ public class Parser {
 			command = mDateTimeToTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		*/
 		else if (mAtTimeDate.find()) {
 			logger.debug("-----at_time_date format-------");
 			
@@ -736,7 +772,7 @@ public class Parser {
 			command = mFromDateToDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		/*
 		else if (mDateToDate.find()) {
 			logger.debug("-----Date_to_date format-------");
 			
@@ -757,6 +793,7 @@ public class Parser {
 			command = removeExtraSpaces(command);
 		}
 		
+
 		else if (mTimeDate.find()) {
 			logger.debug("-----time date only format-------");
 			
@@ -771,7 +808,7 @@ public class Parser {
 			command = mTimeDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		*/
 		else if (mDateTime.find()) {
 			logger.debug("-----date time only format-------");
 			
@@ -786,7 +823,7 @@ public class Parser {
 			command = mDateTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		/*
 		else if (mTimeToTime.find()) {
 			logger.debug("-----time_to_time format-------");
 			
@@ -801,7 +838,7 @@ public class Parser {
 			command = mTimeToTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		*/
 		else if (mAtTime.find()) {
 			logger.debug("-----at_time format-------");
 			
@@ -849,7 +886,7 @@ public class Parser {
 			command = mOnlyDate.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		/*
 		else if (mOnlyTime.find()) {
 			logger.debug("-----time only format-------");
 			
@@ -861,7 +898,7 @@ public class Parser {
 			command = mOnlyTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
-		
+		*/
 		if (startTimeString==null && endTimeString==null && startDateString==null && endDateString==null)
 			return false;	
 		

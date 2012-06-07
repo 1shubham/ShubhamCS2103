@@ -37,7 +37,9 @@ public class ParserEngine {
 		*/
 		
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd("meeting for cs2103 on 15/3 to on 16/3 @work");
+		parserObject.parseForAdd("project deadline by saturday @work");
+		
+		parserObject.parseForSearch("by sat");
 		
 		/*
 		AtomicReference<String> inputRef = new AtomicReference(inputString);
