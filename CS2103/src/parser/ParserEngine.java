@@ -8,7 +8,7 @@ public class ParserEngine {
 	
 
 	public static void main (String args[]) {
-		
+		/*
 		String inputString = null;
 		BufferedReader reader;
 		reader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,6 +34,10 @@ public class ParserEngine {
 		}
 		
 		parserObject.parseForSearch(inputString);
+		*/
+		
+		Parser parserObject = new Parser();
+		parserObject.parseForAdd("meeting for cs2103 on 15/3 to on 16/3 @work");
 		
 		/*
 		AtomicReference<String> inputRef = new AtomicReference(inputString);
