@@ -384,7 +384,7 @@ public class DateParser {
 				if (inputWeekDay>0) {
 					int dayDiff = (inputWeekDay - calen.get(GregorianCalendar.DAY_OF_WEEK));
 					
-					if (nextString.matches(NEXT));
+					if (nextString!=null && nextString.matches(NEXT));
 						calen.add(GregorianCalendar.DATE, 7);
 					
 					if (dayDiff<0)

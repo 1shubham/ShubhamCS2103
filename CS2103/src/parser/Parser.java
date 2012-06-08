@@ -12,7 +12,8 @@ import logic.JIDLogic;
 import org.apache.log4j.Logger;
 
 public class Parser {
-	private final String RECUR_REGEX = "(?i)(weekly|monthly|yearly)";
+	private final String DONT_PARSE = "(\'(\\s?\\w+\\s?)*\')";
+	private final String RECUR_REGEX = "((?i)(weekly|monthly|yearly))(-(\\d+)([ ]times)?)?";
 	private final String LABEL_REGEX = "@(\\w+)";
 	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
 	private String FROM_TIME_DATE_TO_TIME_DATE;
@@ -126,7 +127,7 @@ public class Parser {
 		Matcher m = p.matcher(command);
 		
 		if (m.find()) {
-			recurring = m.group();
+			recurring = m.group(2);
 			recurring = recurring.toLowerCase();
 			command = command.replaceFirst(RECUR_REGEX, "");
 			command = removeExtraSpaces(command);
@@ -257,6 +258,8 @@ public class Parser {
 		logger.debug("this is parse for SEARCH before initializing task obj");
 		
 		task = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);
+
+		logger.debug("task before returning: "+task.toString());
 		
 		return task;
 	}
@@ -272,7 +275,7 @@ public class Parser {
 		if ((startDateTime!=null || endDateTime!=null) && !(taskDetails.isEmpty()))
 			task = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
 			
-		logger.debug("task initialized: "+(task!=null));
+		logger.debug("task before returning: "+task.toString());
 		
 		return task;
 	}
@@ -309,6 +312,34 @@ public class Parser {
 	 * @return
 	 */
 	private void parse (String userCommand) {
+		
+		Matcher mDontParse = Pattern.compile(DONT_PARSE).matcher(command);
+		String[] dontParseStrings = {null,null,null,null,null,null,null,null,null,null};
+		int currIndex=0;
+		String[] tempReplaceStrings = {null,null,null,null,null,null,null,null,null,null};
+		
+		while (mDontParse.find()) {
+			dontParseStrings[currIndex] = mDontParse.group();
+			
+			logger.debug("current dont parse string: "+dontParseStrings[currIndex]);
+			logger.debug("length of current dont parse string extracted: "+dontParseStrings[currIndex].length());
+			
+			tempReplaceStrings[currIndex] = "";
+			tempReplaceStrings[currIndex]= tempReplaceStrings[currIndex]+"\'";
+			for (int j=2; j<dontParseStrings[currIndex].length(); j++) {
+				tempReplaceStrings[currIndex] = tempReplaceStrings[currIndex]+"%";
+			}
+			tempReplaceStrings[currIndex]= tempReplaceStrings[currIndex]+"\'";
+			
+			logger.debug("current temp replacement string: "+tempReplaceStrings[currIndex]);
+			
+			command = command.replaceFirst(DONT_PARSE, tempReplaceStrings[currIndex]);
+			command = removeExtraSpaces(command);
+		
+			currIndex++;
+			
+			logger.debug("input now: "+command);
+		}
 		
 		setImportant();
 		
@@ -370,6 +401,13 @@ public class Parser {
 			logger.debug("has to be done: "+recurring);
 		else
 			logger.debug("it is not recurring");
+		
+		//if (dontParseStrings!=null)
+		//	command = command.replaceFirst(tempReplace, dontParseStrings);
+		
+		
+		for (int k=0; k<currIndex; k++) // && dontParseStrings[currIndex]!=null) {
+			command = command.replaceFirst(tempReplaceStrings[k], dontParseStrings[k]);
 		
 		
 		taskDetails = command;
