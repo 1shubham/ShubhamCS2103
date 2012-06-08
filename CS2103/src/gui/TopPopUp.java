@@ -23,11 +23,12 @@ public class TopPopUp extends JFrame {
     /**
      * Creates new form TopPopUp
      */
-    public TopPopUp() {
-    	setUndecorated(true);
+    public static void createTopPopUp() {
+    	jFrame = new JFrame();
+    	jFrame.setUndecorated(true);
     	initComponents();
-    	this.setFocusableWindowState(false);
-    	showBox();
+    	jFrame.setFocusableWindowState(false);
+    	//showBox();
     }
 
     /**
@@ -37,19 +38,19 @@ public class TopPopUp extends JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private static void initComponents() {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextField1.setEditable(false);
         jTextField1.setText("jTextField1");
 
         jButton1.setText("jButton1");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(jFrame.getContentPane());
+        jFrame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -75,54 +76,41 @@ public class TopPopUp extends JFrame {
 					// TODO Auto-generated method stub
 					if(SHOW) {
 						SHOW = !SHOW;
-						setVisible(false);
+						jFrame.setVisible(false);
 					}
 				}
         	
         });
         
 
-        setIconImage((Resource.bigLogo).getImage());
-        pack();
+        jFrame.setIconImage((Resource.bigLogo).getImage());
+        jFrame.pack();
     }// </editor-fold>
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new TopPopUp().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton jButton1;
-    private boolean SHOW = true;
-    private Timer timer;
-    private final int VISIBLE_TIME = 5;
+    public static javax.swing.JFrame jFrame;
+    private static javax.swing.JTextField jTextField1;
+    private static javax.swing.JButton jButton1;
+    private static boolean SHOW = true;
+    private static Timer timer;
+    private final static int VISIBLE_TIME = 5;
     //private Timer timer;
     // End of variables declaration
     
     
-    public void setPosition(int x, int y) {
-    	setLocation(x, y);
+    public static void setPosition(int x, int y) {
+    	jFrame.setLocation(x, y);
     }
     
-    public void setText(String str) {
+    public static void setText(String str) {
     	jTextField1.setText(str);
     }
     
-    public void showBox() {
+    public static void showBox() {
 
     	SHOW = true;
-    	setVisible(SHOW);
+    	jFrame.setVisible(SHOW);
+    	jFrame.toFront();
     	
     	if(timer != null){
     		timer.stop();
@@ -141,12 +129,12 @@ public class TopPopUp extends JFrame {
 
     }
     
-    public void hideBox() {
+    public static void hideBox() {
     	SHOW = false;
-    	setVisible(SHOW);
+    	jFrame.setVisible(SHOW);
     }
     
-    public boolean isShow() {
+    public static boolean isShow() {
     	return SHOW;
     }
     

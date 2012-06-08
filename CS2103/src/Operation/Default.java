@@ -40,4 +40,10 @@ public class Default extends Operation {
 		return null;
 	}
 
+	@Override
+	public Task[] redo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

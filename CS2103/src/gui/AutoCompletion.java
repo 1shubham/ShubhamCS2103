@@ -23,7 +23,7 @@ public class AutoCompletion extends PlainDocument {
     boolean hitBackspaceOnSelection;
     int index;
     String[] standardCommand = new String[] {"add", "modify", "delete", "search"
-    										, "completed", "achive", "overdue"};
+    										, "completed", "achive", "overdue", "exit"};
     KeyListener editorKeyListener;
     FocusListener editorFocusListener;
     
@@ -99,15 +99,24 @@ public class AutoCompletion extends PlainDocument {
     public void setStandardModel() {
 		// TODO Auto-generated method stub
 
+    	comboBox.setMaximumRowCount(5);
         comboBox.setModel(new DefaultComboBoxModel(standardCommand));
         model = comboBox.getModel();
 	}
     
     public void setNewModel(String[] strings) {
-    	System.out.println(                 "setNewModel");
-    	comboBox.setMaximumRowCount( strings.length > 10 ? 10 : strings.length );
-    	comboBox.setModel(new DefaultComboBoxModel(strings));
-    	model = comboBox.getModel();
+    	if(strings==null) {
+    		String[] temp = new String[1];
+    		temp[0] = "NOT FOUND!";
+    		comboBox.setMaximumRowCount(1);
+    		comboBox.setModel(new DefaultComboBoxModel(temp));
+    	}
+    	else {
+	    	System.out.println(                 "setNewModel");
+	    	comboBox.setMaximumRowCount( strings.length > 5 ? 5 : strings.length );
+	    	comboBox.setModel(new DefaultComboBoxModel(strings));
+	    	model = comboBox.getModel();
+    	}
     	
     }
 

@@ -1,5 +1,9 @@
 package operation;
 
+import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
 import data.Task;
 
 
@@ -8,8 +12,8 @@ public abstract class Operation {
 	
 	
 	
-	boolean isUndoAble=false;
-	
+	protected boolean isUndoAble=false;
+	private static Logger logger=Logger.getLogger(Operation.class);
 	public static Operation getOperationObj(String userCommand)
 	{
 		Operation object;
@@ -17,6 +21,8 @@ public abstract class Operation {
 		String intendedOperation;
 		intendedOperation=userCommand.trim().split("\\s+")[0];
 		intendedOperation = intendedOperation.toLowerCase();
+		logger.debug(intendedOperation);
+		
 		
 		if (intendedOperation.equals("add") || intendedOperation.equals("insert")){
 			object = new Add(intendedOperation);
@@ -32,7 +38,10 @@ public abstract class Operation {
 			object = new Search(intendedOperation);
 		}
 		else if (intendedOperation.equals("completed") || intendedOperation.equals("done")){
-			object = new Completed(intendedOperation);
+			object = new ToggleCompleted(intendedOperation);
+		}
+		else if(intendedOperation.equals("star") || intendedOperation.equals("important")){
+			object = new ToggleImportant(intendedOperation);
 		}
 		else if (intendedOperation.equals("archive")){
 			object = new Archive(intendedOperation);
@@ -54,6 +63,8 @@ public abstract class Operation {
 	public abstract Task[] execute(String userCommand);
 	
 	public abstract Task[] undo();
+	
+	public abstract Task[] redo();
 	
 	protected Task[] execute(Task taskToBeExecuted)
 	{

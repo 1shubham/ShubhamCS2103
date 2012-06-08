@@ -16,10 +16,10 @@ import storagecontroller.StorageManager;
 public class JIDLogic {
 	
 		private static Logger logger=Logger.getLogger(JIDLogic.class);
-		
+		//private static String command;
 		public static void main(String[] args) {
 	        //logger.info("hi");
-			
+		/*
 			logger.debug(StorageManager.loadFile());
 			command="search";
 			Task[] def=executeCommand("find *.*");
@@ -27,7 +27,7 @@ public class JIDLogic {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			System.out.println(def[i].getTaskId());
+	    			logger.debug(def[i].toString2());
 	    		}
 	    	}
 			
@@ -55,10 +55,10 @@ public class JIDLogic {
 	    			logger.debug(StorageManager.getAllTasks()[i].getEndDateTime().getDate());
     		}
 	    	
-	    
-	    	*/
+	    */
+	    	/*
 	    	command="delete";
-	    	Task[] xyz=executeCommand("completed meet");
+	    	Task[] xyz=executeCommand("star meet");
 	    	if (xyz!=null)
 	    	logger.debug("printing search"+ xyz.length);
 	    	else
@@ -72,18 +72,20 @@ public class JIDLogic {
 	    	}
 	    	
 	    	//logger.debug(StorageManager.saveFile());
-	    	Task efg[]=executeCommand("completed $$__03-05-2013154500W__$$" );
+	    	Task efg[]=executeCommand("star "+xyz[0].getTaskId() );
 	    	
-	    	//Task efg[]=executeCommand("edit go to meet me weekly by 3.45pm 3/5/2013  @work @home");
+	    	//efg=executeCommand("edit LALALALALA by 3.45pm 3/5/2013  @work @home");
 	    	
 	    	
 	    	if (efg!=null)
 	    	{
 	    		for (int i=0;i<efg.length;i++)
 	    		{
-	    			logger.debug(efg[i].getCompleted());
+	    			logger.debug("result of star: "+efg[i].getImportant());
 	    		}
 	    	}
+	    	
+	    	
 	    	def=executeCommand("find *.*");
 	    	if (def!=null)
 	    	{
@@ -100,19 +102,78 @@ public class JIDLogic {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			logger.debug(def[i].getName());
-	    			logger.debug(def[i].getCompleted());
+	    			logger.debug("Task that was undone: "+def[i].getName());
+	    			logger.debug(def[i].getImportant());
 	    		}
 	    	}
+	    	def=executeCommand("find *.*");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug(def[i].toString());
+	    		}
+	    	}
+	    	
+	    	logger.debug("before redo");
+	    	command="redo";
+	    	def=executeCommand("redo");
+	    	logger.debug("Executing redo");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug("Task that was redone:"+def[i].getName());
+	    			logger.debug(def[i].getImportant());
+	    		}
+	    	}
+	    	def=executeCommand("find *.*");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug(def[i].toString());
+	    		}
+	    	}
+	    	def=executeCommand("overdue");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug("Overdue: "+def[i].getName());
+	    		}
+	    	}
+	    	def=executeCommand("find *.*");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug(def[i].toString());
+	    		}
+	    	}
+	    	def=executeCommand("add XXXXXXXX 3/3/2018");
+	    	def=executeCommand("find *.*");
+	    	if (def!=null)
+	    	{
+	    		for (int i=0;i<def.length;i++)
+	    		{
+	    			logger.debug(def[i].toString());
+	    		}
+	    	}
+	    	
+	    	*/
 	    	//logger.debug(StorageManager.saveFile());
 			
-			//JIDLogic_init();
-			//UIController ui=new UIController();
+			JIDLogic_init();
+			UIController ui=new UIController();
+			JIDLogic_close();
+			//logger.debug(StorageManager.loadFile());
 			
 			
 		
 	}
 	private static Stack<Operation> undoStack= new Stack<Operation>();
+	private static Stack<Operation> redoStack= new Stack<Operation>();
 	
 	private static String command;
 	//private Logger logger = Logger.getLogger(JIDLogic.class.getName());
@@ -128,6 +189,7 @@ public class JIDLogic {
 	public static Task[] executeCommand (String commandFromUser) {
 		Operation op = null;
 		logger.debug("inside execute command");
+		logger.debug(commandFromUser);
 		if (command == null || command.equals("")) {
 			logger.debug("inside first cond");
 			return null;
@@ -135,21 +197,38 @@ public class JIDLogic {
 			logger.debug("inside second cond");
 			exit();
 			return null;
-		} else if (commandFromUser.trim().equals("undo") && !undoStack.empty()) {
+		} else if (commandFromUser.trim().toLowerCase().equals("undo") && !undoStack.empty()) {
 			logger.debug("inside third cond");
-			Operation undoAction = undoStack.pop();
-			logger.debug("popped last action from stack:"+undoAction.getOperationName());
-			return undoAction.undo();
+			Operation undoOperation = undoStack.pop();
+			if (undoOperation.isUndoAble()) {
+				redoStack.push(undoOperation);
+				logger.debug("isredoable");
+			}
+			logger.debug("popped last action from stack:"+undoOperation.getOperationName());
+			return undoOperation.undo();
 			
+		} else if (commandFromUser.trim().toLowerCase().equals("redo") && !redoStack.empty()) {
+			logger.debug("inside redo cond");
+			Operation redoOperation = redoStack.pop();
+			if (redoOperation.isUndoAble()) {
+				undoStack.push(redoOperation);
+				logger.debug("isundoable");
+			}
+			logger.debug("popped last action from stack:"+redoOperation.getOperationName());
+			return redoOperation.redo(); 
 		} else {
 			logger.debug("inside fourth cond");
 			op = Operation.getOperationObj(commandFromUser);
-			logger.fatal("Inside the actual execution");
+						
+			Task[] result=  op.execute(commandFromUser);
+			
+			logger.debug("THE OPERATION IS UNDOABLE:"+op.isUndoAble());
 			if (op.isUndoAble()) {
 				undoStack.push(op);
+				logger.debug("isundoable");
 			}
-			
-			return  op.execute(commandFromUser);
+			//UIController.showTopPopUpMsg(op.getErrorMessage());
+			return result;
 			
 			
 		}

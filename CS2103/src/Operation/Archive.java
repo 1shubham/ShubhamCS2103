@@ -53,6 +53,12 @@ public class Archive extends Operation{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Task[] redo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

@@ -1,27 +1,29 @@
 package data;
+import data.Task;
 import java.util.ArrayList;
 
 public class TaskArrayList 
 {
-ArrayList<Task> arrayList;
+static ArrayList<Task> arrayList;
 
 public TaskArrayList()
 {
 	arrayList=new ArrayList<Task>();
 }
-public void addTask(Task taskToBeAdded)
+public static void addTask(Object obj)
 {
+	Task taskToBeAdded=(Task) obj; 
 	arrayList.add(taskToBeAdded);
 }
-public void removeTask(Task taskToBeRemoved)
+public static void removeTask(Task taskToBeRemoved)
 {
 	arrayList.remove(taskToBeRemoved);
 }
-public int getSize()
+public static int getSize()
 {
 	return arrayList.size();
 }
-public Task get(int index)
+public static Task get(int index)
 {
 return arrayList.get(index);
 }

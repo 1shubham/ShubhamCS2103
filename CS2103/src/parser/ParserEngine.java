@@ -33,13 +33,40 @@ public class ParserEngine {
 			System.out.println("An unexpected error occured for your input");
 		}
 		
-		parserObject.parseForSearch(inputString);
+		/*
+		System.out.println("1st march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("1nd march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("2nd march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("4th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("9st march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("9th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("3RD march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("1 march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("11th march: "+"11th march".matches(GENERAL_DATE_PATTERN));
+		System.out.println("19th DEC: "+"19th DEC".matches(GENERAL_DATE_PATTERN));
+		System.out.println("20th march 2012: "+"20th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("20st march 2012: "+"20st march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("21st march 2012: "+"21st march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("22nd march 2012: "+"22nd march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("23rd march 2012: "+"23rd march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("24th march 2012: "+"24th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("34th march 2012: "+"34th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("31th march 2012: "+"31th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("31st march 2012: "+"31st march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("30th march 2012: "+"30th march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("30 march 2012: "+"30 march 2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("30/march/2012: "+"30/march/2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("30th-march-2012: "+"30th-march-2012".matches(GENERAL_DATE_PATTERN));
+		System.out.println("on monday: "+"on monday".matches(GENERAL_DATE_PATTERN));
+		System.out.println("on next monday: "+"on next monday".matches(GENERAL_DATE_PATTERN));
+		System.out.println("next monday: "+"next monday".matches(GENERAL_DATE_PATTERN));
+		System.out.println("next SUN: "+"next SUN".matches(GENERAL_DATE_PATTERN));
+		System.out.println("SUN: "+"SUN".matches(GENERAL_DATE_PATTERN));
 		*/
 		
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd("project deadline by saturday @work");
-		
-		parserObject.parseForSearch("by sat");
+		parserObject.parseForAdd("meeting by 4pm @work @play");
+		//parserObject.parseForSearch("by sat");
 		
 		/*
 		AtomicReference<String> inputRef = new AtomicReference(inputString);

@@ -24,84 +24,39 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import logic.JIDLogic;
+
 public class UIController {
-	static MainJFrame mainJFrame = new MainJFrame();
+	static MainJFrame mainJFrame;
 	Reminder reminder;
-	static SystemTray tray = SystemTray.getSystemTray();
-	
+	static JotItDownTray JIDtray;
 	
 	public UIController() {
-		initializeTray();
-		Reminder reminder = new Reminder(tray);
+		TopPopUp.createTopPopUp();
+		mainJFrame = new MainJFrame();
+		
+		Timer timer = new Timer(100, new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+				JIDtray = new JotItDownTray(mainJFrame);
+				Reminder reminder = new Reminder(JIDtray.getTray());
+			}
+		});
+		timer.setRepeats(false);
+		timer.start();
 	}
 	
 	
 	public static void main(String[] args) {
 		//MainJFrame mainJFrame = new MainJFrame();
+		JIDLogic.JIDLogic_init();
+		
 		new UIController();
 		//initializeTray();
 		//Reminder reminder = new Reminder(tray);
-	}
-
-
-	private static void initializeTray() {
-		// TODO Auto-generated method stub
-		tray = SystemTray.getSystemTray();
-		Image img = Resource.trayImage;
-		//Image img = Toolkit.getDefaultToolkit().getImage( "D:\\JAVAworkspace2\\GUITemp\\bin\\gui\\trayLogo.png");
-		
-		
-		PopupMenu popup = new PopupMenu();
-		
-		MenuItem mItem1 = new MenuItem("Exit");
-		mItem1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.exit(0);
-				
-			}
-		});	
-		
-		MenuItem mItem2 = new MenuItem("Add from clipboard");
-		mItem2.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub]
-				String input = getClipboard();
-				if(!mainJFrame.isVisible())
-					mainJFrame.showFrame();
-				mainJFrame.setInputText("add "+input);
-			}
-		});
-		
-		
-		popup.add(mItem2);
-		popup.add(mItem1);
-		
-		TrayIcon trayIcon = new TrayIcon(img, "Tray Demo", popup);
-		try {
-			tray.add(trayIcon);
-		} catch (AWTException e) {
-			System.err.println("Problem loading Tray icon");
-		}
-		
-		trayIcon.addMouseListener(new MouseAdapter(){
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				//mainJFrame.setVisible(true);
-			    SwingUtilities.invokeLater(
-	    	       new Runnable() {
-					@Override
-					public void run() {
-						if(!mainJFrame.isVisible()) {
-							mainJFrame.showFrame();
-						}
-		   			}
-	    	       });
-			}
-		});
 	}
 	
 	public static String getClipboard() {
@@ -118,4 +73,27 @@ public class UIController {
 	    return null;
 	}
 	
+	public static void showTopPopUpMsg(String str) {
+		mainJFrame.showPopup(str);
+	}
+	
+	public static void showTrayMsg(String caption, String text) {
+		JIDtray.showText(caption, text);
+	}
+	
+	public static void refresh() {
+		ExpandJPanel.updateJTable();
+	}
+	
+	public static boolean isFrameExpand() {
+		return mainJFrame.isExpand();
+	}
+	
+	public static void expandFrame() {
+		mainJFrame.expandFrame();
+	}
+	
+	public static void contractFrame() {
+		mainJFrame.contractFrame();
+	}
 }

@@ -1,73 +1,36 @@
 package gui;
 
 import java.awt.Component;
-import java.util.ArrayList;
+
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.SwingWorker;
+
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 import logic.JIDLogic;
 
-import data.DateTime;
+
 import data.Task;
-import data.TaskHashMap;
+
 
 public class AutoUpdateJTable {
 	private JTable jTable;
 	private DefaultTableModel model;
     private Vector<String> listLabel = new Vector<String>();
+    private Task[] tasks;
 	
 	AutoUpdateJTable(final JTable jTable){
 		this.jTable = jTable;
 		model = (DefaultTableModel) this.jTable.getModel();
 		updateJTable();
-		/*
-		SwingWorker<JTable, Void> worker = new SwingWorker<JTable, Void>() {
 
-			@Override
-			protected JTable doInBackground() throws Exception {
-				// TODO Auto-generated method stub
-				System.out.println("enter swing");
-				Timer timer = new Timer(2000, new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						// TODO Auto-generated method stub
-						//updateJTable();
-						makeJLabel(new Task());
-						setAppearance();
-						System.out.println(listLabel.get(0).toString());
-					}
-					
-				});
-				timer.start();
-				timer.setRepeats(true);
-				return null;
-			}
-		};
-		*/
-
-		/*
-		Timer timer = new Timer(2000, new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				//updateJTable();
-				//System.out.println(listLabel.get(0).toString());
-			}
-		});
-		timer.start();
-		timer.setRepeats(true);
-		*/
-		
 	}
 	
 	private void setAppearance() {
@@ -83,27 +46,45 @@ public class AutoUpdateJTable {
 
     private void makeJLabel(Task task) {
     	String str;
+    	String completedFont = "<font color = \"#BBBBBB\">";
     	
     	str = "<HTML><b>";
-    	if(task.getImportant()) {
+    	if(task.getCompleted()) {
+    		str+=completedFont;
+    		System.out.println("completed task");
+    	}
+    	else if(task.getImportant()) {
     		str += "<font color=\"red\">";
     	}
     	str += task.getName();
     	str += "<br/></b>";
-    	if(task.getDescription()!= null)
-    		str+=task.getDescription();
-    	if(task.getStartDateTime()!= null) {
-    		str+="<br/><i>start: </i>"+task.getStartDateTime().presentableToString();
+    	str += tagToCode(task);
+    	if(task.getCompleted())
+    		str+=completedFont;
+    	if(task.getStart()!= null) {
+    		str+="<br/><i>start: </i>"+task.getStart().presentableToString();
     	}
-    	if(task.getEndDateTime()!=null) {
-    		str+="<i> end: </i>"+task.getEndDateTime().presentableToString();
+    	if(task.getEnd()!=null) {
+    		str+="<i>                  end: </i>"+task.getEnd().presentableToString();
     	}
     	str += "</HTML>";
     	
     	listLabel.add(str);
     }
     
-    private void makeAllJLabel(Task[] tasks) {
+    private String tagToCode(Task task) {
+    	String str = new String();
+    	if(task.getLabels()!=null)
+	    	for(int i=0; i<task.getLabels().size() && task.getLabels().get(i)!=null; i++) {
+	    		str += "<FONT style=\"BACKGROUND-COLOR: #FFFFCC\">"
+	    			+ task.getLabels().get(i)
+	    			+ "</FONT> ";
+	    		System.out.println(i + task.getLabels().get(i));
+	    	}
+		return str;
+	}
+
+	private void makeAllJLabel(Task[] tasks) {
     	
     	for(int i=0; i<tasks.length; i++) {
     		makeJLabel(tasks[i]);
@@ -120,7 +101,7 @@ public class AutoUpdateJTable {
 				// TODO Auto-generated method stub
 		    	listLabel = new Vector<String>();
 		    	JIDLogic.setCommand("find");
-		    	Task[] tasks = JIDLogic.executeCommand("find *.*");
+		    	tasks = JIDLogic.executeCommand("find *.*");
 		    	makeAllJLabel(tasks);
 		    	setAppearance();
 		    	}
@@ -158,7 +139,30 @@ public class AutoUpdateJTable {
     	                                                 boolean isSelected, boolean hasFocus, 
     	                                                 int row, int column) {
     		JLabel label = new JLabel(value.toString());
+    		if(isSelected){
+    			label.setBackground(table.getSelectionBackground());
+    			label.setForeground(table.getSelectionForeground());
+    		}
+    		else {
+    			label.setBackground(table.getBackground());
+    			label.setForeground(table.getForeground());
+    		}
+    		label.setOpaque(true);
     		return label;   
     	  }
+    }
+    	  
+    public Task[] getTasks() {
+    	return tasks;
+    }
+    	  
+    class MyDefaultTableModel extends DefaultTableModel {  
+    	public MyDefaultTableModel() {  
+    		super();  
+    	}  
+    		  
+    	public boolean isCellEditable(int row, int col) {  
+    		return false;  
+    	}    
     }
 }

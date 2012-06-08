@@ -34,6 +34,7 @@ public class Modify extends BaseSearch{
 			if(isEdited)
 			{
 				isUndoAble=true;
+				
 				oldTask=taskBeingEdited;
 				newTask=taskToBeEdited;
 				taskBeingEdited=null;
@@ -65,7 +66,7 @@ public class Modify extends BaseSearch{
 	@Override
 	public boolean isUndoAble() {
 		// TODO Auto-generated method stub
-		return false;
+		return isUndoAble;
 	}
 
 	@Override
@@ -108,10 +109,18 @@ public class Modify extends BaseSearch{
 		// TODO Auto-generated method stub
 		
 		Parser newParser=new Parser();
-		return newParser.parse(userCommand);
+		return newParser.parseForSearch(userCommand);
 		
 	}
 	
+	public Task[] redo(){
+		Task[] redoneArray = new Task[1];
+		if (modify(oldTask, newTask)) {
+			redoneArray[0] = newTask;
+			return redoneArray;
+		}
+		return null;
+	}
 
 
 }

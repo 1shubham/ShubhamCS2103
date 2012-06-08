@@ -19,7 +19,7 @@ public class TimeParser {
 	
 	
 	private static final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; 
-	private static final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]?([0-5][0-9])";
+	private static final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]([0-5][0-9])([ ]?(?i)(hours|hour|hrs|hr))?";
 	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";
 	
 	public TimeParser( ) {

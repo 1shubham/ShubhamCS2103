@@ -12,16 +12,20 @@ public class Add extends Operation {
 	
 	private Task addedTask;
 	private String commandName;
+//	private enum addErrorCode
+	
 	public Add (String command)
 	{
 		commandName=command;
 		
 	}
+	
 	public Add()
 	{
 		commandName="add";
 		
 	}
+	
 	public Task[] execute (String userCommand)
 	{
 		String params=null;
@@ -33,6 +37,7 @@ public class Add extends Operation {
 			if (isAdded) {
 				isUndoAble = true;
 				Task[] resultOfAdd = new Task[1];
+				addedTask=newTask;
 				resultOfAdd[0] = newTask;
 				return resultOfAdd;
 			} else {
@@ -43,10 +48,11 @@ public class Add extends Operation {
 			return null;
 		
 	}
+	
 	private Task parseCommand(String params) {
 		// TODO Auto-generated method stub
 		Parser newParser=new Parser();
-		return newParser.parse(params);
+		return newParser.parseForAdd(params);
 		
 	}
 	@Override
@@ -60,13 +66,34 @@ public class Add extends Operation {
 		// TODO Auto-generated method stub
 		Task[] undone = new Task[1];
 		Delete deleteObj = new Delete();
+		logger.debug("task to be deleted name:"+addedTask.getName());
 		if (deleteObj.delete(addedTask)) {
+			logger.debug("Task deleted");
 			undone[0] = addedTask;
 			return undone;
+		
 		}
+		logger.debug("Task not deleted");
 		return null;
 		
+		
 	}
+	
+	public Task[] redo() {
+		
+		Task[] redone = new Task[1];
+		
+		logger.debug("task to be added name:"+addedTask.getName());
+		if (add(addedTask)) {
+			logger.debug("Task added");
+			redone[0] = addedTask;
+			return redone;
+		
+		}
+		logger.debug("Task not added");
+		return null;
+	}
+	
 
 	@Override
 	public boolean isUndoAble() {
@@ -96,7 +123,8 @@ private static Logger logger = Logger.getLogger(Add.class);
     	if (abc[0]!=null)
     	System.out.println(abc[0].getName());
     }
-	public boolean add(Task taskAdded) {
+	
+    public boolean add(Task taskAdded) {
 		// TODO Auto-generated method stub
 		if (taskAdded!=null)
 		{

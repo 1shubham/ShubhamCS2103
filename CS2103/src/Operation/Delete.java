@@ -39,6 +39,7 @@ public class Delete extends BaseSearch {
 		boolean deleted = delete(taskToDelete);
 		if (deleted) {
 			isUndoAble = true;
+			logger.debug("isUndoAble value changed" );
 			taskDeleted = taskToDelete;
 			Task[] resultOfDelete = new Task[1];
 			resultOfDelete[0] = taskToDelete;
@@ -84,6 +85,22 @@ public class Delete extends BaseSearch {
 		// TODO Auto-generated method stub
 		return commandName;
 	}
+	
+	public Task[] redo() {
+		// TODO Auto-generated method stub
+		Task[] undone = new Task[1];
+		
+		logger.debug("task to be deleted name:"+taskDeleted.getName());
+		if (delete(taskDeleted)) {
+			logger.debug("Task deleted");
+			undone[0] = taskDeleted;
+			return undone;
+		
+		}
+		logger.debug("Task not deleted");
+		return null;
+	}
+
 
 	
 	
