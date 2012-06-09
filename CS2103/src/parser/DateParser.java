@@ -5,10 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import logic.JIDLogic;
-
 import org.apache.log4j.Logger;
 
-import org.apache.log4j.Logger;
 
 public class DateParser {
 	private Logger logger=Logger.getLogger(JIDLogic.class);
@@ -17,7 +15,7 @@ public class DateParser {
 	private Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher;
 	
 	private int startDay, startMonth, startYear;
-	private int endDay=-1, endMonth=-1, endYear;
+	private int endDay, endMonth, endYear;
 	private int dummyDay, dummyMonth, dummyYear;
 	
 	private static final String TH ="((?i)(th)?)";
@@ -42,39 +40,11 @@ public class DateParser {
 			+ MONTH_IN_DIGIT_DATE_WITHOUT_YEAR + ")|("
 			+ MONTH_IN_TEXT_DATE_WITHOUT_YEAR + ")|(" + TODAY_TMR_WEEKDAY + "))";
 	
-	private void resetDummyDate() {
-		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
-	}
-	
-	public int[] getStartDate() {
-		int[] startDateArr = {-1,-1,-1};
-		
-		if (startDay>0 && startMonth>0 && startYear>0) {
-			startDateArr[0] =startDay;
-			startDateArr[1] =startMonth;
-			startDateArr[2] =startYear;
-		}
-		
-		return startDateArr;
-	}
-	
-	public int[] getEndDate() {
-		int[] endDateArr = {-1,-1,-1};
-		
-		if (endDay>0 && endMonth>0 && endYear>0) {
-			endDateArr[0] =endDay;
-			endDateArr[1] =endMonth;
-			endDateArr[2] =endYear;
-		}
-		
-		return endDateArr;
-	}
-	
+	/**
+	 * 
+	 */
 	public DateParser() {
 		
-		/*
-		 * assign more meaningful names to these patterns
-		 */
 		pattern1 = Pattern.compile(MONTH_IN_DIGIT_DATE_WITH_YEAR);
 		pattern2 = Pattern.compile(MONTH_IN_TEXT_DATE_WITH_YEAR);
 		pattern3 = Pattern.compile(MONTH_IN_DIGIT_DATE_WITHOUT_YEAR);
@@ -87,7 +57,46 @@ public class DateParser {
 		endDay=-1; endMonth=-1; endYear=-1;
 		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
 	}
-
+	/**
+	 * 
+	 */
+	private void resetDummyDate() {
+		dummyDay=-1; dummyMonth=-1; dummyYear=-1;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public int[] getStartDate() {
+		int[] startDateArr = {-1,-1,-1};
+		
+		if (startDay>0 && startMonth>0 && startYear>0) {
+			startDateArr[0] =startDay;
+			startDateArr[1] =startMonth;
+			startDateArr[2] =startYear;
+		}
+		
+		return startDateArr;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public int[] getEndDate() {
+		int[] endDateArr = {-1,-1,-1};
+		
+		if (endDay>0 && endMonth>0 && endYear>0) {
+			endDateArr[0] =endDay;
+			endDateArr[1] =endMonth;
+			endDateArr[2] =endYear;
+		}
+		
+		return endDateArr;
+	}
+	/**
+	 * 
+	 * @return
+	 */
 	public static String getGeneralPattern() {
 		return GENERAL_DATE_PATTERN;
 	}
@@ -128,6 +137,11 @@ public class DateParser {
 			logger.debug("no attributes exist!");
 	}
 	*/
+	/**
+	 * 
+	 * @param startD
+	 * @return
+	 */
 	public boolean setStartDate(String startD) {
 		if (startD==null)
 			return false;
@@ -149,7 +163,11 @@ public class DateParser {
 		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param endD
+	 * @return
+	 */
 	public boolean setEndDate(String endD) {
 		if (endD==null)
 			return false;
@@ -171,12 +189,20 @@ public class DateParser {
 		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	public boolean isValidGeneral(final String date) {
 		matcher = pattern.matcher(date);
 		return matcher.matches();
 	}
-
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	private boolean setMonthInDigitWithYear(final String date) {
 		
 		matcher1 = pattern1.matcher(date);
@@ -199,7 +225,11 @@ public class DateParser {
 		}
 		return false;
 	}
-
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	private boolean setMonthInTextWithYear(final String date) {
 		final String JAN = "(?i)(Jan|January)";
 		final String FEB = "(?i)(Feb|February)";
@@ -259,7 +289,11 @@ public class DateParser {
 
 		return false;
 	}
-
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	private boolean setMonthInDigitWithoutYear(final String date) {
 		matcher3 = pattern3.matcher(date);
 		
@@ -279,7 +313,11 @@ public class DateParser {
 
 		return false;
 	}
-
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
 	private boolean setMonthInTextWithoutYear(final String date) {
 		final String JAN = "(?i)(Jan|January)";
 		final String FEB = "(?i)(Feb|February)";
@@ -337,8 +375,11 @@ public class DateParser {
 		
 		return false;
 	}
-	
-	// inferAndSetDate() also, include condition in setStartDate, setEndDate
+	/**
+	 * 
+	 * @param s
+	 * @return
+	 */
 	private boolean setByWeekday (final String s) {
 		final String MON = "(?i)(mon|monday)";
 		final String TUE = "(?i)(tue|tuesday)";
@@ -405,7 +446,12 @@ public class DateParser {
 		return false;
 		
 	}
-	
+	/**
+	 * 
+	 * @param dayInt
+	 * @param monthInt
+	 * @return
+	 */
 	private boolean setDummyDate (int dayInt, int monthInt) {
 		GregorianCalendar calen = new GregorianCalendar();
 		int currMonth = calen.get(GregorianCalendar.MONTH) + 1;
@@ -429,7 +475,7 @@ public class DateParser {
 		// ----ATTENTION!------add the correct definition of leap year!!!
 		// -----current=julian calender-----
 		else if (monthInt == 2) { // leap year testing
-			if (yearInt % 4 == 0) {
+			if (yearInt%4==0) {
 				if (dayInt == 30 || dayInt == 31)
 					return false;
 			} 
@@ -445,7 +491,13 @@ public class DateParser {
 		
 		return true;
 	}
-	
+	/**
+	 * 
+	 * @param dayInt
+	 * @param monthInt
+	 * @param yearInt
+	 * @return
+	 */
 	private boolean setDummyDate (int dayInt, int monthInt, int yearInt) {
 		if (dayInt == 31 && ((monthInt == 4) || (monthInt == 6) || (monthInt == 9) || (monthInt == 11)))
 			return false; // only 1,3,5,7,8,10,12 has 31 days
@@ -468,12 +520,14 @@ public class DateParser {
 		dummyYear=yearInt;
 		return true;
 	}
-	
+	/**
+	 * 
+	 * @param c
+	 */
 	private void setDummyDate (GregorianCalendar c) {
 		dummyDay = c.get(GregorianCalendar.DATE);
 		dummyMonth = c.get(GregorianCalendar.MONTH) + 1 ;
 		dummyYear = c.get(GregorianCalendar.YEAR);
-		
 
 		logger.debug("dummyDay:"+dummyDay);
 		logger.debug("dummyMonth:"+dummyMonth);

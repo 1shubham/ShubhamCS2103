@@ -4,16 +4,15 @@ import data.Task;
 import data.TaskDateTime;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import logic.JIDLogic;
 import org.apache.log4j.Logger;
 
 public class Parser {
+	
 	private final String DONT_PARSE = "(\'(\\s?\\w+\\s?)*\')";
-	private final String RECUR_REGEX = "((?i)(weekly|monthly|yearly))(-(\\d+)([ ]times)?)?";
+	private final String RECUR_REGEX = "((?i)(weekly|monthly|yearly))[ ]?(-[ ]?(\\d+)[ ]?(times)?)?";
 	private final String LABEL_REGEX = "@(\\w+)";
 	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
 	private String FROM_TIME_DATE_TO_TIME_DATE;
@@ -30,11 +29,15 @@ public class Parser {
 	private String AT_TIME;
 	private String BY_TIME;
 	private String BY_DATE;
-
+	private String FROM_DATE_TIME_TO_DATE;
+	private String FROM_DATE_TO_DATE_TIME;
+	private String FROM_TIME_DATE_TO_TIME;
+	
 	private boolean important;
 	private boolean deadline;
 	private TaskDateTime startDateTime, endDateTime;
 	private String recurring;
+	private int recurringTimes;
 	private ArrayList<String> labelList;
 	private String taskDetails;
 	
@@ -43,10 +46,12 @@ public class Parser {
 	
 	private Logger logger=Logger.getLogger(JIDLogic.class);
 	
-	
+	/**
+	 * Default constructor
+	 */
 	public Parser () {
 	}
-	/**
+	/**Common Attributes Initializer
 	 * 
 	 * @param inputCommand
 	 */
@@ -55,6 +60,7 @@ public class Parser {
 		deadline=false;
 		startDateTime=null; endDateTime=null;
 		recurring = null;
+		recurringTimes = -1;
 		labelList = null;
 		taskDetails=null;
 		
@@ -64,9 +70,13 @@ public class Parser {
 		command = command.trim();
 		command = removeExtraSpaces (command);	
 	}
+	/**Initializes REGEX strings for Add function
+	 * 
+	 * @param inputCommand
+	 */
 	private void initForAdd(String inputCommand) {
 		initCommon(inputCommand);
-		//add spaces all before
+		
 		FROM_TIME_DATE_TO_TIME_DATE = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
 		FROM_DATE_TIME_TO_DATE_TIME = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
 		FROM_TIME_TO_TIME_DATE = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
@@ -81,7 +91,15 @@ public class Parser {
 		AT_TIME = "([ ]((?i)(at)))[ ]("+TimeParser.getGeneralPattern()+")";
 		BY_TIME = "([ ]((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")";
 		BY_DATE = "([ ]((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_DATE = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TO_DATE_TIME = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_DATE_TO_TIME = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		
 	}
+	/**Initializes REGEX strings for Search function
+	 * 
+	 * @param inputCommand
+	 */
 	private void initForSearch(String inputCommand) {
 		initCommon(inputCommand);
 		
@@ -99,67 +117,65 @@ public class Parser {
 		AT_TIME = "(((?i)(at))[ ])("+TimeParser.getGeneralPattern()+")";
 		BY_TIME = "(((?i)(by)))[ ]("+TimeParser.getGeneralPattern()+")";
 		BY_DATE = "(((?i)(by)))[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TIME_TO_DATE = "(((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")";
+		FROM_DATE_TO_DATE_TIME = "(((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
+		FROM_TIME_DATE_TO_TIME = "(((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
 	}
-	/**
+	/**Removes extra spaces in the input command
 	 * 
-	 * @param s
-	 * @return
+	 * @param String s
+	 * @return updated s
 	 */
-	public String removeExtraSpaces (String s) {
+	private String removeExtraSpaces (String s) {
 		return s.replaceAll("\\s+", " ");
 	}
-	/**
-	 * 
+	/**Sets the boolean Important variable to be TRUE if important
 	 */
-	public void setImportant () {
+	private void setImportant () {
 		if (command.startsWith("*")){
 			command = command.replace('*', '\0');
-			//s = s.trim();
 			important = true;
 		}
-		//return s;
 	}
-	/**
-	 * 
+	/**Extracts the recurring string and how many times to repeat
 	 */
-	public void extractRecurString () {
-		Pattern p = Pattern.compile(RECUR_REGEX);
-		Matcher m = p.matcher(command);
+	private void extractRecur () {
+		Matcher m = Pattern.compile(RECUR_REGEX).matcher(command);
 		
 		if (m.find()) {
 			recurring = m.group(2);
 			recurring = recurring.toLowerCase();
-			command = command.replaceFirst(RECUR_REGEX, "");
+			
+			if (m.group(4)!=null)
+				recurringTimes = Integer.parseInt(m.group(4)); //impose a limit to the number of times he/she wants to repeat things
+			
+			logger.debug(recurringTimes);
+			
+			command = command.replaceFirst(m.group(), "");
 			command = removeExtraSpaces(command);
 			command = command.trim();
 		}
-		//return s;
 	}
-	/**
-	 * 
-	 * @return
+	/**Extracts the labels, if any, and sets them
 	 */
-	public void setLabels() {
+	private void setLabels() {
 		Pattern p = Pattern.compile(LABEL_REGEX);
 		Matcher m = p.matcher(command);
 		String labelString = null;
-	
 		
 		while(m.find()) {
 				labelString = m.group();
-				labelString = labelString.replace('@',' ');//why not replace by null?
+				labelString = labelString.replace('@','\0');
 				labelString = labelString.trim();
 				labelList.add(labelString);
-				
-		}
-		
+		}	
 	}
-	/**
+	/**Sets the DateTime attributes
 	 * 
-	 * @param t
-	 * @param d
+	 * @param TimeParser Obj
+	 * @param DateParser Obj
 	 */
-	public void setDateTimeAttributes (TimeParser t, DateParser d) {
+	private void setLocalDateTime (TimeParser t, DateParser d) {
 		
 		boolean startDateExists, endDateExists, startTimeExists, endTimeExists;
 		
@@ -195,49 +211,41 @@ public class Parser {
 			if (endTimeExists)
 				endDateTime = new TaskDateTime(endTimeArr[0],endTimeArr[1]);
 		
-		
-		/*
-		 * tester print functions
-		 */
-		
+		//for local testing
 		if (startDateTime!=null)
 			logger.debug("start date time: "+startDateTime.formattedToString());
 		
 		if(endDateTime!=null)
 			logger.debug("end date time: "+endDateTime.formattedToString());
 	}
-	/**
-	 * 
+	/**Sets the boolean deadline variable to TRUE if deadline should be set
 	 */
-	public void setDeadline () {
+	private void setDeadline () {
 		if (startDateTime==null && endDateTime!=null)
 			deadline=true;	
 	}
-	/**
+	/**Extracts and returns a single task id found in inputString
 	 * 
-	 * @param inputS
-	 * @return
+	 * @param String input
+	 * @return String id 
 	 */
 	public String fetchTaskId (String inputS) {
 		String id = null;
-		Pattern p = Pattern.compile(ID_REGEX);
-		Matcher m = p.matcher(inputS);
+		Matcher m = Pattern.compile(ID_REGEX).matcher(inputS);
 		
 		if(m.find())
 			id = m.group();
 		
 		return id;
 	}
-	/**
+	/**Extracts and returns an array of task ids found in inputString
 	 * 
-	 * @param inputS
-	 * @return
+	 * @param String input
+	 * @return String[] ids
 	 */
 	public String[] fetchTaskIds (String inputS) {
 		ArrayList<String> idList = new ArrayList<String>();
-		
-		Pattern p = Pattern.compile(ID_REGEX);
-		Matcher m = p.matcher(inputS);
+		Matcher m = Pattern.compile(ID_REGEX).matcher(inputS);
 		
 		while (m.find()) 
 			idList.add(m.group());
@@ -248,7 +256,12 @@ public class Parser {
 		String []ids = idList.toArray(new String[idList.size()]);
 		return ids;
 	}
-	
+	/**FOR ADD FUNCTION
+	 * creates a Task Obj based on local attributes to be returned to the Logic component
+	 * 
+	 * @param String userCommand
+	 * @return Task Obj
+	 */
 	public Task parseForSearch (String userCommand) {
 		
 		initForSearch(userCommand);
@@ -259,11 +272,16 @@ public class Parser {
 		
 		task = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);
 
-		logger.debug("task before returning: "+task.toString());
+		//logger.debug("task before returning: "+task.toString());
 		
 		return task;
 	}
-	
+	/**FOR SEARCH FUNCTIONS
+	 * creates a Task Obj based on local attributes to be returned to the Logic component
+	 * 
+	 * @param String userCommand
+	 * @return Task Obj
+	 */
 	public Task parseForAdd (String userCommand) {
 		
 		initForAdd(userCommand);
@@ -275,41 +293,13 @@ public class Parser {
 		if ((startDateTime!=null || endDateTime!=null) && !(taskDetails.isEmpty()))
 			task = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
 			
-		logger.debug("task before returning: "+task.toString());
+		//logger.debug("task before returning: "+task.toString());
 		
 		return task;
 	}
-	
-	/*
-	private boolean extractDateTimeForSearch (TimeParser timeParser, DateParser dateParser) {
-		final String DATE = "[ ]("+DateParser.getGeneralPattern()+")";
-		final String TIME = "[ ]("+TimeParser.getGeneralPattern()+")";
-		
-		Pattern pDate = Pattern.compile(DATE);
-		Pattern pTime = Pattern.compile(TIME);
-		
-		Matcher mDate = pDate.matcher(command);
-		Matcher mTime = pTime.matcher(command);
-		
-		String startTimeString=null, startDateString=null, endTimeString=null, endDateString=null;
-		command = removeExtraSpaces(command);
-		
-		if (command.matches(DateParser.getGeneralPattern())) {
-			
-		}
-		
-		else if (command.matches(TimeParser.getGeneralPattern())) {
-			
-		}
-		
-		
-		return false;
-	}
-*/
-	/**
+	/**Understands the user input and sets local attributes for Task Obj to be created
 	 * 
-	 * @param userCommand
-	 * @return
+	 * @param String userCommand
 	 */
 	private void parse (String userCommand) {
 		
@@ -321,11 +311,10 @@ public class Parser {
 		while (mDontParse.find()) {
 			dontParseStrings[currIndex] = mDontParse.group();
 			
-			logger.debug("current dont parse string: "+dontParseStrings[currIndex]);
+			logger.debug("current dont parse string extracted: "+dontParseStrings[currIndex]);
 			logger.debug("length of current dont parse string extracted: "+dontParseStrings[currIndex].length());
 			
-			tempReplaceStrings[currIndex] = "";
-			tempReplaceStrings[currIndex]= tempReplaceStrings[currIndex]+"\'";
+			tempReplaceStrings[currIndex]= "\'";
 			for (int j=2; j<dontParseStrings[currIndex].length(); j++) {
 				tempReplaceStrings[currIndex] = tempReplaceStrings[currIndex]+"%";
 			}
@@ -338,24 +327,19 @@ public class Parser {
 		
 			currIndex++;
 			
-			logger.debug("input now: "+command);
+			logger.debug("input now after extracting "+currIndex+"th dont parse string:" +command);
 		}
 		
 		setImportant();
 		
-		//recurring?
-		extractRecurString();
+		extractRecur();
 		
 		if (recurring != null)
 			logger.debug("this task is "+recurring);
 		else
 			logger.debug("this task is not recurring");
-		
 		logger.debug("left over string after checking for recurring: "+command);
 				
-		
-		 //setLabels: have to change this function, check notes
-		
 		labelList =new ArrayList<String>();
 		setLabels();
 		
@@ -364,12 +348,10 @@ public class Parser {
 			for(int i=0;i<labelList.size();i++){
 				logger.debug("label "+i+": "+labelList.get(i));
 				command = command.replaceFirst(LABEL_REGEX, "");
-				
 			}
 			logger.debug("left over string after fetching labels: "+command);
 		}
 		
-		//time and date extraction
 		TimeParser timeParser = new TimeParser();
 		DateParser dateParser = new DateParser();
 		
@@ -378,53 +360,27 @@ public class Parser {
 		else
 			logger.debug("time/date NOT extracted!");
 		
-		
-		
-		logger.debug("--------post extraction TESTING--------");
-		
-		
-		setDateTimeAttributes(timeParser, dateParser);
-
+		setLocalDateTime(timeParser, dateParser);
 		setDeadline();
 		
-		if(deadline)
-			logger.debug("this task has a deadline!");
-		else
-			logger.debug("this task does NOT have deadline!");
-		
-		if(important)
-			logger.debug("is important!");
-		else
-			logger.debug("is NOT important!");
-		
-		if(recurring!=null)
-			logger.debug("has to be done: "+recurring);
-		else
-			logger.debug("it is not recurring");
-		
-		//if (dontParseStrings!=null)
-		//	command = command.replaceFirst(tempReplace, dontParseStrings);
-		
-		
-		for (int k=0; k<currIndex; k++) // && dontParseStrings[currIndex]!=null) {
+		//restoring don't parse Strings
+		for (int k=0; k<currIndex; k++)
 			command = command.replaceFirst(tempReplaceStrings[k], dontParseStrings[k]);
-		
 		
 		taskDetails = command;
 		taskDetails = taskDetails.trim();
 		
-		logger.debug("task details: "+taskDetails);
-		
+		postExtractTest();
 	}
-	/**
+	/**Extracts date and time from the user input and sets the local DateTime Attributes
 	 * 
-	 * @param timeParser
-	 * @param dateParser
-	 * @return
+	 * @param timeParser Obj
+	 * @param dateParser Obj
+	 * @return TRUE/FALSE depending on whether DateTime attributes were set or not
 	 */
 	private boolean extractDateTime (TimeParser timeParser, DateParser dateParser) {
 		
-		//obsolete regexs:
+		//obsolete regex:
 		//final String TIME_DATE_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")"; 
 		//final String DATE_TIME_TO_DATE_TIME = "("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+DateParser.getGeneralPattern()+")[ ](((at)|(AT))[ ])?("+TimeParser.getGeneralPattern()+")"; 
 		//final String TIME_TO_TIME_DATE = "("+TimeParser.getGeneralPattern()+")[ ]((to)|(TO))[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")";
@@ -454,6 +410,10 @@ public class Parser {
 		Pattern pTimeForSearch = Pattern.compile(TimeParser.getGeneralPattern());
 		Pattern pDateForSearch = Pattern.compile(DateParser.getGeneralPattern());
 		
+		Pattern pFromTimeDateToTime = Pattern.compile(FROM_TIME_DATE_TO_TIME);
+		Pattern pFromDateTimeToDate = Pattern.compile(FROM_DATE_TIME_TO_DATE);
+		Pattern pFromDateToDateTime = Pattern.compile(FROM_DATE_TO_DATE_TIME);
+	
 		//obsolete patterns:
 		//Pattern pDateTimeToDateTime = Pattern.compile(DATE_TIME_TO_DATE_TIME);
 		//Pattern pDateTimeToTime = Pattern.compile(DATE_TIME_TO_TIME);
@@ -483,6 +443,10 @@ public class Parser {
 		Matcher mDateTime = pDateTime.matcher(command);
 		Matcher mByDateTime = pByDateTime.matcher(command);
 		Matcher mOnlyTime = pOnlyTime.matcher(command);
+		
+		Matcher mFromTimeDateToTime = pFromTimeDateToTime.matcher(command);
+		Matcher mFromDateTimeToDate = pFromDateTimeToDate.matcher(command);
+		Matcher mFromDateToDateTime = pFromDateToDateTime.matcher(command);
 		
 		//obsolete matchers:
 		//Matcher mDateTimeToDateTime = pDateTimeToDateTime.matcher(command);
@@ -630,6 +594,75 @@ public class Parser {
 			logger.debug("end date string: "+endDateString);
 			
 			command = mFromDateTimeToTime.replaceFirst("");
+			command = removeExtraSpaces(command);
+		}
+		
+		else if (mFromTimeDateToTime.find()) {
+			logger.debug("-----from_time_date_to_time format-------");
+			
+			for (int i=0; i<mFromTimeDateToTime.groupCount(); i++)
+				logger.debug("group "+i+": "+mFromTimeDateToTime.group(i));
+			
+			startTimeString = mFromTimeDateToTime.group(4);
+			startDateString = mFromTimeDateToTime.group(19);
+			endTimeString = mFromTimeDateToTime.group(101);
+			
+			startTimeString = startTimeString.trim();
+			endTimeString = endTimeString.trim();
+			startDateString = startDateString.trim();
+			
+			endDateString = startDateString;
+			
+			logger.debug("start time string: "+startTimeString);
+			logger.debug("end time string: "+endTimeString);
+			logger.debug("start date string: "+startDateString);
+			logger.debug("end date string: "+endDateString);
+			
+			command = mFromTimeDateToTime.replaceFirst("");
+			command = removeExtraSpaces(command);
+		}
+		
+		else if (mFromDateTimeToDate.find()) {
+			logger.debug("-----from_date_time_to_date format-------");
+			
+			for (int i=0; i<mFromDateTimeToDate.groupCount(); i++)
+				logger.debug("group "+i+": "+mFromDateTimeToDate.group(i));
+			
+			startTimeString = mFromDateTimeToDate.group(91);
+			startDateString = mFromDateTimeToDate.group(8);
+			endDateString = mFromDateTimeToDate.group(109);
+			
+			startTimeString = startTimeString.trim();
+			endDateString = endDateString.trim();
+			startDateString = startDateString.trim();
+			
+			logger.debug("start time string: "+startTimeString);
+			logger.debug("start date string: "+startDateString);
+			logger.debug("end date string: "+endDateString);
+			
+			command = mFromDateTimeToDate.replaceFirst("");
+			command = removeExtraSpaces(command);
+		}
+		
+		else if (mFromDateToDateTime.find()) {
+			logger.debug("-----from_date_to_date_time format-------");
+			
+			for (int i=0; i<mFromDateToDateTime.groupCount(); i++)
+				logger.debug("group "+i+": "+mFromDateToDateTime.group(i));
+			
+			endDateString = mFromDateToDateTime.group(94);
+			startDateString = mFromDateToDateTime.group(8);
+			endTimeString = mFromDateToDateTime.group(177);
+			
+			endDateString = endDateString.trim();
+			endTimeString = endTimeString.trim();
+			startDateString = startDateString.trim();
+			
+			logger.debug("end time string: "+endTimeString);
+			logger.debug("start date string: "+startDateString);
+			logger.debug("end date string: "+endDateString);
+			
+			command = mFromDateToDateTime.replaceFirst("");
 			command = removeExtraSpaces(command);
 		}
 		/*
@@ -845,8 +878,11 @@ public class Parser {
 		else if (mTimeDate.find()) {
 			logger.debug("-----time date only format-------");
 			
+			for (int i=0; i<mTimeDate.groupCount(); i++)
+				logger.debug("group "+i+": "+mTimeDate.group(i));
+			
 			startTimeString = mTimeDate.group(1);
-			startDateString = mTimeDate.group(14);
+			startDateString = mTimeDate.group(16);
 			startTimeString = startTimeString.trim();
 			startDateString = startDateString.trim();
 			
@@ -984,6 +1020,28 @@ public class Parser {
 		
 		return true;
 	}
-
+	/**local tester function
+	 */
+	private void postExtractTest () {
+		
+		logger.debug("-------post extraction TESTING-------");
+		
+		if(deadline)
+			logger.debug("this task has a deadline!");
+		else
+			logger.debug("this task does NOT have deadline!");
+		
+		if(important)
+			logger.debug("is important!");
+		else
+			logger.debug("is NOT important!");
+		
+		if(recurring!=null)
+			logger.debug("has to be done: "+recurring);
+		else
+			logger.debug("it is not recurring");
+		
+		logger.debug("task details: "+taskDetails);
+	}
 }
 

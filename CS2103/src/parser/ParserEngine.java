@@ -12,7 +12,7 @@ public class ParserEngine {
 		String inputString = null;
 		BufferedReader reader;
 		reader = new BufferedReader(new InputStreamReader(System.in));
-		
+		/*
 		System.out.print("Input string:");
 		try {
 			inputString = reader.readLine();
@@ -20,9 +20,9 @@ public class ParserEngine {
 		catch(IOException ioe) {
 			System.out.println("An unexpected error occured for your input");
 		}
-
+		*/
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd(inputString);
+		parserObject.parseForAdd("nsdfdsaf dsfads 'sdfs ' ' sfs' from  on next saturday to on next monday at 23.00 hours @work @study");
 		
 		/*
 		System.out.print("Input string2:");

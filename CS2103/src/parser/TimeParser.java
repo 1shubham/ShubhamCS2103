@@ -4,10 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import logic.JIDLogic;
-
 import org.apache.log4j.Logger;
-//maybe a lot of its functions can be private
-
 
 public class TimeParser {
 	private Logger logger=Logger.getLogger(JIDLogic.class);
@@ -17,11 +14,13 @@ public class TimeParser {
 	private Pattern pattern12, pattern24;
 	private Matcher matcher12, matcher24;
 	
-	
 	private static final String TIME_12_PATTERN = "(1[012]|0?[1-9])([:.][0-5][0-9])?(\\s)?(?i)(am|pm)"; 
 	private static final String TIME_24_PATTERN = "(2[0-3]|[01]?[0-9])[:.]([0-5][0-9])([ ]?(?i)(hours|hour|hrs|hr))?";
 	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";
 	
+	/**
+	 * 
+	 */
 	public TimeParser( ) {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
@@ -30,11 +29,17 @@ public class TimeParser {
 		dummyHour = -1; dummyMin = -1;
 		
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public static String getGeneralPattern() {
 		return GENERAL_TIME_PATTERN;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int[] getStartTime() {
 		int[] startTimeArr = {-1,-1};
 		
@@ -45,7 +50,10 @@ public class TimeParser {
 		
 		return startTimeArr;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int[] getEndTime() {
 		int[] endTimeArr = {-1,-1};
 		
@@ -56,7 +64,9 @@ public class TimeParser {
 		
 		return endTimeArr;
 	}
-	
+	/**
+	 * 
+	 */
 	private void resetDummyTime() {
 		dummyHour = -1; dummyMin = -1;
 	}
@@ -87,6 +97,11 @@ public class TimeParser {
 		return s;
 	}
 	*/
+	/**
+	 * 
+	 * @param startT
+	 * @return
+	 */
 	public boolean setStartTime (String startT) {
 		if (startT != null) {
 			if (set12Hour(startT) || (set24Hour(startT))) {
@@ -107,7 +122,11 @@ public class TimeParser {
 		logger.debug("3rd return of setStartDate: false");
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param endT
+	 * @return
+	 */
 	public boolean setEndTime (String endT) {
 		if (endT != null) {
 			if (set12Hour(endT) || (set24Hour(endT))) {
@@ -128,12 +147,19 @@ public class TimeParser {
 		}
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param time
+	 * @return
+	 */
 	public boolean isValid(String time) {
-		//return isValid12Hour(time) || isValid24Hour(time);
 		return time.matches(GENERAL_TIME_PATTERN);
 	}
-	
+	/**
+	 * 
+	 * @param time
+	 * @return
+	 */
 	private boolean set12Hour (String time) {
 		matcher12 = pattern12.matcher(time);
 		final String AM_REGEX = "(?i)(am)";
@@ -194,7 +220,6 @@ public class TimeParser {
 						dummyMin = Integer.parseInt(min);
 
 						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 					else {
@@ -202,7 +227,6 @@ public class TimeParser {
 						dummyMin = Integer.parseInt(min);
 
 						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 				}
@@ -212,7 +236,6 @@ public class TimeParser {
 						dummyMin = 0;
 
 						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 					else {
@@ -220,7 +243,6 @@ public class TimeParser {
 						dummyMin = 0;
 
 						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 				}
@@ -232,7 +254,11 @@ public class TimeParser {
 		logger.debug("second false of set12hour");
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param time
+	 * @return
+	 */
 	private boolean set24Hour (String time) {
 		matcher24 = pattern24.matcher(time);
 		
