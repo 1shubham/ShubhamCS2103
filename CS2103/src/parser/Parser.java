@@ -1,5 +1,6 @@
 package parser;
 
+import constant.OperationFeedback;
 import data.Task;
 import data.TaskDateTime;
 
@@ -43,6 +44,7 @@ public class Parser {
 	
 	private Task task;
 	private String command;
+	private OperationFeedback error;
 	
 	private Logger logger=Logger.getLogger(JIDLogic.class);
 	
@@ -64,11 +66,13 @@ public class Parser {
 		labelList = null;
 		taskDetails=null;
 		
+		error=OperationFeedback.VALID;
 		task=null;
 		
 		command = inputCommand;
 		command = command.trim();
-		command = removeExtraSpaces (command);	
+		command = removeExtraSpaces (command);
+		
 	}
 	/**Initializes REGEX strings for Add function
 	 * 
@@ -120,6 +124,13 @@ public class Parser {
 		FROM_DATE_TIME_TO_DATE = "(((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")";
 		FROM_DATE_TO_DATE_TIME = "(((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
 		FROM_TIME_DATE_TO_TIME = "(((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+	}
+	/**
+	 * 
+	 * @param e
+	 */
+	private void setErrorCode (OperationFeedback e) {
+		error = e;
 	}
 	/**Removes extra spaces in the input command
 	 * 
@@ -369,6 +380,9 @@ public class Parser {
 		
 		taskDetails = command;
 		taskDetails = taskDetails.trim();
+		
+		if (taskDetails==null || taskDetails.isEmpty())
+			setErrorCode(OperationFeedback.INVALID_TASK_DETAILS);
 		
 		postExtractTest();
 	}
@@ -1003,20 +1017,28 @@ public class Parser {
 		
 		if (timeParser.setStartTime(startTimeString)) 
 			logger.debug("Start time is set!");
-		else
+		else {
 			logger.debug("Start time could NOT be set!");
+			setErrorCode (OperationFeedback.INVALID_TIME);
+		}
 		if (timeParser.setEndTime(endTimeString)) 
 			logger.debug("End time is set!");
-		else
+		else {
 			logger.debug("End time could NOT be set!");
+			setErrorCode (OperationFeedback.INVALID_TIME);
+		}
 		if (dateParser.setStartDate(startDateString)) 
 			logger.debug("Start date is set!");
-		else
+		else {
 			logger.debug("Start date could NOT be set!");
+			setErrorCode (OperationFeedback.INVALID_DATE);
+		}
 		if (dateParser.setEndDate(endDateString)) 
 			logger.debug("End date is set!");
-		else
+		else {
 			logger.debug("End date could NOT be set!");
+			setErrorCode (OperationFeedback.INVALID_DATE);
+		}
 		
 		return true;
 	}
