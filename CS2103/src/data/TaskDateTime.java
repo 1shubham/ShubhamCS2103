@@ -62,7 +62,7 @@ public TaskDateTime(long timeInMillis)
  */
 public TaskDateTime( int year, int month, int day)
 {
-	calendar = new GregorianCalendar(year, month-1, day);
+	calendar = new GregorianCalendar(year, month-1, day, 23, 59, 30);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = false;

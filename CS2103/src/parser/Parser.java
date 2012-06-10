@@ -15,7 +15,7 @@ public class Parser {
 	private final int RECUR_TIMES_CAP = 61;
 	private final int DEFAULT_RECUR_TIMES = 10;
 	private final String DONT_PARSE = "(\'(\\s?\\w+\\s?)*\')";
-	private final String RECUR_REGEX = "((?i)(weekly|monthly|yearly))[ ]?(-[ ]?(\\d+)[ ]?(times?)?)?";
+	private final String RECUR_REGEX = "((?i)(daily|weekly|monthly|yearly))[ ]?(-[ ]?(\\d+)[ ]?(times?)?)?";
 	private final String LABEL_REGEX = "@(\\w+)";
 	private final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
 	private String FROM_TIME_DATE_TO_TIME_DATE;
@@ -328,7 +328,7 @@ public class Parser {
 	 * @param String userCommand
 	 * @return Task Obj
 	 */
-	public Task[] parseForAdd (String userCommand) {
+	public Task parseForAdd (String userCommand) {
 		
 		initForAdd(userCommand);
 		
@@ -393,8 +393,8 @@ public class Parser {
 			logger.debug("taskArray is null!");
 		
 		//return only if error=valid?
-		//return new Task();
-		return taskArr;
+		return new Task();
+		//return taskArr;
 	}
 	private Task[] fetchTaskArray (int numRecurr) {
 		
@@ -415,7 +415,43 @@ public class Parser {
 		
 		if (recurring==null)
 			taskList.add(new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important));
-		
+		else if (recurring.matches("daily")) {
+			taskList.add(new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important));
+			
+			if(startDT!=null && endDT!=null) { //if both startDT and endDT exist
+				for (int i=0;i<numRecurr;i++) {
+					startDT.add(GregorianCalendar.DATE, 1);
+					endDT.add(GregorianCalendar.DATE, 1);
+					setLocalStartDateTime(startDT);
+					setLocalEndDateTime(endDT);
+	
+					taskList.add(new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important));	
+				}
+			}
+			else if(startDT==null && endDT!=null) { //if only endDT exist
+				for (int i=0;i<numRecurr;i++) {
+					endDT.add(GregorianCalendar.DATE, 1);
+					setLocalEndDateTime(endDT);
+	
+					taskList.add(new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important));	
+				}
+			}
+			else if(startDT!=null && endDT==null) { //if only startDT exist
+				for (int i=0;i<numRecurr;i++) {
+					startDT.add(GregorianCalendar.DATE, 1);
+					setLocalStartDateTime(startDT);
+					
+					//logger.debug("inside else if startDateTime value: "+startDateTime.formattedToString());
+					
+					taskList.add(new Task(taskDetails+i,"",startDateTime,endDateTime,labelList,recurring,deadline,important));
+				
+					//for (int k=0;k<taskList.size();k++){
+						//logger.debug("all task added: "+taskList.get(k).toString());
+					//}
+					
+				}
+			}
+		}
 		else if (recurring.matches("weekly")) {
 			//logger.debug("--------IF STATEMENT, recurring=weekly--------");
 			taskList.add(new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important));
