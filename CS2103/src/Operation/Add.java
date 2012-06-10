@@ -1,7 +1,12 @@
+/**
+ * @author Shubhendra Agrawal
+ */
 package operation;
 
 //import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+
+import constant.OperationFeedback;
 
 import parser.Parser;
 import storagecontroller.StorageManager;
@@ -13,19 +18,26 @@ public class Add extends Operation {
 	private Task addedTask;
 	private String commandName;
 //	private enum addErrorCode
-	
+	/**
+	 * Constructor
+	 * @param command
+	 */
 	public Add (String command)
 	{
 		commandName=command;
 		
 	}
-	
+	/**
+	 * Constructor
+	 */
 	public Add()
 	{
 		commandName="add";
 		
 	}
-	
+	/**
+	 * 
+	 */
 	public Task[] execute (String userCommand)
 	{
 		String params=null;
@@ -48,7 +60,11 @@ public class Add extends Operation {
 			return null;
 		
 	}
-	
+	/**
+	 * 
+	 * @param params
+	 * @return Task sent for parsing
+	 */
 	private Task parseCommand(String params) {
 		// TODO Auto-generated method stub
 		Parser newParser=new Parser();
@@ -56,12 +72,18 @@ public class Add extends Operation {
 		
 	}
 	@Override
+	/**
+	 * 
+	 */
 	public boolean isInputCorrect(String command) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * @return Task array of the task that needs to be deleted in order for this action to be undone
+	 */
 	public Task[] undo() {
 		// TODO Auto-generated method stub
 		Task[] undone = new Task[1];
@@ -78,7 +100,9 @@ public class Add extends Operation {
 		
 		
 	}
-	
+	/**
+	 * @return Task array of the Task that is added again for redone to be completed
+	 */
 	public Task[] redo() {
 		
 		Task[] redone = new Task[1];
@@ -96,18 +120,22 @@ public class Add extends Operation {
 	
 
 	@Override
+	/**
+	 * @return Whether add functionality can be redone or not
+	 * 
+	 */
 	public boolean isUndoAble() {
 		// TODO Auto-generated method stub
 		return isUndoAble;
 	}
 
-	@Override
-	public String getErrorMessage() {
-		// TODO Auto-generated method stub
-		return "Task could not be added.";
-	}
+	
 
 	@Override
+	/**
+	 * @return the Operation name of add operation
+	 * 
+	 */
 	public String getOperationName() {
 		// TODO Auto-generated method stub
 		return commandName;
@@ -115,15 +143,12 @@ public class Add extends Operation {
 	
 private static Logger logger = Logger.getLogger(Add.class);
     
-    public static void main(String[] args) {
-        logger.info("hi");
-    	Add adder=new Add();
-    	
-    	Task[] abc=adder.execute("add *go to meet nirav weekly by 3.45pm 3/8/2012  @work @home");
-    	if (abc[0]!=null)
-    	System.out.println(abc[0].getName());
-    }
-	
+    
+	/**
+	 * 
+	 * @param taskAdded
+	 * @return True/false depending on whether the task can be added
+	 */
     public boolean add(Task taskAdded) {
 		// TODO Auto-generated method stub
 		if (taskAdded!=null)
@@ -131,6 +156,15 @@ private static Logger logger = Logger.getLogger(Add.class);
 			return StorageManager.addTask(taskAdded);
 		}
 		return false;
+	}
+
+	@Override
+	/**
+	 * @return Various status messaged associated with adding of tasks
+	 */
+	public OperationFeedback getOpFeedback() {
+		// TODO Auto-generated method stub
+		return null;
 	}      
                
     

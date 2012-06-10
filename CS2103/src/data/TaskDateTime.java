@@ -7,7 +7,6 @@ import java.util.Date;
 //import java.util.Date;
 import java.util.GregorianCalendar;
 
-import operation.BaseSearch;
 
 import org.apache.log4j.Logger;
 public class TaskDateTime {
@@ -33,14 +32,14 @@ public class TaskDateTime {
 		ISO_DATE_TIME.setLenient(false);
 		ISO_DATE_TIME.setLenient(false);
 	}
-	private static Logger logger=Logger.getLogger(BaseSearch.class);
+	private static Logger logger=Logger.getLogger(TaskDateTime.class);
 
 /** default constructor
  * 
  */
 public TaskDateTime()
 {
-	calendar = new GregorianCalendar( 2000, 0, 1, 0, 0);
+	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,30);
 	calendar.setLenient(true);
 	timeMilli = calendar.getTimeInMillis();
 	hasTime = false;
@@ -51,7 +50,7 @@ public TaskDateTime()
  */
 public TaskDateTime(long timeInMillis)
 {
-	calendar = new GregorianCalendar( 2000, 0, 1, 0, 0);
+	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,30);
 	calendar.setTimeInMillis(timeInMillis);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
@@ -64,7 +63,7 @@ public TaskDateTime(long timeInMillis)
 public TaskDateTime( int year, int month, int day)
 {
 	calendar = new GregorianCalendar(year, month-1, day);
-	calendar.setLenient(false);
+	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = false;
 	hasDate = true;
@@ -78,6 +77,7 @@ public TaskDateTime(int hour,int minutes)
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = true;
+	hasDate=false;
 }
 /** constructor which sets both date and time 
  * 
@@ -134,8 +134,10 @@ public static TaskDateTime getCurrentDate()
  */
 public void set(int year,int month,int day)
 {
-	calendar.set(year, month-1, year);
+	calendar.set(year, month-1, day);
+	calendar.setLenient(true);
 	timeMilli = calendar.getTimeInMillis();
+	hasDate=true;
 }
 /** setter for the Date Time class
  * 
@@ -151,6 +153,7 @@ public void set(int year, int month, int day, int hours, int minutes, int second
 	calendar.set(year, month-1, day, hours, minutes, seconds);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = true;
+	hasDate=true;
 }
 /**setter for the DateTime class
  * 
@@ -165,6 +168,7 @@ public void set(int year, int month, int day, int hours, int minutes)
 	calendar.set(year, month-1, day, hours, minutes);
 	timeMilli = calendar.getTimeInMillis();
 	hasTime = true;
+	hasDate=true;
 }
 /** function to see if two objects are the same
  * 

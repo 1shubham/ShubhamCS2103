@@ -2,6 +2,8 @@ package operation;
 
 import org.apache.log4j.Logger;
 
+import constant.OperationFeedback;
+
 import storagecontroller.StorageManager;
 import data.Task;
 
@@ -75,11 +77,14 @@ public class ToggleCompleted extends BaseSearch{
 		return false;
 	}
 
-	@Override
-	public String getErrorMessage() {
+	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
-		return "Task could not be marked as completed/incomplete";
-	}
+		return null;
+	}      
+               
+    
+	
+	
 
 	@Override
 	public String getOperationName() {

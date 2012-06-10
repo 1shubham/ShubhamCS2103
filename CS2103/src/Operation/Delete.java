@@ -3,6 +3,8 @@ package operation;
 
 import org.apache.log4j.Logger;
 
+import constant.OperationFeedback;
+
 import storagecontroller.StorageManager;
 
 import data.Task;
@@ -73,12 +75,14 @@ public class Delete extends BaseSearch {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public String getErrorMessage() {
+	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
-		return "Task could not be deleted";
-	}
+		return null;
+	}      
+               
+    
+	
+	
 
 	@Override
 	public String getOperationName() {

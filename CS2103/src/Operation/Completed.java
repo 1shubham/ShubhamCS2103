@@ -76,12 +76,6 @@ public class Completed extends BaseSearch{
 	}
 
 	@Override
-	public String getErrorMessage() {
-		// TODO Auto-generated method stub
-		return "Task could not be marked as completed/incomplete";
-	}
-
-	@Override
 	public String getOperationName() {
 		// TODO Auto-generated method stub
 		return commandName;

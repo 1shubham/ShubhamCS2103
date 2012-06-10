@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 public class ParserEngine {
 	
-
 	public static void main (String args[]) {
 		
 		String inputString = null;
@@ -22,8 +21,20 @@ public class ParserEngine {
 		}
 		*/
 		Parser parserObject = new Parser();
-		//parserObject.parseForAdd("sdds 23.00 hours");
-		parserObject.parseForSearch("14 june @work");
+		parserObject.parseForAdd("meeting from 1:00 to 1:30 wed");
+		//parserObject.parseForSearch("14 june @work");
+		/*
+		ArrayList<Task> tArr = new ArrayList<Task>();
+		//Task tempTask = null;
+		for (int i=0; i<10; i++) {
+			//tempTask = new Task("dfgds this is no."+i+" haha","",null,null,null,null,false,false);
+			tArr.add(new Task("dfgds this is no."+i+" haha","",null,null,null,null,false,false));
+		}
+		
+		for (int j=0; j<10; j++) {
+			System.out.println("the current list element's details: "+tArr.get(j).getName());
+		}
+		*/
 		/*
 		System.out.print("Input string2:");
 		try {

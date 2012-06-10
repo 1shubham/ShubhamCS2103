@@ -1,6 +1,10 @@
+/**
+ * @author Shubhendra Agrawal
+ */
+
 package operation;
 
-import java.util.Scanner;
+import constant.OperationFeedback;
 
 import org.apache.log4j.Logger;
 
@@ -14,6 +18,11 @@ public abstract class Operation {
 	
 	protected boolean isUndoAble=false;
 	private static Logger logger=Logger.getLogger(Operation.class);
+	/**
+	 * used to instantiate the operation class that needs to be executed
+	 * @param userCommand
+	 * @return Operation that the user wants to carry out
+	 */
 	public static Operation getOperationObj(String userCommand)
 	{
 		Operation object;
@@ -31,7 +40,7 @@ public abstract class Operation {
 			object = new Delete(intendedOperation);
 		}
 		else if (intendedOperation.equals("modify") || intendedOperation.equals("update") || 
-				intendedOperation.equals("edit")) {
+				intendedOperation.equals("edit") || intendedOperation.equals("canceledit")) {
 			object =new Modify(intendedOperation);
 		}
 		else if (intendedOperation.equals("search") || intendedOperation.equals("find")){
@@ -49,6 +58,9 @@ public abstract class Operation {
 		else if (intendedOperation.equals("overdue")){
 			object= new Overdue(intendedOperation);
 		}
+		else if (intendedOperation.equals("login")){
+			object= new GoogleCalendarOp();
+		}
 		else
 		{
 			object=new Default();
@@ -59,28 +71,54 @@ public abstract class Operation {
 		return object; 
 	}
 	
-	
+	/**
+	 * 
+	 * @param userCommand
+	 * @return
+	 */
 	public abstract Task[] execute(String userCommand);
-	
+	/**
+	 * Function for undoing previous operation
+	 * @return Task that was undone
+	 */
 	public abstract Task[] undo();
-	
+	/**
+	 * Function for redoing previous operation
+	 * @return Task that was redone
+	 */
 	public abstract Task[] redo();
-	
+	/**
+	 * to carry out operation on individual task
+	 * @param taskToBeExecuted
+	 * @return Task that was successfully executed else null
+	 */
 	protected Task[] execute(Task taskToBeExecuted)
 	{
 		return null;
 		
 	}		
+	/**
+	 * 
+	 * @return Whether the operation in undoable
+	 */
 	public abstract boolean isUndoAble();
-	
+	/**
+	 * 
+	 * @param command
+	 * @return Return whether the input String is correct
+	 */
 	public abstract boolean isInputCorrect(String command);
-	public abstract String getErrorMessage();
-	
+	/**
+	 * Used to return the status of execution in operation
+	 * @return Status of operation
+	 */
+	public abstract OperationFeedback getOpFeedback();
+	/**
+	 * 
+	 * @return Operation name
+	 */
 	public abstract String getOperationName();
 	
-	/**
-	 * @param args
-	 */
-
+	
 
 }

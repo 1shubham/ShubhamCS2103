@@ -1,5 +1,6 @@
 package operation;
 
+import constant.OperationFeedback;
 import data.Task;
 
 public class Archive extends Operation{
@@ -36,11 +37,7 @@ public class Archive extends Operation{
 		return false;
 	}
 
-	@Override
-	public String getErrorMessage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public String getOperationName() {
@@ -56,6 +53,12 @@ public class Archive extends Operation{
 
 	@Override
 	public Task[] redo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
 		return null;
 	}
