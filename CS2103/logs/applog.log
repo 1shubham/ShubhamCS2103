@@ -2679,3 +2679,1798 @@
 2012-06-09 18:25:22,653 - logic.JIDLogic - DEBUG - it is not recurring
 2012-06-09 18:25:22,654 - logic.JIDLogic - DEBUG - task details: nsdfdsaf dsfads 'sdfs ' ' sfs'
 2012-06-09 18:25:22,654 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:22:23,548 - logic.JIDLogic - DEBUG - current dont parse string extracted: 'sdfs '
+2012-06-09 19:22:23,552 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 7
+2012-06-09 19:22:23,553 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%%'
+2012-06-09 19:22:23,553 - logic.JIDLogic - DEBUG - input now after extracting 1th dont parse string:nsdfdsaf dsfads '%%%%%' ' sfs' from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:22:23,557 - logic.JIDLogic - DEBUG - current dont parse string extracted: ' sfs'
+2012-06-09 19:22:23,557 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 6
+2012-06-09 19:22:23,557 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%'
+2012-06-09 19:22:23,558 - logic.JIDLogic - DEBUG - input now after extracting 2th dont parse string:nsdfdsaf dsfads '%%%%%' '%%%%' from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:22:23,559 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:22:23,559 - logic.JIDLogic - DEBUG - left over string after checking for recurring: nsdfdsaf dsfads '%%%%%' '%%%%' from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:22:23,559 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:22:23,560 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:22:23,560 - logic.JIDLogic - DEBUG - left over string after fetching labels: nsdfdsaf dsfads '%%%%%' '%%%%' from on next saturday to on next monday at 23.00 hours  
+2012-06-09 19:22:23,609 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:22:23,609 - logic.JIDLogic - DEBUG - group 0:  from on next saturday to on next monday at 23.00 hours
+2012-06-09 19:22:23,610 - logic.JIDLogic - DEBUG - group 1:  from
+2012-06-09 19:22:23,612 - logic.JIDLogic - DEBUG - group 2: from
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 3: from
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 4: on next saturday
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 5: on 
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 6: on
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 7: on
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 8: next saturday
+2012-06-09 19:22:23,613 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:22:23,614 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:22:23,615 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:22:23,616 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:22:23,616 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:22:23,616 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:22:23,616 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:22:23,617 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:22:23,617 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:22:23,617 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:22:23,617 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:22:23,617 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:22:23,618 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:22:23,618 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:22:23,618 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:22:23,618 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:22:23,618 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:22:23,619 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:22:23,620 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:22:23,621 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:22:23,622 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:22:23,623 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:22:23,624 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 77: next saturday
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:22:23,625 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:22:23,626 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:22:23,626 - logic.JIDLogic - DEBUG - group 82: next saturday
+2012-06-09 19:22:23,665 - logic.JIDLogic - DEBUG - group 83: next 
+2012-06-09 19:22:23,665 - logic.JIDLogic - DEBUG - group 84: next
+2012-06-09 19:22:23,665 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:22:23,665 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:22:23,665 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:22:23,666 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:22:23,667 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:22:23,667 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:22:23,667 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:22:23,667 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:22:23,667 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:22:23,668 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:22:23,669 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:22:23,670 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:22:23,671 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:22:23,672 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:22:23,673 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:22:23,673 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:22:23,677 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:22:23,677 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:22:23,677 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:22:23,678 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:22:23,678 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:22:23,678 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:22:23,678 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:22:23,678 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:22:23,679 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:22:23,680 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:22:23,681 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:22:23,682 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:22:23,683 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:22:23,684 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:22:23,684 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:22:23,690 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:22:23,691 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:22:23,691 - logic.JIDLogic - DEBUG - start date string: next saturday
+2012-06-09 19:22:23,691 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:22:23,691 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:22:23,692 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:22:23,692 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:22:23,692 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:22:23,693 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:22:23,693 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:22:23,693 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:22:23,693 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:22:23,694 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:22:23,694 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:22:23,694 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:22:23,694 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:22:23,694 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:22:23,717 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:22:23,717 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:22:23,718 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:22:23,718 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:22:23,719 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:22:23,719 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:22:23,719 - logic.JIDLogic - DEBUG - task details: nsdfdsaf dsfads 'sdfs ' ' sfs'
+2012-06-09 19:22:23,719 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:22:23,721 - logic.JIDLogic - DEBUG - task before returning: nsdfdsaf dsfads 'sdfs ' ' sfs' from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:22:23,721 - logic.JIDLogic - DEBUG - VALID
+2012-06-09 19:22:50,845 - logic.JIDLogic - DEBUG - current dont parse string extracted: 'sdfs '
+2012-06-09 19:22:50,849 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 7
+2012-06-09 19:22:50,850 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%%'
+2012-06-09 19:22:50,850 - logic.JIDLogic - DEBUG - input now after extracting 1th dont parse string:nsdfdsaf dsfads '%%%%%' ' sfs' from
+2012-06-09 19:22:50,853 - logic.JIDLogic - DEBUG - current dont parse string extracted: ' sfs'
+2012-06-09 19:22:50,854 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 6
+2012-06-09 19:22:50,854 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%'
+2012-06-09 19:22:50,854 - logic.JIDLogic - DEBUG - input now after extracting 2th dont parse string:nsdfdsaf dsfads '%%%%%' '%%%%' from
+2012-06-09 19:22:50,855 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:22:50,855 - logic.JIDLogic - DEBUG - left over string after checking for recurring: nsdfdsaf dsfads '%%%%%' '%%%%' from
+2012-06-09 19:22:50,899 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-09 19:22:50,899 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:22:50,900 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:22:50,900 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:22:50,900 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:22:50,900 - logic.JIDLogic - DEBUG - task details: nsdfdsaf dsfads 'sdfs ' ' sfs' from
+2012-06-09 19:22:50,903 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:23:21,745 - logic.JIDLogic - DEBUG - current dont parse string extracted: 'sdfs '
+2012-06-09 19:23:21,750 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 7
+2012-06-09 19:23:21,750 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%%'
+2012-06-09 19:23:21,750 - logic.JIDLogic - DEBUG - input now after extracting 1th dont parse string:nsdfdsaf dsfads '%%%%%' ' sfs' from
+2012-06-09 19:23:21,754 - logic.JIDLogic - DEBUG - current dont parse string extracted: ' sfs'
+2012-06-09 19:23:21,754 - logic.JIDLogic - DEBUG - length of current dont parse string extracted: 6
+2012-06-09 19:23:21,754 - logic.JIDLogic - DEBUG - current temp replacement string: '%%%%'
+2012-06-09 19:23:21,754 - logic.JIDLogic - DEBUG - input now after extracting 2th dont parse string:nsdfdsaf dsfads '%%%%%' '%%%%' from
+2012-06-09 19:23:21,755 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:23:21,756 - logic.JIDLogic - DEBUG - left over string after checking for recurring: nsdfdsaf dsfads '%%%%%' '%%%%' from
+2012-06-09 19:23:21,800 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-09 19:23:21,801 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:23:21,802 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:23:21,802 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:23:21,803 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:23:21,803 - logic.JIDLogic - DEBUG - task details: nsdfdsaf dsfads 'sdfs ' ' sfs' from
+2012-06-09 19:23:21,851 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:23:21,852 - logic.JIDLogic - DEBUG - any error?: INVALID_DATE_TIME
+2012-06-09 19:23:39,993 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:23:39,997 - logic.JIDLogic - DEBUG - left over string after checking for recurring: from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:23:39,998 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:23:39,998 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:23:40,001 - logic.JIDLogic - DEBUG - left over string after fetching labels: from on next saturday to on next monday at 23.00 hours  
+2012-06-09 19:23:40,047 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:23:40,048 - logic.JIDLogic - DEBUG - group 0:  on next saturday to on next monday at 23.00 hours
+2012-06-09 19:23:40,048 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:23:40,048 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:23:40,049 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:23:40,049 - logic.JIDLogic - DEBUG - group 4: on next saturday
+2012-06-09 19:23:40,049 - logic.JIDLogic - DEBUG - group 5: on 
+2012-06-09 19:23:40,050 - logic.JIDLogic - DEBUG - group 6: on
+2012-06-09 19:23:40,050 - logic.JIDLogic - DEBUG - group 7: on
+2012-06-09 19:23:40,050 - logic.JIDLogic - DEBUG - group 8: next saturday
+2012-06-09 19:23:40,051 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:23:40,053 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:23:40,054 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:23:40,054 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:23:40,054 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:23:40,054 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:23:40,055 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:23:40,055 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:23:40,055 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:23:40,056 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:23:40,056 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:23:40,056 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:23:40,056 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:23:40,057 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:23:40,057 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:23:40,057 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:23:40,057 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:23:40,057 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:23:40,058 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:23:40,058 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:23:40,058 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:23:40,058 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:23:40,059 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:23:40,059 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:23:40,059 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:23:40,059 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:23:40,059 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:23:40,060 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:23:40,060 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:23:40,060 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:23:40,061 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:23:40,061 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:23:40,061 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:23:40,061 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:23:40,061 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:23:40,062 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:23:40,062 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:23:40,062 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:23:40,062 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:23:40,063 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:23:40,063 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:23:40,063 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:23:40,063 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:23:40,063 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:23:40,064 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:23:40,064 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:23:40,064 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:23:40,064 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:23:40,065 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:23:40,065 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:23:40,065 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:23:40,065 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:23:40,065 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:23:40,066 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:23:40,066 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:23:40,066 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:23:40,066 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:23:40,067 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:23:40,067 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:23:40,067 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:23:40,067 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:23:40,067 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:23:40,068 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:23:40,068 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:23:40,068 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:23:40,069 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:23:40,069 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:23:40,069 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:23:40,069 - logic.JIDLogic - DEBUG - group 77: next saturday
+2012-06-09 19:23:40,070 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:23:40,070 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:23:40,070 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:23:40,071 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:23:40,071 - logic.JIDLogic - DEBUG - group 82: next saturday
+2012-06-09 19:23:40,071 - logic.JIDLogic - DEBUG - group 83: next 
+2012-06-09 19:23:40,071 - logic.JIDLogic - DEBUG - group 84: next
+2012-06-09 19:23:40,071 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:23:40,072 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:23:40,072 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:23:40,072 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:23:40,072 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:23:40,072 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:23:40,073 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:23:40,073 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:23:40,074 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:23:40,074 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:23:40,074 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:23:40,074 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:23:40,074 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:23:40,075 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:23:40,075 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:23:40,075 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:23:40,075 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:23:40,075 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:23:40,076 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:23:40,076 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:23:40,076 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:23:40,076 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:23:40,077 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:23:40,077 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:23:40,077 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:23:40,077 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:23:40,077 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:23:40,078 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:23:40,078 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:23:40,078 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:23:40,079 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:23:40,079 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:23:40,079 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:23:40,079 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:23:40,079 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:23:40,080 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:23:40,080 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:23:40,080 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:23:40,081 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:23:40,081 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:23:40,081 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:23:40,081 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:23:40,082 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:23:40,082 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:23:40,082 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:23:40,082 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:23:40,083 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:23:40,083 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:23:40,084 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:23:40,084 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:23:40,084 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:23:40,084 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:23:40,084 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:23:40,085 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:23:40,085 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:23:40,085 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:23:40,085 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:23:40,086 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:23:40,086 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:23:40,086 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:23:40,086 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:23:40,087 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:23:40,088 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:23:40,088 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:23:40,088 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:23:40,088 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:23:40,089 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:23:40,090 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:23:40,090 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:23:40,090 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:23:40,090 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:23:40,090 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:23:40,091 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:23:40,092 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:23:40,093 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:23:40,094 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:23:40,094 - logic.JIDLogic - DEBUG - start date string: next saturday
+2012-06-09 19:23:40,094 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:23:40,094 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:23:40,095 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:23:40,095 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:23:40,095 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:23:40,096 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:23:40,096 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:23:40,096 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:23:40,097 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:23:40,097 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:23:40,098 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:23:40,098 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:23:40,098 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:23:40,099 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:23:40,117 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:23:40,118 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:23:40,118 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:23:40,118 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:23:40,119 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:23:40,119 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:23:40,119 - logic.JIDLogic - DEBUG - task details: from
+2012-06-09 19:23:40,119 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:23:40,121 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:23:40,122 - logic.JIDLogic - DEBUG - task before returning: from from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:23:51,128 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:23:51,132 - logic.JIDLogic - DEBUG - left over string after checking for recurring: from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:23:51,133 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:23:51,133 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:23:51,137 - logic.JIDLogic - DEBUG - left over string after fetching labels: from on next saturday to on next monday at 23.00 hours  
+2012-06-09 19:23:51,195 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 0:  on next saturday to on next monday at 23.00 hours
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 4: on next saturday
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 5: on 
+2012-06-09 19:23:51,196 - logic.JIDLogic - DEBUG - group 6: on
+2012-06-09 19:23:51,197 - logic.JIDLogic - DEBUG - group 7: on
+2012-06-09 19:23:51,197 - logic.JIDLogic - DEBUG - group 8: next saturday
+2012-06-09 19:23:51,197 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:23:51,200 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:23:51,200 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:23:51,200 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:23:51,201 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:23:51,202 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:23:51,203 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:23:51,204 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:23:51,205 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:23:51,205 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:23:51,205 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:23:51,205 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:23:51,205 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:23:51,206 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:23:51,207 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:23:51,208 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:23:51,209 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:23:51,210 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 77: next saturday
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:23:51,211 - logic.JIDLogic - DEBUG - group 82: next saturday
+2012-06-09 19:23:51,256 - logic.JIDLogic - DEBUG - group 83: next 
+2012-06-09 19:23:51,256 - logic.JIDLogic - DEBUG - group 84: next
+2012-06-09 19:23:51,258 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:23:51,258 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:23:51,259 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:23:51,260 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:23:51,261 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:23:51,262 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:23:51,263 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:23:51,264 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:23:51,264 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:23:51,264 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:23:51,264 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:23:51,264 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:23:51,265 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:23:51,266 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:23:51,267 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:23:51,267 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:23:51,267 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:23:51,267 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:23:51,268 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:23:51,268 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:23:51,268 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:23:51,268 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:23:51,268 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:23:51,269 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:23:51,270 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:23:51,271 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:23:51,272 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:23:51,273 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:23:51,274 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:23:51,274 - logic.JIDLogic - DEBUG - start date string: next saturday
+2012-06-09 19:23:51,274 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:23:51,274 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:23:51,275 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:23:51,275 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:23:51,275 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:23:51,276 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:23:51,276 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:23:51,276 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:23:51,276 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:23:51,277 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:23:51,277 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:23:51,277 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:23:51,277 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:23:51,278 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:23:51,305 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:23:51,306 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:23:51,306 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:23:51,307 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:23:51,307 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:23:51,307 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:23:51,307 - logic.JIDLogic - DEBUG - task details: from
+2012-06-09 19:23:51,307 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:23:51,309 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:23:51,310 - logic.JIDLogic - DEBUG - task before returning: from from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:24:02,330 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:24:02,334 - logic.JIDLogic - DEBUG - left over string after checking for recurring: on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:24:02,335 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:24:02,335 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:24:02,340 - logic.JIDLogic - DEBUG - left over string after fetching labels: on next saturday to on next monday at 23.00 hours  
+2012-06-09 19:24:02,411 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:24:02,411 - logic.JIDLogic - DEBUG - group 0:  next saturday to on next monday at 23.00 hours
+2012-06-09 19:24:02,411 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:24:02,412 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:24:02,412 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:24:02,412 - logic.JIDLogic - DEBUG - group 4: next saturday
+2012-06-09 19:24:02,412 - logic.JIDLogic - DEBUG - group 5: null
+2012-06-09 19:24:02,413 - logic.JIDLogic - DEBUG - group 6: null
+2012-06-09 19:24:02,413 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-09 19:24:02,413 - logic.JIDLogic - DEBUG - group 8: next saturday
+2012-06-09 19:24:02,413 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:24:02,417 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:24:02,417 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:24:02,418 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:24:02,418 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:24:02,418 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:24:02,419 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:24:02,419 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:24:02,419 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:24:02,419 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:24:02,420 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:24:02,420 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:24:02,420 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:24:02,420 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:24:02,420 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:24:02,421 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:24:02,421 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:24:02,421 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:24:02,421 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:24:02,421 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:24:02,422 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:24:02,422 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:24:02,422 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:24:02,422 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:24:02,422 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:24:02,423 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:24:02,423 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:24:02,423 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:24:02,423 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:24:02,423 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:24:02,424 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:24:02,424 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:24:02,424 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:24:02,424 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:24:02,424 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:24:02,425 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:24:02,425 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:24:02,425 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:24:02,425 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:24:02,426 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:24:02,426 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:24:02,426 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:24:02,426 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:24:02,427 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:24:02,427 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:24:02,427 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:24:02,427 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:24:02,427 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:24:02,428 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:24:02,428 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:24:02,428 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:24:02,429 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:24:02,429 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:24:02,429 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:24:02,429 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:24:02,430 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:24:02,430 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:24:02,430 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:24:02,430 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:24:02,430 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:24:02,431 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:24:02,431 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:24:02,431 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:24:02,431 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:24:02,432 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:24:02,432 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:24:02,432 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:24:02,432 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:24:02,432 - logic.JIDLogic - DEBUG - group 77: next saturday
+2012-06-09 19:24:02,433 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:24:02,433 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:24:02,433 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:24:02,433 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:24:02,434 - logic.JIDLogic - DEBUG - group 82: next saturday
+2012-06-09 19:24:02,434 - logic.JIDLogic - DEBUG - group 83: next 
+2012-06-09 19:24:02,434 - logic.JIDLogic - DEBUG - group 84: next
+2012-06-09 19:24:02,434 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:24:02,434 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:24:02,435 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:24:02,435 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:24:02,435 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:24:02,435 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:24:02,435 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:24:02,436 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:24:02,436 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:24:02,436 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:24:02,436 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:24:02,437 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:24:02,437 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:24:02,437 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:24:02,437 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:24:02,437 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:24:02,438 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:24:02,438 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:24:02,438 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:24:02,439 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:24:02,439 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:24:02,439 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:24:02,439 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:24:02,440 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:24:02,440 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:24:02,440 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:24:02,440 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:24:02,440 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:24:02,441 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:24:02,441 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:24:02,441 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:24:02,441 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:24:02,442 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:24:02,442 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:24:02,442 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:24:02,443 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:24:02,443 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:24:02,443 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:24:02,443 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:24:02,444 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:24:02,444 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:24:02,444 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:24:02,444 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:24:02,444 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:24:02,445 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:24:02,445 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:24:02,445 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:24:02,445 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:24:02,445 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:24:02,446 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:24:02,446 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:24:02,446 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:24:02,446 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:24:02,447 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:24:02,447 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:24:02,447 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:24:02,447 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:24:02,447 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:24:02,448 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:24:02,448 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:24:02,448 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:24:02,449 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:24:02,449 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:24:02,449 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:24:02,449 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:24:02,450 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:24:02,450 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:24:02,450 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:24:02,450 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:24:02,451 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:24:02,451 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:24:02,451 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:24:02,451 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:24:02,451 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:24:02,452 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:24:02,452 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:24:02,452 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:24:02,452 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:24:02,453 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:24:02,453 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:24:02,453 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:24:02,453 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:24:02,454 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:24:02,454 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:24:02,454 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:24:02,455 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:24:02,455 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:24:02,455 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:24:02,455 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:24:02,455 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:24:02,456 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:24:02,456 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:24:02,456 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:24:02,457 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:24:02,457 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:24:02,457 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:24:02,457 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:24:02,457 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:24:02,458 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:24:02,458 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:24:02,459 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:24:02,459 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:24:02,459 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:24:02,459 - logic.JIDLogic - DEBUG - start date string: next saturday
+2012-06-09 19:24:02,459 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:24:02,460 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:24:02,460 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:24:02,460 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:24:02,461 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:24:02,462 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:24:02,463 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:24:02,463 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:24:02,463 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:24:02,464 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:24:02,464 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:24:02,464 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:24:02,465 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:24:02,465 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:24:02,493 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - task details: on
+2012-06-09 19:24:02,494 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:24:02,496 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:24:02,497 - logic.JIDLogic - DEBUG - task before returning: on from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:24:10,899 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:24:10,903 - logic.JIDLogic - DEBUG - left over string after checking for recurring: next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:24:10,903 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:24:10,904 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:24:10,907 - logic.JIDLogic - DEBUG - left over string after fetching labels: next saturday to on next monday at 23.00 hours  
+2012-06-09 19:24:10,996 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:24:10,997 - logic.JIDLogic - DEBUG - group 0:  saturday to on next monday at 23.00 hours
+2012-06-09 19:24:10,997 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:24:10,997 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:24:10,997 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:24:10,998 - logic.JIDLogic - DEBUG - group 4: saturday
+2012-06-09 19:24:10,998 - logic.JIDLogic - DEBUG - group 5: null
+2012-06-09 19:24:10,998 - logic.JIDLogic - DEBUG - group 6: null
+2012-06-09 19:24:10,998 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-09 19:24:10,999 - logic.JIDLogic - DEBUG - group 8: saturday
+2012-06-09 19:24:10,999 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:24:11,001 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:24:11,002 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:24:11,003 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:24:11,004 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:24:11,005 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:24:11,006 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:24:11,007 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:24:11,008 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:24:11,009 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:24:11,010 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:24:11,010 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:24:11,010 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:24:11,010 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:24:11,011 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:24:11,011 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:24:11,011 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:24:11,011 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:24:11,011 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:24:11,012 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:24:11,012 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:24:11,012 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:24:11,012 - logic.JIDLogic - DEBUG - group 77: saturday
+2012-06-09 19:24:11,013 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:24:11,013 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:24:11,013 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:24:11,013 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:24:11,014 - logic.JIDLogic - DEBUG - group 82: saturday
+2012-06-09 19:24:11,014 - logic.JIDLogic - DEBUG - group 83: null
+2012-06-09 19:24:11,014 - logic.JIDLogic - DEBUG - group 84: null
+2012-06-09 19:24:11,014 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:24:11,015 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:24:11,015 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:24:11,016 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:24:11,016 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:24:11,016 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:24:11,016 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:24:11,017 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:24:11,017 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:24:11,017 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:24:11,017 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:24:11,017 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:24:11,018 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:24:11,018 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:24:11,018 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:24:11,018 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:24:11,019 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:24:11,019 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:24:11,019 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:24:11,019 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:24:11,019 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:24:11,020 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:24:11,020 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:24:11,020 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:24:11,020 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:24:11,020 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:24:11,021 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:24:11,021 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:24:11,021 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:24:11,021 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:24:11,022 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:24:11,022 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:24:11,022 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:24:11,022 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:24:11,022 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:24:11,023 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:24:11,023 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:24:11,023 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:24:11,024 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:24:11,026 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:24:11,026 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:24:11,026 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:24:11,026 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:24:11,027 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:24:11,028 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:24:11,029 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:24:11,030 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:24:11,031 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:24:11,032 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:24:11,033 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:24:11,034 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - start date string: saturday
+2012-06-09 19:24:11,035 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:24:11,036 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:24:11,036 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:24:11,036 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:24:11,036 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:24:11,037 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:24:11,037 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:24:11,037 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:24:11,037 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:24:11,038 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:24:11,038 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:24:11,038 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:24:11,038 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:24:11,039 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:24:11,068 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:24:11,069 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:24:11,069 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:24:11,069 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:24:11,069 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:24:11,069 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:24:11,070 - logic.JIDLogic - DEBUG - task details: next
+2012-06-09 19:24:11,070 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:24:11,072 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:24:11,073 - logic.JIDLogic - DEBUG - task before returning: next from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:24:40,178 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:24:40,182 - logic.JIDLogic - DEBUG - left over string after checking for recurring: saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:24:40,182 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:24:40,183 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:24:40,186 - logic.JIDLogic - DEBUG - left over string after fetching labels: saturday to on next monday at 23.00 hours  
+2012-06-09 19:24:40,229 - logic.JIDLogic - DEBUG - -----date time only format-------
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 0:  on next monday at 23.00 hours
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 1:  on next monday at 23.00 hours
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 2: on next monday
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 3: on 
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 4: on
+2012-06-09 19:24:40,230 - logic.JIDLogic - DEBUG - group 5: on
+2012-06-09 19:24:40,231 - logic.JIDLogic - DEBUG - group 6: next monday
+2012-06-09 19:24:40,231 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-09 19:24:40,231 - logic.JIDLogic - DEBUG - group 8: null
+2012-06-09 19:24:40,231 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:24:40,234 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:24:40,234 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:24:40,234 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:24:40,234 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:24:40,234 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:24:40,235 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:24:40,236 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:24:40,237 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:24:40,238 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:24:40,239 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:24:40,240 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:24:40,240 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:24:40,240 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:24:40,240 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:24:40,240 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:24:40,241 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:24:40,242 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:24:40,243 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:24:40,244 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:24:40,244 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:24:40,244 - logic.JIDLogic - DEBUG - group 75: next monday
+2012-06-09 19:24:40,244 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:24:40,244 - logic.JIDLogic - DEBUG - group 77: null
+2012-06-09 19:24:40,245 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:24:40,245 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:24:40,245 - logic.JIDLogic - DEBUG - group 80: next monday
+2012-06-09 19:24:40,245 - logic.JIDLogic - DEBUG - group 81: next 
+2012-06-09 19:24:40,245 - logic.JIDLogic - DEBUG - group 82: next
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 83: monday
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 84: monday
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 85: at 
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 86: at
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 87: at
+2012-06-09 19:24:40,255 - logic.JIDLogic - DEBUG - group 88: at
+2012-06-09 19:24:40,256 - logic.JIDLogic - DEBUG - group 89: 23.00 hours
+2012-06-09 19:24:40,256 - logic.JIDLogic - DEBUG - group 90: null
+2012-06-09 19:24:40,256 - logic.JIDLogic - DEBUG - group 91: null
+2012-06-09 19:24:40,256 - logic.JIDLogic - DEBUG - group 92: null
+2012-06-09 19:24:40,256 - logic.JIDLogic - DEBUG - group 93: null
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - group 94: null
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - group 95: 23.00 hours
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - group 96: 23
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - group 97: 00
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - group 98:  hours
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - start time string: 23.00 hours
+2012-06-09 19:24:40,257 - logic.JIDLogic - DEBUG - start date string: next monday
+2012-06-09 19:24:40,258 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:24:40,258 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-09 19:24:40,259 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-09 19:24:40,260 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - start date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - task details: saturday to
+2012-06-09 19:24:40,305 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:24:40,307 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:24:40,308 - logic.JIDLogic - DEBUG - task before returning: saturday to at 11:00 PM on 18 Jun 2012 labels: [work, study]
+2012-06-09 19:25:35,920 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:25:35,924 - logic.JIDLogic - DEBUG - left over string after checking for recurring: uyguygyu
+2012-06-09 19:25:35,971 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-09 19:25:35,971 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:25:35,975 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:25:35,975 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:25:35,975 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:25:35,976 - logic.JIDLogic - DEBUG - task details: uyguygyu
+2012-06-09 19:25:35,976 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:25:35,976 - logic.JIDLogic - DEBUG - any error?: INVALID_DATE_TIME
+2012-06-09 19:26:10,527 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:26:10,531 - logic.JIDLogic - DEBUG - left over string after checking for recurring: uyguygyu
+2012-06-09 19:26:10,573 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-09 19:26:10,574 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:26:10,578 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:26:10,578 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:26:10,579 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:26:10,579 - logic.JIDLogic - DEBUG - task details: uyguygyu
+2012-06-09 19:26:10,579 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:26:10,579 - logic.JIDLogic - DEBUG - any error?: INVALID_DATE_TIME
+2012-06-09 19:26:42,273 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:26:42,277 - logic.JIDLogic - DEBUG - left over string after checking for recurring: from on next saturday to on next monday at 23.00 hours @work @study
+2012-06-09 19:26:42,277 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-09 19:26:42,278 - logic.JIDLogic - DEBUG - label 1: study
+2012-06-09 19:26:42,281 - logic.JIDLogic - DEBUG - left over string after fetching labels: from on next saturday to on next monday at 23.00 hours  
+2012-06-09 19:26:42,325 - logic.JIDLogic - DEBUG - -----from_date_to_date_time format-------
+2012-06-09 19:26:42,326 - logic.JIDLogic - DEBUG - group 0:  on next saturday to on next monday at 23.00 hours
+2012-06-09 19:26:42,326 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:26:42,326 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:26:42,326 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:26:42,326 - logic.JIDLogic - DEBUG - group 4: on next saturday
+2012-06-09 19:26:42,327 - logic.JIDLogic - DEBUG - group 5: on 
+2012-06-09 19:26:42,327 - logic.JIDLogic - DEBUG - group 6: on
+2012-06-09 19:26:42,327 - logic.JIDLogic - DEBUG - group 7: on
+2012-06-09 19:26:42,327 - logic.JIDLogic - DEBUG - group 8: next saturday
+2012-06-09 19:26:42,327 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-09 19:26:42,331 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-09 19:26:42,331 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-09 19:26:42,331 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-09 19:26:42,331 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-09 19:26:42,331 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-09 19:26:42,332 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-09 19:26:42,332 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-09 19:26:42,332 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-09 19:26:42,332 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-09 19:26:42,333 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-09 19:26:42,333 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-09 19:26:42,333 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-09 19:26:42,333 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-09 19:26:42,334 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-09 19:26:42,334 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-09 19:26:42,334 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-09 19:26:42,334 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-09 19:26:42,334 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-09 19:26:42,335 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-09 19:26:42,335 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-09 19:26:42,335 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-09 19:26:42,335 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-09 19:26:42,336 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-09 19:26:42,336 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-09 19:26:42,336 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-09 19:26:42,336 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-09 19:26:42,337 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-09 19:26:42,337 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-09 19:26:42,337 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-09 19:26:42,337 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-09 19:26:42,338 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-09 19:26:42,338 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-09 19:26:42,338 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-09 19:26:42,338 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-09 19:26:42,338 - logic.JIDLogic - DEBUG - group 44: null
+2012-06-09 19:26:42,339 - logic.JIDLogic - DEBUG - group 45: null
+2012-06-09 19:26:42,339 - logic.JIDLogic - DEBUG - group 46: null
+2012-06-09 19:26:42,339 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-09 19:26:42,339 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-09 19:26:42,340 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-09 19:26:42,341 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-09 19:26:42,341 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-09 19:26:42,341 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-09 19:26:42,341 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-09 19:26:42,341 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-09 19:26:42,342 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-09 19:26:42,342 - logic.JIDLogic - DEBUG - group 56: null
+2012-06-09 19:26:42,342 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-09 19:26:42,342 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-09 19:26:42,343 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-09 19:26:42,343 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-09 19:26:42,343 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-09 19:26:42,343 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-09 19:26:42,343 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-09 19:26:42,344 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-09 19:26:42,344 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-09 19:26:42,344 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-09 19:26:42,344 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-09 19:26:42,344 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-09 19:26:42,345 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-09 19:26:42,345 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-09 19:26:42,345 - logic.JIDLogic - DEBUG - group 71: null
+2012-06-09 19:26:42,345 - logic.JIDLogic - DEBUG - group 72: null
+2012-06-09 19:26:42,346 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-09 19:26:42,346 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-09 19:26:42,346 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-09 19:26:42,346 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-09 19:26:42,346 - logic.JIDLogic - DEBUG - group 77: next saturday
+2012-06-09 19:26:42,347 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-09 19:26:42,347 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-09 19:26:42,347 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-09 19:26:42,348 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-09 19:26:42,348 - logic.JIDLogic - DEBUG - group 82: next saturday
+2012-06-09 19:26:42,348 - logic.JIDLogic - DEBUG - group 83: next 
+2012-06-09 19:26:42,348 - logic.JIDLogic - DEBUG - group 84: next
+2012-06-09 19:26:42,349 - logic.JIDLogic - DEBUG - group 85: saturday
+2012-06-09 19:26:42,349 - logic.JIDLogic - DEBUG - group 86: saturday
+2012-06-09 19:26:42,349 - logic.JIDLogic - DEBUG - group 87: to
+2012-06-09 19:26:42,349 - logic.JIDLogic - DEBUG - group 88: to
+2012-06-09 19:26:42,350 - logic.JIDLogic - DEBUG - group 89: to
+2012-06-09 19:26:42,350 - logic.JIDLogic - DEBUG - group 90: on next monday
+2012-06-09 19:26:42,350 - logic.JIDLogic - DEBUG - group 91: on 
+2012-06-09 19:26:42,351 - logic.JIDLogic - DEBUG - group 92: on
+2012-06-09 19:26:42,351 - logic.JIDLogic - DEBUG - group 93: on
+2012-06-09 19:26:42,351 - logic.JIDLogic - DEBUG - group 94: next monday
+2012-06-09 19:26:42,351 - logic.JIDLogic - DEBUG - group 95: null
+2012-06-09 19:26:42,351 - logic.JIDLogic - DEBUG - group 96: null
+2012-06-09 19:26:42,352 - logic.JIDLogic - DEBUG - group 97: null
+2012-06-09 19:26:42,352 - logic.JIDLogic - DEBUG - group 98: null
+2012-06-09 19:26:42,352 - logic.JIDLogic - DEBUG - group 99: null
+2012-06-09 19:26:42,352 - logic.JIDLogic - DEBUG - group 100: null
+2012-06-09 19:26:42,353 - logic.JIDLogic - DEBUG - group 101: null
+2012-06-09 19:26:42,353 - logic.JIDLogic - DEBUG - group 102: null
+2012-06-09 19:26:42,353 - logic.JIDLogic - DEBUG - group 103: null
+2012-06-09 19:26:42,353 - logic.JIDLogic - DEBUG - group 104: null
+2012-06-09 19:26:42,353 - logic.JIDLogic - DEBUG - group 105: null
+2012-06-09 19:26:42,354 - logic.JIDLogic - DEBUG - group 106: null
+2012-06-09 19:26:42,354 - logic.JIDLogic - DEBUG - group 107: null
+2012-06-09 19:26:42,354 - logic.JIDLogic - DEBUG - group 108: null
+2012-06-09 19:26:42,354 - logic.JIDLogic - DEBUG - group 109: null
+2012-06-09 19:26:42,354 - logic.JIDLogic - DEBUG - group 110: null
+2012-06-09 19:26:42,355 - logic.JIDLogic - DEBUG - group 111: null
+2012-06-09 19:26:42,355 - logic.JIDLogic - DEBUG - group 112: null
+2012-06-09 19:26:42,355 - logic.JIDLogic - DEBUG - group 113: null
+2012-06-09 19:26:42,355 - logic.JIDLogic - DEBUG - group 114: null
+2012-06-09 19:26:42,356 - logic.JIDLogic - DEBUG - group 115: null
+2012-06-09 19:26:42,356 - logic.JIDLogic - DEBUG - group 116: null
+2012-06-09 19:26:42,356 - logic.JIDLogic - DEBUG - group 117: null
+2012-06-09 19:26:42,356 - logic.JIDLogic - DEBUG - group 118: null
+2012-06-09 19:26:42,356 - logic.JIDLogic - DEBUG - group 119: null
+2012-06-09 19:26:42,357 - logic.JIDLogic - DEBUG - group 120: null
+2012-06-09 19:26:42,357 - logic.JIDLogic - DEBUG - group 121: null
+2012-06-09 19:26:42,357 - logic.JIDLogic - DEBUG - group 122: null
+2012-06-09 19:26:42,357 - logic.JIDLogic - DEBUG - group 123: null
+2012-06-09 19:26:42,357 - logic.JIDLogic - DEBUG - group 124: null
+2012-06-09 19:26:42,358 - logic.JIDLogic - DEBUG - group 125: null
+2012-06-09 19:26:42,358 - logic.JIDLogic - DEBUG - group 126: null
+2012-06-09 19:26:42,358 - logic.JIDLogic - DEBUG - group 127: null
+2012-06-09 19:26:42,359 - logic.JIDLogic - DEBUG - group 128: null
+2012-06-09 19:26:42,359 - logic.JIDLogic - DEBUG - group 129: null
+2012-06-09 19:26:42,359 - logic.JIDLogic - DEBUG - group 130: null
+2012-06-09 19:26:42,359 - logic.JIDLogic - DEBUG - group 131: null
+2012-06-09 19:26:42,359 - logic.JIDLogic - DEBUG - group 132: null
+2012-06-09 19:26:42,360 - logic.JIDLogic - DEBUG - group 133: null
+2012-06-09 19:26:42,360 - logic.JIDLogic - DEBUG - group 134: null
+2012-06-09 19:26:42,360 - logic.JIDLogic - DEBUG - group 135: null
+2012-06-09 19:26:42,361 - logic.JIDLogic - DEBUG - group 136: null
+2012-06-09 19:26:42,361 - logic.JIDLogic - DEBUG - group 137: null
+2012-06-09 19:26:42,361 - logic.JIDLogic - DEBUG - group 138: null
+2012-06-09 19:26:42,361 - logic.JIDLogic - DEBUG - group 139: null
+2012-06-09 19:26:42,362 - logic.JIDLogic - DEBUG - group 140: null
+2012-06-09 19:26:42,362 - logic.JIDLogic - DEBUG - group 141: null
+2012-06-09 19:26:42,362 - logic.JIDLogic - DEBUG - group 142: null
+2012-06-09 19:26:42,363 - logic.JIDLogic - DEBUG - group 143: null
+2012-06-09 19:26:42,363 - logic.JIDLogic - DEBUG - group 144: null
+2012-06-09 19:26:42,363 - logic.JIDLogic - DEBUG - group 145: null
+2012-06-09 19:26:42,363 - logic.JIDLogic - DEBUG - group 146: null
+2012-06-09 19:26:42,363 - logic.JIDLogic - DEBUG - group 147: null
+2012-06-09 19:26:42,364 - logic.JIDLogic - DEBUG - group 148: null
+2012-06-09 19:26:42,364 - logic.JIDLogic - DEBUG - group 149: null
+2012-06-09 19:26:42,364 - logic.JIDLogic - DEBUG - group 150: null
+2012-06-09 19:26:42,364 - logic.JIDLogic - DEBUG - group 151: null
+2012-06-09 19:26:42,365 - logic.JIDLogic - DEBUG - group 152: null
+2012-06-09 19:26:42,365 - logic.JIDLogic - DEBUG - group 153: null
+2012-06-09 19:26:42,365 - logic.JIDLogic - DEBUG - group 154: null
+2012-06-09 19:26:42,365 - logic.JIDLogic - DEBUG - group 155: null
+2012-06-09 19:26:42,366 - logic.JIDLogic - DEBUG - group 156: null
+2012-06-09 19:26:42,366 - logic.JIDLogic - DEBUG - group 157: null
+2012-06-09 19:26:42,366 - logic.JIDLogic - DEBUG - group 158: null
+2012-06-09 19:26:42,366 - logic.JIDLogic - DEBUG - group 159: null
+2012-06-09 19:26:42,366 - logic.JIDLogic - DEBUG - group 160: null
+2012-06-09 19:26:42,367 - logic.JIDLogic - DEBUG - group 161: null
+2012-06-09 19:26:42,367 - logic.JIDLogic - DEBUG - group 162: null
+2012-06-09 19:26:42,367 - logic.JIDLogic - DEBUG - group 163: next monday
+2012-06-09 19:26:42,375 - logic.JIDLogic - DEBUG - group 164: null
+2012-06-09 19:26:42,375 - logic.JIDLogic - DEBUG - group 165: null
+2012-06-09 19:26:42,375 - logic.JIDLogic - DEBUG - group 166: null
+2012-06-09 19:26:42,375 - logic.JIDLogic - DEBUG - group 167: null
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 168: next monday
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 169: next 
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 170: next
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 171: monday
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 172: monday
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 173: at 
+2012-06-09 19:26:42,376 - logic.JIDLogic - DEBUG - group 174: at
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 175: at
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 176: at
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 177: 23.00 hours
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 178: null
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 179: null
+2012-06-09 19:26:42,377 - logic.JIDLogic - DEBUG - group 180: null
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 181: null
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 182: null
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 183: 23.00 hours
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 184: 23
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 185: 00
+2012-06-09 19:26:42,378 - logic.JIDLogic - DEBUG - group 186:  hours
+2012-06-09 19:26:42,379 - logic.JIDLogic - DEBUG - end time string: 23.00 hours
+2012-06-09 19:26:42,379 - logic.JIDLogic - DEBUG - start date string: next saturday
+2012-06-09 19:26:42,379 - logic.JIDLogic - DEBUG - end date string: next monday
+2012-06-09 19:26:42,379 - logic.JIDLogic - DEBUG - 3rd return of setStartDate: false
+2012-06-09 19:26:42,380 - logic.JIDLogic - DEBUG - Start time could NOT be set!
+2012-06-09 19:26:42,380 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:26:42,380 - logic.JIDLogic - DEBUG - End time is set!
+2012-06-09 19:26:42,381 - logic.JIDLogic - DEBUG - dummyDay:16
+2012-06-09 19:26:42,381 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:26:42,382 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:26:42,382 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-09 19:26:42,382 - logic.JIDLogic - DEBUG - dummyDay:18
+2012-06-09 19:26:42,382 - logic.JIDLogic - DEBUG - dummyMonth:6
+2012-06-09 19:26:42,383 - logic.JIDLogic - DEBUG - dummyYear:2012
+2012-06-09 19:26:42,383 - logic.JIDLogic - DEBUG - End date is set!
+2012-06-09 19:26:42,383 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:26:42,403 - logic.JIDLogic - DEBUG - start date time: 16 Jun 2012
+2012-06-09 19:26:42,403 - logic.JIDLogic - DEBUG - end date time: 11:00 PM 18 Jun 2012
+2012-06-09 19:26:42,403 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:26:42,403 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:26:42,404 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:26:42,404 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:26:42,404 - logic.JIDLogic - DEBUG - task details: from
+2012-06-09 19:26:42,404 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:26:42,407 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:26:42,408 - logic.JIDLogic - DEBUG - task before returning: from from 16 Jun 2012 to 11:00 PM 18 Jun 2012 labels: [work, study]
+2012-06-09 19:27:02,603 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:27:02,608 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 23.00 hours
+2012-06-09 19:27:02,718 - logic.JIDLogic - DEBUG - -----time only FOR SEARCH format-------
+2012-06-09 19:27:02,719 - logic.JIDLogic - DEBUG - group 0: 23.00 hours
+2012-06-09 19:27:02,723 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:27:02,723 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:27:02,723 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:27:02,723 - logic.JIDLogic - DEBUG - group 4: null
+2012-06-09 19:27:02,723 - logic.JIDLogic - DEBUG - group 5: null
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - group 6: 23.00 hours
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - group 7: 23
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - group 8: 00
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - group 9:  hours
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - start time string: 23.00 hours
+2012-06-09 19:27:02,724 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:27:02,725 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-09 19:27:02,727 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-09 19:27:02,728 - logic.JIDLogic - DEBUG - Start date could NOT be set!
+2012-06-09 19:27:02,728 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-09 19:27:02,728 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:27:02,751 - logic.JIDLogic - DEBUG - start date time: 11:00 PM
+2012-06-09 19:27:02,751 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:27:02,751 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:27:02,751 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:27:02,751 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:27:02,752 - logic.JIDLogic - DEBUG - task details: 
+2012-06-09 19:27:02,752 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:27:02,752 - logic.JIDLogic - DEBUG - any error?: INVALID_TASK_DETAILS
+2012-06-09 19:27:11,421 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:27:11,425 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 23.00 hours
+2012-06-09 19:27:11,475 - logic.JIDLogic - DEBUG - -----time only FOR SEARCH format-------
+2012-06-09 19:27:11,475 - logic.JIDLogic - DEBUG - group 0: 23.00 hours
+2012-06-09 19:27:11,479 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-09 19:27:11,479 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 4: null
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 5: null
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 6: 23.00 hours
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 7: 23
+2012-06-09 19:27:11,480 - logic.JIDLogic - DEBUG - group 8: 00
+2012-06-09 19:27:11,481 - logic.JIDLogic - DEBUG - group 9:  hours
+2012-06-09 19:27:11,481 - logic.JIDLogic - DEBUG - start time string: 23.00 hours
+2012-06-09 19:27:11,481 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:27:11,481 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-09 19:27:11,484 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-09 19:27:11,484 - logic.JIDLogic - DEBUG - Start date could NOT be set!
+2012-06-09 19:27:11,485 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-09 19:27:11,485 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:27:11,514 - logic.JIDLogic - DEBUG - start date time: 11:00 PM
+2012-06-09 19:27:11,514 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:27:11,515 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:27:11,515 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:27:11,515 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:27:11,515 - logic.JIDLogic - DEBUG - task details: 
+2012-06-09 19:27:11,515 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:27:11,516 - logic.JIDLogic - DEBUG - any error?: INVALID_TASK_DETAILS
+2012-06-09 19:27:19,608 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-09 19:27:19,612 - logic.JIDLogic - DEBUG - left over string after checking for recurring: sdds 23.00 hours
+2012-06-09 19:27:19,657 - logic.JIDLogic - DEBUG - -----time only format-------
+2012-06-09 19:27:19,657 - logic.JIDLogic - DEBUG - start time string: 23.00 hours
+2012-06-09 19:27:19,661 - logic.JIDLogic - DEBUG - second false of set12hour
+2012-06-09 19:27:19,661 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-09 19:27:19,661 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-09 19:27:19,661 - logic.JIDLogic - DEBUG - Start date could NOT be set!
+2012-06-09 19:27:19,662 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-09 19:27:19,662 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-09 19:27:19,681 - logic.JIDLogic - DEBUG - start date time: 11:00 PM
+2012-06-09 19:27:19,681 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-09 19:27:19,681 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-09 19:27:19,681 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-09 19:27:19,681 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-09 19:27:19,682 - logic.JIDLogic - DEBUG - task details: sdds
+2012-06-09 19:27:19,685 - logic.JIDLogic - DEBUG - this is parse for ADD before initializing task obj
+2012-06-09 19:27:19,686 - logic.JIDLogic - DEBUG - any error?: VALID
+2012-06-09 19:27:19,687 - logic.JIDLogic - DEBUG - task before returning: sdds at 11:00 PM on  labels: []
+2012-06-10 00:32:38,135 - storagecontroller.FileHandler - DEBUG - 0
+2012-06-10 00:32:39,879 - storagecontroller.FileHandler - DEBUG - 0
+2012-06-10 00:59:19,886 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 00:59:19,899 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 3pm
+2012-06-10 00:59:20,003 - logic.JIDLogic - DEBUG - -----time only FOR SEARCH format-------
+2012-06-10 00:59:20,003 - logic.JIDLogic - DEBUG - group 0: 3pm
+2012-06-10 00:59:20,007 - logic.JIDLogic - DEBUG - group 1: 3pm
+2012-06-10 00:59:20,008 - logic.JIDLogic - DEBUG - group 2: 3
+2012-06-10 00:59:20,008 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-10 00:59:20,008 - logic.JIDLogic - DEBUG - group 4: null
+2012-06-10 00:59:20,008 - logic.JIDLogic - DEBUG - group 5: pm
+2012-06-10 00:59:20,009 - logic.JIDLogic - DEBUG - group 6: null
+2012-06-10 00:59:20,009 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-10 00:59:20,009 - logic.JIDLogic - DEBUG - group 8: null
+2012-06-10 00:59:20,010 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-10 00:59:20,010 - logic.JIDLogic - DEBUG - start time string: 3pm
+2012-06-10 00:59:20,010 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-10 00:59:20,011 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-10 00:59:20,015 - logic.JIDLogic - DEBUG - Start date could NOT be set!
+2012-06-10 00:59:20,015 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-10 00:59:20,015 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-10 00:59:20,062 - logic.JIDLogic - DEBUG - start date time: 3:00 PM
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - task details: 
+2012-06-10 00:59:20,063 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj
+2012-06-10 00:59:20,065 - logic.JIDLogic - DEBUG - task before returning:  at 3:00 PM on  labels: []
+2012-06-10 00:59:30,688 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 00:59:30,693 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 3pm @work
+2012-06-10 00:59:30,693 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-10 00:59:30,694 - logic.JIDLogic - DEBUG - left over string after fetching labels: 3pm 
+2012-06-10 00:59:30,797 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-10 00:59:30,799 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 00:59:30,799 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 00:59:30,799 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 00:59:30,799 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 00:59:30,800 - logic.JIDLogic - DEBUG - task details: 3pm
+2012-06-10 00:59:30,800 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj
+2012-06-10 00:59:50,920 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 00:59:50,925 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 3pm @work
+2012-06-10 00:59:50,925 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-10 00:59:50,925 - logic.JIDLogic - DEBUG - left over string after fetching labels: 3pm 
+2012-06-10 00:59:50,971 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-10 00:59:50,972 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 00:59:50,972 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 00:59:50,972 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 00:59:50,972 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 00:59:50,973 - logic.JIDLogic - DEBUG - task details: 3pm
+2012-06-10 00:59:50,973 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj
+2012-06-10 01:03:07,153 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 01:03:07,158 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 3pm @work
+2012-06-10 01:03:07,158 - logic.JIDLogic - DEBUG - input string after extracting labels: 3pm @work
+2012-06-10 01:03:07,158 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-10 01:03:07,161 - logic.JIDLogic - DEBUG - left over string after fetching labels: 3pm 
+2012-06-10 01:03:07,206 - logic.JIDLogic - DEBUG - time/date NOT extracted!
+2012-06-10 01:03:07,207 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 01:03:07,207 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 01:03:07,208 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 01:03:07,208 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 01:03:07,208 - logic.JIDLogic - DEBUG - task details: 3pm
+2012-06-10 01:03:07,208 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj
+2012-06-10 01:05:02,561 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 01:05:02,566 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 3pm @work
+2012-06-10 01:05:02,567 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-10 01:05:02,567 - logic.JIDLogic - DEBUG - left over string after fetching labels: 3pm
+2012-06-10 01:05:02,651 - logic.JIDLogic - DEBUG - -----time only FOR SEARCH format-------
+2012-06-10 01:05:02,652 - logic.JIDLogic - DEBUG - group 0: 3pm
+2012-06-10 01:05:02,652 - logic.JIDLogic - DEBUG - group 1: 3pm
+2012-06-10 01:05:02,652 - logic.JIDLogic - DEBUG - group 2: 3
+2012-06-10 01:05:02,653 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-10 01:05:02,653 - logic.JIDLogic - DEBUG - group 4: null
+2012-06-10 01:05:02,653 - logic.JIDLogic - DEBUG - group 5: pm
+2012-06-10 01:05:02,654 - logic.JIDLogic - DEBUG - group 6: null
+2012-06-10 01:05:02,654 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-10 01:05:02,654 - logic.JIDLogic - DEBUG - group 8: null
+2012-06-10 01:05:02,654 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-10 01:05:02,655 - logic.JIDLogic - DEBUG - start time string: 3pm
+2012-06-10 01:05:02,660 - logic.JIDLogic - DEBUG - Start time is set!
+2012-06-10 01:05:02,660 - logic.JIDLogic - DEBUG - End time could NOT be set!
+2012-06-10 01:05:02,660 - logic.JIDLogic - DEBUG - Start date could NOT be set!
+2012-06-10 01:05:02,661 - logic.JIDLogic - DEBUG - End date could NOT be set!
+2012-06-10 01:05:02,661 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-10 01:05:02,685 - logic.JIDLogic - DEBUG - start date time: 3:00 PM
+2012-06-10 01:05:02,685 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 01:05:02,685 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 01:05:02,685 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 01:05:02,686 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 01:05:02,686 - logic.JIDLogic - DEBUG - task details: 
+2012-06-10 01:05:02,686 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj
+2012-06-10 01:05:27,534 - logic.JIDLogic - DEBUG - this task is not recurring
+2012-06-10 01:05:27,538 - logic.JIDLogic - DEBUG - left over string after checking for recurring: 14 june @work
+2012-06-10 01:05:27,539 - logic.JIDLogic - DEBUG - label 0: work
+2012-06-10 01:05:27,540 - logic.JIDLogic - DEBUG - left over string after fetching labels: 14 june
+2012-06-10 01:05:27,590 - logic.JIDLogic - DEBUG - -----date only FOR SEARCH format-------
+2012-06-10 01:05:27,591 - logic.JIDLogic - DEBUG - group 0: 14 june
+2012-06-10 01:05:27,591 - logic.JIDLogic - DEBUG - group 1: null
+2012-06-10 01:05:27,591 - logic.JIDLogic - DEBUG - group 2: null
+2012-06-10 01:05:27,591 - logic.JIDLogic - DEBUG - group 3: null
+2012-06-10 01:05:27,591 - logic.JIDLogic - DEBUG - group 4: 14 june
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 5: null
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 6: null
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 7: null
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 8: null
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 9: null
+2012-06-10 01:05:27,592 - logic.JIDLogic - DEBUG - group 10: null
+2012-06-10 01:05:27,595 - logic.JIDLogic - DEBUG - group 11: null
+2012-06-10 01:05:27,595 - logic.JIDLogic - DEBUG - group 12: null
+2012-06-10 01:05:27,595 - logic.JIDLogic - DEBUG - group 13: null
+2012-06-10 01:05:27,595 - logic.JIDLogic - DEBUG - group 14: null
+2012-06-10 01:05:27,596 - logic.JIDLogic - DEBUG - group 15: null
+2012-06-10 01:05:27,596 - logic.JIDLogic - DEBUG - group 16: null
+2012-06-10 01:05:27,596 - logic.JIDLogic - DEBUG - group 17: null
+2012-06-10 01:05:27,596 - logic.JIDLogic - DEBUG - group 18: null
+2012-06-10 01:05:27,596 - logic.JIDLogic - DEBUG - group 19: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 20: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 21: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 22: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 23: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 24: null
+2012-06-10 01:05:27,597 - logic.JIDLogic - DEBUG - group 25: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 26: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 27: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 28: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 29: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 30: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 31: null
+2012-06-10 01:05:27,598 - logic.JIDLogic - DEBUG - group 32: null
+2012-06-10 01:05:27,599 - logic.JIDLogic - DEBUG - group 33: null
+2012-06-10 01:05:27,599 - logic.JIDLogic - DEBUG - group 34: null
+2012-06-10 01:05:27,599 - logic.JIDLogic - DEBUG - group 35: null
+2012-06-10 01:05:27,599 - logic.JIDLogic - DEBUG - group 36: null
+2012-06-10 01:05:27,602 - logic.JIDLogic - DEBUG - group 37: null
+2012-06-10 01:05:27,602 - logic.JIDLogic - DEBUG - group 38: null
+2012-06-10 01:05:27,602 - logic.JIDLogic - DEBUG - group 39: null
+2012-06-10 01:05:27,602 - logic.JIDLogic - DEBUG - group 40: null
+2012-06-10 01:05:27,603 - logic.JIDLogic - DEBUG - group 41: null
+2012-06-10 01:05:27,603 - logic.JIDLogic - DEBUG - group 42: null
+2012-06-10 01:05:27,603 - logic.JIDLogic - DEBUG - group 43: null
+2012-06-10 01:05:27,603 - logic.JIDLogic - DEBUG - group 44: 14 june
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 45: 14
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 46: 14
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 47: null
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 48: null
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 49: null
+2012-06-10 01:05:27,604 - logic.JIDLogic - DEBUG - group 50: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 51: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 52: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 53: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 54: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 55: null
+2012-06-10 01:05:27,605 - logic.JIDLogic - DEBUG - group 56: 
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 57: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 58: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 59: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 60: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 61: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 62: null
+2012-06-10 01:05:27,606 - logic.JIDLogic - DEBUG - group 63: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 64: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 65: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 66: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 67: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 68: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 69: null
+2012-06-10 01:05:27,607 - logic.JIDLogic - DEBUG - group 70: null
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 71: june
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 72: june
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 73: null
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 74: null
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 75: null
+2012-06-10 01:05:27,608 - logic.JIDLogic - DEBUG - group 76: null
+2012-06-10 01:05:27,609 - logic.JIDLogic - DEBUG - group 77: null
+2012-06-10 01:05:27,609 - logic.JIDLogic - DEBUG - group 78: null
+2012-06-10 01:05:27,609 - logic.JIDLogic - DEBUG - group 79: null
+2012-06-10 01:05:27,610 - logic.JIDLogic - DEBUG - group 80: null
+2012-06-10 01:05:27,610 - logic.JIDLogic - DEBUG - group 81: null
+2012-06-10 01:05:27,610 - logic.JIDLogic - DEBUG - start date string: 14 june
+2012-06-10 01:05:27,610 - logic.JIDLogic - DEBUG - group 0= 14 june
+2012-06-10 01:05:27,652 - logic.JIDLogic - DEBUG - group 1= 14
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 2= 14
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 3= null
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 4= null
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 5= null
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 6= null
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 7= null
+2012-06-10 01:05:27,653 - logic.JIDLogic - DEBUG - group 8= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 9= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 10= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 11= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 12= 
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 13= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 14= null
+2012-06-10 01:05:27,654 - logic.JIDLogic - DEBUG - group 15= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 16= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 17= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 18= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 19= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 20= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 21= null
+2012-06-10 01:05:27,655 - logic.JIDLogic - DEBUG - group 22= null
+2012-06-10 01:05:27,656 - logic.JIDLogic - DEBUG - group 23= null
+2012-06-10 01:05:27,656 - logic.JIDLogic - DEBUG - group 24= null
+2012-06-10 01:05:27,656 - logic.JIDLogic - DEBUG - group 25= null
+2012-06-10 01:05:27,656 - logic.JIDLogic - DEBUG - group 26= null
+2012-06-10 01:05:27,656 - logic.JIDLogic - DEBUG - group 27= june
+2012-06-10 01:05:27,660 - logic.JIDLogic - DEBUG - inputDay= 14
+2012-06-10 01:05:27,660 - logic.JIDLogic - DEBUG - inputMon= 6
+2012-06-10 01:05:27,660 - logic.JIDLogic - DEBUG - Start date is set!
+2012-06-10 01:05:27,661 - logic.JIDLogic - DEBUG - time/date extracted!
+2012-06-10 01:05:27,693 - logic.JIDLogic - DEBUG - start date time: 14 Jun 2012
+2012-06-10 01:05:27,693 - logic.JIDLogic - DEBUG - -------post extraction TESTING-------
+2012-06-10 01:05:27,693 - logic.JIDLogic - DEBUG - this task does NOT have deadline!
+2012-06-10 01:05:27,693 - logic.JIDLogic - DEBUG - is NOT important!
+2012-06-10 01:05:27,694 - logic.JIDLogic - DEBUG - it is not recurring
+2012-06-10 01:05:27,694 - logic.JIDLogic - DEBUG - task details: 
+2012-06-10 01:05:27,694 - logic.JIDLogic - DEBUG - this is parse for SEARCH before initializing task obj

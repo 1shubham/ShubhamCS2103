@@ -301,10 +301,14 @@ public class Parser {
 		
 		logger.debug("this is parse for ADD before initializing task obj");
 		
+		
 		if ((startDateTime!=null || endDateTime!=null) && !(taskDetails.isEmpty()))
 			task = new Task(taskDetails,null,startDateTime,endDateTime,labelList,recurring,deadline,important);	
 			
-		//logger.debug("task before returning: "+task.toString());
+		logger.debug("any error?: "+error);
+		
+		if(task!=null)
+			logger.debug("task before returning: "+task.toString());
 		
 		return task;
 	}
@@ -360,6 +364,7 @@ public class Parser {
 				logger.debug("label "+i+": "+labelList.get(i));
 				command = command.replaceFirst(LABEL_REGEX, "");
 			}
+			command = command.trim();
 			logger.debug("left over string after fetching labels: "+command);
 		}
 		
@@ -1012,33 +1017,29 @@ public class Parser {
 			command = removeExtraSpaces(command);
 		}
 		
-		if (startTimeString==null && endTimeString==null && startDateString==null && endDateString==null)
-			return false;	
+		if (startTimeString==null && endTimeString==null && startDateString==null && endDateString==null) {
+			setErrorCode (OperationFeedback.INVALID_DATE_TIME);
+			return false;
+		}
+			
 		
 		if (timeParser.setStartTime(startTimeString)) 
 			logger.debug("Start time is set!");
-		else {
+		else
 			logger.debug("Start time could NOT be set!");
-			setErrorCode (OperationFeedback.INVALID_TIME);
-		}
 		if (timeParser.setEndTime(endTimeString)) 
 			logger.debug("End time is set!");
-		else {
+		else
 			logger.debug("End time could NOT be set!");
-			setErrorCode (OperationFeedback.INVALID_TIME);
-		}
 		if (dateParser.setStartDate(startDateString)) 
 			logger.debug("Start date is set!");
-		else {
+		else
 			logger.debug("Start date could NOT be set!");
-			setErrorCode (OperationFeedback.INVALID_DATE);
-		}
 		if (dateParser.setEndDate(endDateString)) 
 			logger.debug("End date is set!");
-		else {
+		else 
 			logger.debug("End date could NOT be set!");
-			setErrorCode (OperationFeedback.INVALID_DATE);
-		}
+		
 		
 		return true;
 	}

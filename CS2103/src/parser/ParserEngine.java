@@ -22,8 +22,8 @@ public class ParserEngine {
 		}
 		*/
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd("nsdfdsaf dsfads 'sdfs ' ' sfs' from  on next saturday to on next monday at 23.00 hours @work @study");
-		
+		//parserObject.parseForAdd("sdds 23.00 hours");
+		parserObject.parseForSearch("14 june @work");
 		/*
 		System.out.print("Input string2:");
 		try {
