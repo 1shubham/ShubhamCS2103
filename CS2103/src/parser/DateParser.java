@@ -30,7 +30,8 @@ public class DateParser {
 	
 	private static final String NEXT = "(?i)(next)";
 	private static final String TODAY = "(?i)(today)";
-	private static final String TOMORROW = "(?i)(tmr|tomorrow)";
+	private static final String TOMORROW = "(?i)(tomorrow|tmr" +
+			")";
 	private static final String WEEKDAY = "("+NEXT+"[ ])?((?i)(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun))";
 	private static final String TODAY_TMR_WEEKDAY = "("+TODAY+")|("+TOMORROW+")|("+WEEKDAY+")";
 	
@@ -405,10 +406,10 @@ public class DateParser {
 			}
 			else if (s.matches(WEEKDAY)) {
 				//logger.debug("inside else if statement of setByWeekDay");
-				/*
+				
 				for (int i=0; i<matcher5.groupCount(); i++)
 					logger.debug("group "+i+": "+matcher5.group(i));
-				*/
+				
 				String nextString = matcher5.group(6);
 				String inputWeekString = matcher5.group(8);
 				
@@ -425,7 +426,7 @@ public class DateParser {
 				if (inputWeekDay>0) {
 					int dayDiff = (inputWeekDay - calen.get(GregorianCalendar.DAY_OF_WEEK));
 					
-					if (nextString!=null && nextString.matches(NEXT));
+					if (nextString!=null && nextString.matches(NEXT))
 						calen.add(GregorianCalendar.DATE, 7);
 					
 					if (dayDiff<0)

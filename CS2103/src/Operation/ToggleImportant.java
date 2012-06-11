@@ -1,5 +1,7 @@
 package operation;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 
 import constant.OperationFeedback;
@@ -13,12 +15,34 @@ public class ToggleImportant extends BaseSearch {
 
 	
 	private static Logger logger=Logger.getLogger(BaseSearch.class);
-	private Task taskStarred;
+	private ArrayList<Task> taskStarred=new ArrayList<Task>();
 	
 	public ToggleImportant(){
 		commandName="star";
 	}
-	
+	public Task[] executeAll(Task taskToStar) {
+		// TODO Auto-generated method stub
+		if (taskToStar.getRecurringId()=="")
+			return execute(taskToStar);
+		Task[] taskToBeStarred = StorageManager
+				.getTaskByRecurrenceID(taskToStar.getRecurringId());
+		logger.debug(taskToBeStarred.length);
+		for (int i=0;i<taskToBeStarred.length;i++)
+		{
+			boolean starred = toggleImportant(taskToBeStarred[i]);
+			if (starred) {
+				isUndoAble = true;
+				taskStarred.add(taskToBeStarred[i]);
+				logger.debug("starred succesfully");
+				
+			}
+			else return null;
+		}
+		if (taskStarred.size()!=0)
+			return (Task[])taskStarred.toArray(new Task[taskStarred.size()]);
+		else
+			return null;
+	}
 	public ToggleImportant(String intendedOperation){
 		commandName=intendedOperation;
 	}
@@ -32,7 +56,7 @@ public class ToggleImportant extends BaseSearch {
 		boolean starred = toggleImportant(taskToStar);
 		if (starred) {
 			isUndoAble = true;
-			taskStarred = taskToStar;
+			taskStarred.add(taskToStar);
 			Task[] resultOfStar = new Task[1];
 			resultOfStar[0] = taskToStar;
 			logger.debug("starred succesfully");
@@ -60,30 +84,40 @@ public class ToggleImportant extends BaseSearch {
 	@Override
 	public Task[] undo() {
 		// TODO Auto-generated method stub
-		Task starredTask=StorageManager.getTaskById(taskStarred.getTaskId());
-		if (starredTask!=null){
-			starredTask.toggleImportant();
-			logger.debug("Can undo");
-			return new Task[]{starredTask};
+		ArrayList<Task> undoneTasks=new ArrayList<Task>();
+		for (int i=0;i<taskStarred.size();i++){
+			Task starredTask=StorageManager.getTaskById(taskStarred.get(i).getTaskId());
+			if (starredTask!=null){
+				starredTask.toggleImportant();
+				logger.debug("Can undo");
+				undoneTasks.add(starredTask);
+			}
+			
 		}
-		else {
+		if (undoneTasks.size()!=0)
+			return undoneTasks.toArray(new Task[undoneTasks.size()]);
+		else 
 			return null;
-		}
 	}
 
 	@Override
 	public Task[] redo() {
 		
 		// TODO Auto-generated method stub
-		Task starredTask=StorageManager.getTaskById(taskStarred.getTaskId());
-		if (starredTask!=null){
-			starredTask.toggleImportant();
-			logger.debug("Can redo");
-			return new Task[]{starredTask};
+		ArrayList<Task> redoneTasks=new ArrayList<Task>();
+		for (int i=0;i<taskStarred.size();i++){
+			Task starredTask=StorageManager.getTaskById(taskStarred.get(i).getTaskId());
+			if (starredTask!=null){
+				starredTask.toggleImportant();
+				logger.debug("Can undo");
+				redoneTasks.add(starredTask);
+			}
+			
 		}
-		else {
+		if (redoneTasks.size()!=0)
+			return redoneTasks.toArray(new Task[redoneTasks.size()]);
+		else 
 			return null;
-		}
 	}
 
 	@Override

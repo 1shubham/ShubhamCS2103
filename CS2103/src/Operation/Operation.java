@@ -15,7 +15,7 @@ public abstract class Operation {
 
 	
 	
-	
+	protected OperationFeedback feedback=OperationFeedback.VALID;
 	protected boolean isUndoAble=false;
 	private static Logger logger=Logger.getLogger(Operation.class);
 	/**
@@ -36,7 +36,8 @@ public abstract class Operation {
 		if (intendedOperation.equals("add") || intendedOperation.equals("insert")){
 			object = new Add(intendedOperation);
 			}
-		else if (intendedOperation.equals("delete") || intendedOperation.equals("remove")){
+		else if (intendedOperation.equals("delete") || intendedOperation.equals("remove") || 
+				intendedOperation.equals("deleteall")){
 			object = new Delete(intendedOperation);
 		}
 		else if (intendedOperation.equals("modify") || intendedOperation.equals("update") || 
@@ -46,13 +47,16 @@ public abstract class Operation {
 		else if (intendedOperation.equals("search") || intendedOperation.equals("find")){
 			object = new Search(intendedOperation);
 		}
-		else if (intendedOperation.equals("completed") || intendedOperation.equals("done")){
+		else if (intendedOperation.equals("completed") || intendedOperation.equals("done") ||
+				intendedOperation.equals("completedall")){
 			object = new ToggleCompleted(intendedOperation);
 		}
-		else if(intendedOperation.equals("star") || intendedOperation.equals("important")){
+		else if(intendedOperation.equals("star") || intendedOperation.equals("important") ||
+				intendedOperation.equals("starall")){
 			object = new ToggleImportant(intendedOperation);
 		}
-		else if (intendedOperation.equals("archive")){
+		else if (intendedOperation.equals("archive") || intendedOperation.equals("clearachrive") ||
+				intendedOperation.equals("exportarchive")){
 			object = new Archive(intendedOperation);
 		}
 		else if (intendedOperation.equals("overdue")){

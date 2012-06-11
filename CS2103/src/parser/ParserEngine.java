@@ -21,7 +21,13 @@ public class ParserEngine {
 		}
 		*/
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd("meeting today daily");
+		final String ID_REGEX = "(\\$\\$__)(\\d{2}-\\d{2}-\\d+[A-Z])(__\\$\\$)";
+		
+		System.out.println("<CMPT:true><IMPT:true><DEAD:true><RECUR:yearly><RECURID:$$__21-06-2012030000B__$$><LABEL:>".matches("<CMPT:(true|false)><IMPT:(true|false)><DEAD:(true|false)><RECUR:(daily|weekly|monthly|yearly)?><RECURID:("+ID_REGEX+")?><LABEL:((\\w+ )+)?>"));
+		
+		String arr[] = parserObject.fetchGCalDes("<CMPT:true><IMPT:false><DEAD:true><RECUR:><RECURID:><LABEL:>");
+		for(int i=0; i<arr.length; i++)
+			System.out.println(arr[i]);
 		//parserObject.parseForSearch("14 june @work");
 		/*
 		ArrayList<Task> tArr = new ArrayList<Task>();

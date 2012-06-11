@@ -16,6 +16,7 @@ public class Task {
 	private boolean deadline;
 	private ArrayList<String> labels;
 	private String recurring;
+	private String recurringId;
 /** Default constructor
  * 
  */
@@ -31,6 +32,7 @@ public Task()
 	deadline = false;
 	labels = null;
 	recurring = null;
+	recurringId="";
 }
 /**Task Constructor 1*/
 public Task(String Name, String desc, TaskDateTime startDateTime, TaskDateTime endDateTime, String recurring)
@@ -41,6 +43,7 @@ public Task(String Name, String desc, TaskDateTime startDateTime, TaskDateTime e
 	start = startDateTime;
 	end = endDateTime;
 	this.recurring = recurring;
+	recurringId="";
 }
 /** Task Constructor 2
  *
@@ -56,6 +59,7 @@ public Task(String Name, String desc, TaskDateTime startDateTime, TaskDateTime e
 	this.recurring = recurring;
 	deadline = Deadline;
 	important = Important;
+	recurringId="";
 }
 /** Task Constructor 3
  * 
@@ -69,6 +73,7 @@ public Task(String Name,String desc,TaskDateTime startDateTime,TaskDateTime endD
 	end = endDateTime;
 	labels = Labels;
 	this.recurring = recurring;
+	recurringId="";
 }
 /** Task Constructor 3
  * 
@@ -215,6 +220,12 @@ public void setDeadline(boolean value)
 {
 	this.deadline = value;
 }
+public String getRecurringId(){
+	return recurringId;
+}
+public void setRecurringId(String ID){
+	recurringId=ID;
+}
 /** 
  * 
  * @return the attribute recurring 
@@ -307,6 +318,9 @@ public String toString()
 		{
 			return imp+name + " from " + start.formattedToString() + " to " + end.formattedToString()  + " "+toStringLabels(); 
 		}
+	}
+	else if (start==null && end ==null){
+		return " ";
 	}
 	else if((end==null ||( start!=null && start.compareTo(temp)!=0 && end.compareTo(temp)==0)))
 	{

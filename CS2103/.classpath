@@ -2,12 +2,13 @@
 <classpath>
 	<classpathentry excluding="apache-log4j-1/2/16/|apache-log4j-1.2.16/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/log4j-1.2.16.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/gdata-calendar-2.0.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/gdata-calendar-meta-2.0.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/gdata-client-1.0.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/gdata-core-1.0.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/google-collect-1.0-rc1.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/jsr305.jar"/>
+	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

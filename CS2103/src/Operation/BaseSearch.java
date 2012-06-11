@@ -38,7 +38,14 @@ public class BaseSearch extends Operation{
 			{
 				Task t=StorageManager.getTaskById(extractedTaskIds[i]);
 				logger.debug(t.getTaskId());
-				Task[] result=execute(t);
+				Task[] result;
+				if (!commandName.contains("all")){
+					result=execute(t);
+				}
+				else{
+					result=executeAll(t);
+				}
+					
 				
 				if (result!=null)
 				{
@@ -65,6 +72,12 @@ public class BaseSearch extends Operation{
 		
 		
 	}
+
+	protected Task[] executeAll(Task t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * 
 	 * @param userCommand

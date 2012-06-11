@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 public class StorageManager 
 {
 	private static TaskHashMap liveStorage=new TaskHashMap();
+	private static TaskHashMap liveArchives=new TaskHashMap();
 	private static Logger logger = Logger.getLogger(StorageManager.class);
 	private static GoogleCalendar gCal;
 	/** default constructor
@@ -19,6 +20,14 @@ public class StorageManager
 	 */
 	public StorageManager()
 	{}
+	public static boolean addArchivedTask(Task taskToBeAdded)
+	{
+		return liveArchives.addTask(taskToBeAdded);
+	}
+	public static boolean deleteArchivedTask(Task taskToBeRemoved)
+	{
+		return liveArchives.deleteTask(taskToBeRemoved);
+	}
 	/** adds the task to liveStorage
 	 * 
 	 * @param taskToBeAdded the task to be added
@@ -50,6 +59,14 @@ public class StorageManager
 		tasks.toArray(taskArray);
 		return taskArray;
 	}	
+	public static Task[] getAllArchivedTasks(){
+		ArrayList<Task> tasks=new ArrayList<Task>();
+		for(String key: liveArchives.getKeySet())
+		tasks.add(liveArchives.getTaskById(key));
+		Task[] taskArray=new Task[tasks.size()];
+		tasks.toArray(taskArray);
+		return taskArray;
+	}
 	/** 
 	 * 
 	 * @param id id of the task to be returned
@@ -125,17 +142,49 @@ public class StorageManager
 	}
 	public static boolean saveArchive()
 	{
-		return false;
+		FileHandler handler=new FileHandler("JotItDownArchives.xml");
+		if(handler.writeToFile(liveStorage))
+			return true;
+		else 
+			return false;
 	}
 	public static boolean clearArchive()
 	{
-		return false;
+		FileHandler handler=new FileHandler("JotItDownArchives.xml");
+		TaskHashMap newTaskMap=new TaskHashMap();
+		if(handler.writeToFile(newTaskMap))
+			return true;
+		else 
+			return false;
+	}
+	public static boolean loadArchive(){
+		FileHandler handler=new FileHandler("JotItDownArchives.xml");
+		if(liveArchives.getKeySet().size()!=0)
+		{
+			logger.debug("Clearing Archived HashMap");
+			liveArchives.clearHashMap();
+		}
+		return handler.readFromFile(liveArchives);
+		
 	}
 	public static GoogleCalendar getGCalObject(){
 		return gCal;
 	}
 	public static void setGCalObject(GoogleCalendar obj){
 		gCal=obj;
+	}
+	public static Task[] getTaskByRecurrenceID(String Id){
+		ArrayList<Task> tasks=new ArrayList<Task>();
+		for(String key: liveStorage.getKeySet()){
+			if (liveStorage.getTaskById(key).getRecurringId().contains(Id))
+			{
+				tasks.add(liveStorage.getTaskById(key));
+			}
+		}
+		Task[] taskArray=new Task[tasks.size()];
+		tasks.toArray(taskArray);
+		return taskArray;
+		
 	}
 }
 

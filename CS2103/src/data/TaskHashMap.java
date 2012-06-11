@@ -69,6 +69,7 @@ public class TaskHashMap
 		if(taskToRemove == null)
 			return false;
 		taskList.remove(taskToRemove.getTaskId());
+		logger.debug(getKeySet().size());
 		return true;
 	}
 	/** Member function to remove the task by id

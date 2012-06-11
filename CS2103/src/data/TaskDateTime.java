@@ -21,10 +21,10 @@ public class TaskDateTime {
 	private static final SimpleDateFormat DAY_MONTH_YEAR_CODEFORMAT= new SimpleDateFormat(
 			"dd-MM-yyyy");
 	private static final SimpleDateFormat DAY_MONTH_YEAR_HOUR_MIN = new SimpleDateFormat(
-			"K:mm a dd MMM yyyy");
+			"h:mm a dd MMM yyyy");
 	private static final SimpleDateFormat DAY_MONTH_YEAR_PRESENTABLE  =new SimpleDateFormat(
-			"dd MMM yyyy K:mm a");
-	private static final SimpleDateFormat HOUR_MIN=new SimpleDateFormat("K:mm a");
+			"dd MMM yyyy h:mm a");
+	private static final SimpleDateFormat HOUR_MIN=new SimpleDateFormat("h:mm a");
 	private boolean hasTime;
 	private boolean hasDate;
 	static 
@@ -39,7 +39,7 @@ public class TaskDateTime {
  */
 public TaskDateTime()
 {
-	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,30);
+	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,59);
 	calendar.setLenient(true);
 	timeMilli = calendar.getTimeInMillis();
 	hasTime = false;
@@ -50,7 +50,7 @@ public TaskDateTime()
  */
 public TaskDateTime(long timeInMillis)
 {
-	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,30);
+	calendar = new GregorianCalendar( 2000, 0, 1, 23, 59,59);
 	calendar.setTimeInMillis(timeInMillis);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
@@ -62,7 +62,7 @@ public TaskDateTime(long timeInMillis)
  */
 public TaskDateTime( int year, int month, int day)
 {
-	calendar = new GregorianCalendar(year, month-1, day, 23, 59, 30);
+	calendar = new GregorianCalendar(year, month-1, day, 23,59,59);
 	calendar.setLenient(true);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = false;
@@ -73,7 +73,7 @@ public TaskDateTime( int year, int month, int day)
  */
 public TaskDateTime(int hour,int minutes)
 {
-	calendar = new GregorianCalendar(2000, 0, 1, hour, minutes);
+	calendar = new GregorianCalendar(2000, 0, 1, hour, minutes,0);
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = true;
@@ -84,7 +84,7 @@ public TaskDateTime(int hour,int minutes)
  */
 public TaskDateTime(int year, int month, int day, int hours, int minutes)
 {
-	calendar = new GregorianCalendar(year, month-1, day, hours, minutes);
+	calendar = new GregorianCalendar(year, month-1, day, hours, minutes,0);
 	calendar.setLenient(false);
 	timeMilli=calendar.getTimeInMillis();
 	hasTime = true;

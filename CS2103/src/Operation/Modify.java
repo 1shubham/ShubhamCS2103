@@ -15,7 +15,10 @@ public class Modify extends BaseSearch{
 	public Modify(){
 		commandName="modify";
 	}
-	
+	public Task[] executeAll(Task t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public Modify(String intendedOperation) {
 		// TODO Auto-generated constructor stub
 		commandName=intendedOperation;
