@@ -35,7 +35,10 @@ public class AlarmFrame extends javax.swing.JFrame {
         this.addAction();
         this.setBackground(new Color(0,0,0,0));
         this.setLocationRelativeTo(null);
+		this.setIconImage((Resource.bigLogo).getImage());
         this.setVisible(true);
+        this.requestFocus();
+        this.toFront();
     }
 
     /**

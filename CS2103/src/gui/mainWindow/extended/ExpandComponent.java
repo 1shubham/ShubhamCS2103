@@ -8,6 +8,7 @@ import gui.mainWindow.extended.ExpandComponent.MyTableModelListener;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -76,6 +77,7 @@ public class ExpandComponent{
         //jTable1.setColumnSelectionInterval(0, 0);
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        jTable1.setIntercellSpacing(new Dimension(0,1));
         jTable1.getModel().addTableModelListener(new MyTableModelListener());
         
         jTable1.setShowHorizontalLines(true);
@@ -180,7 +182,7 @@ public class ExpandComponent{
     }
     
     private static void minimizeColumn() {
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(323);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(326);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(25);
     	
     }

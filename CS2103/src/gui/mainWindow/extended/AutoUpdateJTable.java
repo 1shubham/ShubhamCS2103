@@ -74,13 +74,6 @@ public class AutoUpdateJTable {
 			       	}
 		    }
 		});
-		
-		
-		SelectionListener listener = new SelectionListener(jTable);
-		//row
-	    jTable.getSelectionModel().addListSelectionListener(listener);
-	    //column
-	    jTable.getColumnModel().getSelectionModel().addListSelectionListener(listener);
 	}
 	
 	/**
@@ -252,52 +245,11 @@ public class AutoUpdateJTable {
     	}    	  
     }
     	  
-    
     /**
      * 
      * @return tasks in the JTable
      */
     public Task[] getTasks() {
     	return tasks;
-    }
-    	  
-    /**
-     * table model that forbid people from editting the cell.
-     * @author Ramon
-     *
-     */
-    class MyDefaultTableModel extends DefaultTableModel {  
-    	public MyDefaultTableModel() {  
-    		super();  
-    	}  
-    		  
-    	public boolean isCellEditable(int row, int col) {  
-    		return false;  
-    	}    
-    }
-    
-    class SelectionListener implements ListSelectionListener {
-    	  JTable table;
-
-    	  SelectionListener(JTable table) {
-    		  this.table = table;
-    	  }
-    	  
-    	  public void valueChanged(ListSelectionEvent e) {
-    		  int first = -1;
-    		  int last = -1;
-    		  if (e.getSource() == table.getSelectionModel() && table.getRowSelectionAllowed()) {
-    			  first = e.getFirstIndex();		  
-    		  }
-    		  if (e.getSource() == table.getColumnModel().getSelectionModel()
-    				  && table.getColumnSelectionAllowed()) {
-    			  last = e.getLastIndex();
-    		  }
-    		  
-    		  //System.out.println("f: "+ first + "l: "+ last);
-    		  if (e.getValueIsAdjusting()) {
-    			  //System.out.println("The mouse button has not yet been released");
-    		  }
-    	  }
     }
 }

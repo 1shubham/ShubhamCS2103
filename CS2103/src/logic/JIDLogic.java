@@ -10,7 +10,7 @@ import operation.*;
 import data.Task;
 //import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-//import gui.UIController;
+import gui.UIController;
 import storagecontroller.StorageManager;
 
 public class JIDLogic implements Runnable {
@@ -20,7 +20,7 @@ public class JIDLogic implements Runnable {
 		public static void main(String[] args) {
 	        //logger.info("hi");
 		
-			logger.debug(StorageManager.loadFile());
+			JIDLogic_init();
 			command="search";
 			Task[] def=executeCommand("find *.*");
 			logger.debug(def.length);
@@ -28,11 +28,11 @@ public class JIDLogic implements Runnable {
 	    	{
 	    		for (int i=0;i<def.length;i++)
 	    		{
-	    			logger.debug(def[i].toString()+" "+def[i].getRecurringId());
+	    			logger.debug(def[i].toString()+" "+def[i].getTaskId());
 	    		}
 	    	}
 	    	command="delete";
-	    	Task[] xyz=executeCommand("archive");
+	    	Task[] xyz=executeCommand("exportarchive");
 	    	if (xyz!=null)
 	    	logger.debug("printing search"+ xyz.length);
 	    	else
@@ -58,7 +58,70 @@ public class JIDLogic implements Runnable {
 	    			logger.debug(abc[i].toString()+" "+abc[i].getImportant());
 	    		}
 	    	}
+/*
+	    	logger.debug(StorageManager.getAllArchivedTasks().length);
+	    	logger.debug(StorageManager.getAllTasks().length);
+	    	for(int i= 0;i<StorageManager.getAllArchivedTasks().length;i++){
+	    		logger.debug(StorageManager.getAllArchivedTasks()[i].getName()+StorageManager.getAllArchivedTasks()[i].getCompleted());
+	    	}
 	    	
+	    	xyz=executeCommand("cleararchive");
+	    	if (xyz!=null)
+	    	logger.debug("printing search"+ xyz.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (xyz!=null)
+	    	{
+	    		for (int i=0;i<xyz.length;i++)
+	    		{
+	    			logger.debug(xyz[i]);
+	    		}
+	    	}
+	    	logger.debug(StorageManager.getAllArchivedTasks().length);
+	    	logger.debug(StorageManager.getAllTasks().length);
+	    	/*
+	    	abc=executeCommand("find *.*" );
+	    	//abc=executeCommand("starall "+xyz[4].getTaskId());
+	    	if (abc!=null)
+	    	logger.debug("printing search"+ abc.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (abc!=null)
+	    	{
+	    		for (int i=0;i<abc.length;i++)
+	    		{
+	    			logger.debug(abc[i].toString()+" "+abc[i].getImportant());
+	    		}
+	    	}
+	    	abc=executeCommand("undo" );
+	    	//abc=executeCommand("starall "+xyz[4].getTaskId());
+	    	if (abc!=null)
+	    	logger.debug("printing search"+ abc.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (abc!=null)
+	    	{
+	    		for (int i=0;i<abc.length;i++)
+	    		{
+	    			logger.debug(abc[i].toString()+" "+abc[i].getImportant());
+	    		}
+	    	}
+	    	logger.debug(StorageManager.getAllArchivedTasks().length);
+	    	logger.debug(StorageManager.getAllTasks().length);
+	    	/*abc=executeCommand("find *.*" );
+	    	//abc=executeCommand("starall "+xyz[4].getTaskId());
+	    	if (abc!=null)
+	    	logger.debug("printing search"+ abc.length);
+	    	else
+	    		logger.debug("No Search results");
+	    	if (abc!=null)
+	    	{
+	    		for (int i=0;i<abc.length;i++)
+	    		{
+	    			logger.debug(abc[i].toString()+" "+abc[i].getImportant());
+	    		}
+	    	}*/
+	    	JIDLogic_close();
 	    	/*def=executeCommand("login jid.troubleshoot@gmail.com jotitdown");
 	    	logger.debug("executed gcal sync");
 	    	def=executeCommand("find *.*");
@@ -263,7 +326,8 @@ public class JIDLogic implements Runnable {
 			op = Operation.getOperationObj(commandFromUser);
 						
 			Task[] result=  op.execute(commandFromUser);
-			
+			UIController.sendOperationFeedback(op.getOpFeedback());
+			logger.debug("Operation feedback:"+op.getOpFeedback());
 			logger.debug("THE OPERATION IS UNDOABLE:"+op.isUndoAble());
 			if (op.isUndoAble()) {
 				undoStack.push(op);
@@ -282,6 +346,7 @@ public class JIDLogic implements Runnable {
 	{
 		
 		StorageManager.loadFile();
+		StorageManager.loadArchive();
 		
 	}
 	
@@ -289,6 +354,7 @@ public class JIDLogic implements Runnable {
 	{
 		
 		StorageManager.saveFile();
+		StorageManager.saveArchive();
 		
 	}
 

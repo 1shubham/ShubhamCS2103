@@ -31,6 +31,7 @@ public class Schedule extends Operation{
 		Task[] allSortedTasks=SearchObj.returnAllTasks();
 		Task[] specificDateTask=SearchObj.search(findTask);
 		Arrays.sort(specificDateTask,compareByDate);
+		
 		for (int i=0;i<specificDateTask.length;i++){
 			
 		}
@@ -52,7 +53,7 @@ public class Schedule extends Operation{
 	@Override
 	public boolean isUndoAble() {
 		// TODO Auto-generated method stub
-		return false;
+		return isUndoAble;
 	}
 
 	@Override

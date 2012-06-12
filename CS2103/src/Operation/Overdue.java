@@ -92,6 +92,7 @@ public class Overdue extends Operation {
 			{}
 		}
 		if (overdueTasks.size()==0)	{
+			feedback=OperationFeedback.NO_TASK_OVERDUE;
 			return null;
 		} else {
 			Collections.sort(overdueTasks,compareByDate);

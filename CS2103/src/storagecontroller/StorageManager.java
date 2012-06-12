@@ -54,7 +54,7 @@ public class StorageManager
 	{
 		ArrayList<Task> tasks=new ArrayList<Task>();
 		for(String key: liveStorage.getKeySet())
-		tasks.add(liveStorage.getTaskById(key));
+			tasks.add(liveStorage.getTaskById(key));
 		Task[] taskArray=new Task[tasks.size()];
 		tasks.toArray(taskArray);
 		return taskArray;
@@ -62,7 +62,7 @@ public class StorageManager
 	public static Task[] getAllArchivedTasks(){
 		ArrayList<Task> tasks=new ArrayList<Task>();
 		for(String key: liveArchives.getKeySet())
-		tasks.add(liveArchives.getTaskById(key));
+			tasks.add(liveArchives.getTaskById(key));
 		Task[] taskArray=new Task[tasks.size()];
 		tasks.toArray(taskArray);
 		return taskArray;
@@ -143,19 +143,16 @@ public class StorageManager
 	public static boolean saveArchive()
 	{
 		FileHandler handler=new FileHandler("JotItDownArchives.xml");
-		if(handler.writeToFile(liveStorage))
+		if(handler.writeToFile(liveArchives))
 			return true;
 		else 
 			return false;
 	}
-	public static boolean clearArchive()
+	public static void clearArchive()
 	{
-		FileHandler handler=new FileHandler("JotItDownArchives.xml");
-		TaskHashMap newTaskMap=new TaskHashMap();
-		if(handler.writeToFile(newTaskMap))
-			return true;
-		else 
-			return false;
+		liveArchives.clearHashMap();
+		
+		
 	}
 	public static boolean loadArchive(){
 		FileHandler handler=new FileHandler("JotItDownArchives.xml");

@@ -52,6 +52,7 @@ public class Modify extends BaseSearch{
 				return new Task[]{taskToBeEdited};
 				
 			}
+			feedback=OperationFeedback.EDIT_FAILED;
 			return null;	
 		}
 	}

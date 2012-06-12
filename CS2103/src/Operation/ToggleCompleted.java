@@ -37,11 +37,16 @@ public class ToggleCompleted extends BaseSearch{
 				logger.debug("completed succesfully");
 				//return resultOfComplete;
 			}
+			else{
+				feedback=OperationFeedback.COMPLETE_FAILED;
+			}
 		}
 		if (taskCompleted.size()!=0)
 			return (Task[]) taskCompleted.toArray(new Task[taskCompleted.size()]);
-		else 
+		else {
+			feedback=OperationFeedback.NO_TASK_COMPLETED;
 			return null;
+		}
 	}
 	public Task[] execute(Task taskToBeCompleted){
 		Task taskToComplete = StorageManager
@@ -56,7 +61,7 @@ public class ToggleCompleted extends BaseSearch{
 			logger.debug("completed succesfully");
 			return resultOfComplete;
 		}
-
+		feedback=OperationFeedback.COMPLETE_FAILED;
 		return null;
 		
 	}
@@ -106,7 +111,7 @@ public class ToggleCompleted extends BaseSearch{
 
 	public OperationFeedback getOpFeedback() {
 		// TODO Auto-generated method stub
-		return null;
+		return feedback;
 	}      
                
     

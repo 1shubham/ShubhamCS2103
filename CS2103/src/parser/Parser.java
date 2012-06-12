@@ -606,11 +606,11 @@ public class Parser {
 			logger.debug("current dont parse string extracted: "+dontParseStrings[currIndex]);
 			logger.debug("length of current dont parse string extracted: "+dontParseStrings[currIndex].length());
 			
-			tempReplaceStrings[currIndex]= "\'";
+			tempReplaceStrings[currIndex]= "&";
 			for (int j=2; j<dontParseStrings[currIndex].length(); j++) {
 				tempReplaceStrings[currIndex] = tempReplaceStrings[currIndex]+"%";
 			}
-			tempReplaceStrings[currIndex]= tempReplaceStrings[currIndex]+"\'";
+			tempReplaceStrings[currIndex]= tempReplaceStrings[currIndex]+"&";
 			
 			logger.debug("current temp replacement string: "+tempReplaceStrings[currIndex]);
 			

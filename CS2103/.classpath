@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/google-collect-1.0-rc1.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/gdata/jsr305.jar"/>
 	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="E:/My Documents/Softwares/Integrated CS2103/CS2103/lib/java mail/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

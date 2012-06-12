@@ -66,10 +66,13 @@ public class TaskHashMap
 	 */
 	public boolean deleteTask(Task taskToRemove)
 	{
-		if(taskToRemove == null)
+		if(taskToRemove == null){
+			logger.debug("task is null");
 			return false;
+		}
+			
 		taskList.remove(taskToRemove.getTaskId());
-		logger.debug(getKeySet().size());
+		
 		return true;
 	}
 	/** Member function to remove the task by id

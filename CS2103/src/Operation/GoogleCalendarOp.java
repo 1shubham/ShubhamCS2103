@@ -15,15 +15,93 @@ public class GoogleCalendarOp extends Operation {
 		logger.debug(userCommand);
 		// TODO Auto-generated method stub
 		if(userCommand.startsWith("logout")){
-			if (StorageManager.getGCalObject().logout()){
-				StorageManager.setGCalObject(null);
-				return new Task[1];
-			}
-			else {
-				return null;
-			}
+					
+			return logout();
+			
+		}
+		else if (userCommand.startsWith("login"))
+		{
+			return login(userCommand);
+			
+		
+		}
+		else if (userCommand.startsWith("sync"))
+		{
+			return sync();
+			
+		}
+		else if (userCommand.startsWith("import"))
+		{
+			return importTasks();
+			
+		}
+		else if (userCommand.startsWith("export"))
+		{
+			return exportTasks();
+			
 		}
 		
+		return null;
+		
+		
+	}
+
+	private Task[] exportTasks() {
+		// TODO Auto-generated method stub
+		GoogleCalendar obj=StorageManager.getGCalObject();
+		
+		if (obj.isLoggedIn()){
+			
+			if (StorageManager.getGCalObject().exportToGcal()){
+				logger.debug("logged and exported successfully");
+				return new Task[1];
+			}
+			else{
+				return null;
+				
+			}
+		}
+		return null;
+	}
+
+	private Task[] importTasks() {
+		// TODO Auto-generated method stub
+		GoogleCalendar obj=StorageManager.getGCalObject();
+		
+		if (obj.isLoggedIn()){
+			
+			if (StorageManager.getGCalObject().importFromGcal()){
+				logger.debug("logged and imported successfully");
+				return new Task[1];
+			}
+			else{
+				return null;
+				
+			}
+		}
+		return null;
+	}
+
+	private Task[] sync() {
+		// TODO Auto-generated method stub
+		GoogleCalendar obj=StorageManager.getGCalObject();
+		
+		if (obj.isLoggedIn()){
+			
+			if (StorageManager.getGCalObject().sync()){
+				logger.debug("logged and synced successfully");
+				return new Task[1];
+			}
+			else{
+				return null;
+				
+			}
+		}
+		return null;
+	}
+
+	private Task[] login(String userCommand) {
+		// TODO Auto-generated method stub
 		userCommand.trim().replaceAll("login","");
 		logger.debug(userCommand);
 		String params[]=userCommand.split("\\s+");
@@ -44,10 +122,22 @@ public class GoogleCalendarOp extends Operation {
 				
 			}
 		}
-		
-		return null;
-		
-		
+		else
+			return null;
+	
+	}
+
+	private Task[] logout() {
+		// TODO Auto-generated method stub
+		if (StorageManager.getGCalObject().logout()){
+			StorageManager.setGCalObject(null);
+			feedback=OperationFeedback.LOGGED_OUT_SUCCESSFULLY;
+			return new Task[1];
+		}
+		else {
+			feedback=OperationFeedback.LOGOUT_FAILED;
+			return null;
+		}
 	}
 
 	@Override

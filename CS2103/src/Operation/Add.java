@@ -44,7 +44,7 @@ public class Add extends Operation {
 	public Task[] execute (String userCommand)
 	{
 		String params=null;
-		params = userCommand.toLowerCase().replaceFirst(commandName+" ","");		
+		params = userCommand.replaceFirst(commandName+" ","");		
 		ArrayList<Task> newTask= parseCommand(params);
 		
 		if (newTask!=null)
@@ -62,7 +62,7 @@ public class Add extends Operation {
 					//return resultOfAdd;
 				}
 				else {
-					//feedback=OperationFeedback.ADD_FAILED;
+					feedback=OperationFeedback.ADD_FAILED;
 					return null;
 				}
 				

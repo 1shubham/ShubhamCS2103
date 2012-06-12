@@ -37,7 +37,7 @@ public class BaseSearch extends Operation{
 			for(int i=0;i<extractedTaskIds.length;i++)
 			{
 				Task t=StorageManager.getTaskById(extractedTaskIds[i]);
-				logger.debug(t.getTaskId());
+				//logger.debug(t.getTaskId());
 				Task[] result;
 				if (!commandName.contains("all")){
 					result=execute(t);

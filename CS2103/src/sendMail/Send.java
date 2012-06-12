@@ -14,8 +14,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;  
 public class Send {
 	private String SMTP_HOST = "smtp.gmail.com";
-	private String FROM_ADDRESS="ngandhi1993@gmail.com";
-	private String PASSWORD="ndms1993";
+	private String FROM_ADDRESS="jid.troubleshoot@gmail.com";
+	private String PASSWORD="jotitdown";
 	private String FROM_NAME="Nirav Gandhi";
 	public boolean sendMail(String recipients,String subject,String message)
 	{
@@ -34,7 +34,7 @@ public class Send {
         InternetAddress toAddress=new InternetAddress(recipients);
         msg.setRecipient(Message.RecipientType.TO, toAddress);
         msg.setSubject(subject);  
-        msg.setContent(message, "text/plain");  
+        msg.setContent(message,"text/html" );  
         Transport.send(msg);  
         return true;
 		}
