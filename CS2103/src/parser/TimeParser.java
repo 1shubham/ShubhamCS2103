@@ -1,8 +1,15 @@
+/**
+ *
+ * This class features the time parsing abilities of Jot It Down
+ * Enables the user to enter the desirable time in a variety of formats
+ * 
+ * @author Shubham Kaushal
+ */
+
 package parser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import logic.JIDLogic;
 import org.apache.log4j.Logger;
 
@@ -19,7 +26,7 @@ public class TimeParser {
 	private static final String GENERAL_TIME_PATTERN = "("+TIME_12_PATTERN+")|("+TIME_24_PATTERN+")";
 	
 	/**
-	 * 
+	 * Constructor
 	 */
 	public TimeParser( ) {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
@@ -29,16 +36,16 @@ public class TimeParser {
 		dummyHour = -1; dummyMin = -1;
 		
 	}
-	/**
+	/**Returns a string representing the regular expression for acceptable time formats
 	 * 
-	 * @return
+	 * @return StringObj
 	 */
 	public static String getGeneralPattern() {
 		return GENERAL_TIME_PATTERN;
 	}
-	/**
+	/**fetches the local integer attributes representing the Start time
 	 * 
-	 * @return
+	 * @return int[] 
 	 */
 	public int[] getStartTime() {
 		int[] startTimeArr = {-1,-1};
@@ -50,9 +57,9 @@ public class TimeParser {
 		
 		return startTimeArr;
 	}
-	/**
+	/**fetches the local integer attributes representing the End time
 	 * 
-	 * @return
+	 * @return int[] 
 	 */
 	public int[] getEndTime() {
 		int[] endTimeArr = {-1,-1};
@@ -65,7 +72,7 @@ public class TimeParser {
 		return endTimeArr;
 	}
 	/**
-	 * 
+	 * resets the local dummy time attributes
 	 */
 	private void resetDummyTime() {
 		dummyHour = -1; dummyMin = -1;
@@ -97,10 +104,10 @@ public class TimeParser {
 		return s;
 	}
 	*/
-	/**
+	/**Tries to set the local start time attributes
 	 * 
-	 * @param startT
-	 * @return
+	 * @param String Obj representing start time 
+	 * @return TRUE/FALSE
 	 */
 	public boolean setStartTime (String startT) {
 		if (startT != null) {
@@ -121,11 +128,10 @@ public class TimeParser {
 		}
 		//logger.debug("3rd return of setStartDate: false");
 		return false;
-	}
-	/**
+	}/**Tries to set the local end time attributes
 	 * 
-	 * @param endT
-	 * @return
+	 * @param String Obj representing end time 
+	 * @return TRUE/FALSE
 	 */
 	public boolean setEndTime (String endT) {
 		if (endT != null) {
@@ -148,18 +154,18 @@ public class TimeParser {
 		//logger.debug("3rd return of setStartDate: false");
 		return false;
 	}
-	/**
+	/**validates the time represented by a string
 	 * 
-	 * @param time
-	 * @return
+	 * @param String Obj representing time
+	 * @return TRUE/FALSE
 	 */
 	public boolean isValid(String time) {
 		return time.matches(GENERAL_TIME_PATTERN);
 	}
-	/**
+	/**Tries to set the dummy time attributes based on the 12 hour time format
 	 * 
-	 * @param time
-	 * @return
+	 * @param String Obj representing time
+	 * @return TRUE/FALSE
 	 */
 	private boolean set12Hour (String time) {
 		matcher12 = pattern12.matcher(time);
@@ -255,10 +261,10 @@ public class TimeParser {
 		//logger.debug("second false of set12hour");
 		return false;
 	}
-	/**
+	/**Tries to set the dummy time attributes based on the 24 hour time format
 	 * 
-	 * @param time
-	 * @return
+	 * @param String Obj representing time
+	 * @return TRUE/FALSE
 	 */
 	private boolean set24Hour (String time) {
 		matcher24 = pattern24.matcher(time);
