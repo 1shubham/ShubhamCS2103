@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 
 
 public class DateParser {
-	private Logger logger=Logger.getLogger(JIDLogic.class);
+	private Logger logger=Logger.getLogger(DateParser.class);
 	
 	private Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern;
 	private Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher;
@@ -24,14 +24,13 @@ public class DateParser {
 	private static final String RD ="((?i)(rd)?)";
 	private static final String MONTH_TEXT = "((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))";
 	private static final String MONTH_IN_DIGIT_DATE_WITH_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ \\-](0?[1-9]|1[012])[/ \\-]((19|20)\\d\\d)";
-	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT+"[/ \\-\\,]((19|20)\\d\\d)";
+	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(0"+TH+"|1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT+"[/ \\-\\,]((19|20)\\d\\d)";
 	private static final String MONTH_IN_DIGIT_DATE_WITHOUT_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ \\-](0?[1-9]|1[012])";
-	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT;
+	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(0"+TH+"|1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT;
 	
 	private static final String NEXT = "(?i)(next)";
 	private static final String TODAY = "(?i)(today)";
-	private static final String TOMORROW = "(?i)(tomorrow|tmr" +
-			")";
+	private static final String TOMORROW = "(?i)(tomorrow|tmr)";
 	private static final String WEEKDAY = "("+NEXT+"[ ])?((?i)(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun))";
 	private static final String TODAY_TMR_WEEKDAY = "("+TODAY+")|("+TOMORROW+")|("+WEEKDAY+")";
 	
@@ -144,7 +143,7 @@ public class DateParser {
 	 * @return
 	 */
 	public boolean setStartDate(String startD) {
-		if (startD==null)
+		if (startD==null || startD.isEmpty())
 			return false;
 		
 		if (setMonthInDigitWithYear(startD) || setMonthInTextWithYear(startD) || setMonthInDigitWithoutYear(startD) || setMonthInTextWithoutYear(startD) || setByWeekday(startD)) {
@@ -170,7 +169,7 @@ public class DateParser {
 	 * @return
 	 */
 	public boolean setEndDate(String endD) {
-		if (endD==null)
+		if (endD==null || endD.isEmpty())
 			return false;
 		
 		if (setMonthInDigitWithYear(endD) || setMonthInTextWithYear(endD) || setMonthInDigitWithoutYear(endD) || setMonthInTextWithoutYear(endD) || setByWeekday(endD)) {
@@ -248,13 +247,13 @@ public class DateParser {
 		matcher2 = pattern2.matcher(date);
 
 		if (matcher2.matches()) {
-			/*
-			for(int i=0; i<matcher2.groupCount(); i++)
-				logger.debug("group "+i+"= "+matcher2.group(i));
-			*/
 			
-			if (matcher2.group(27)!=null && matcher2.group(1)!=null && matcher2.group(29)!=null) {
-				String monthString = matcher2.group(27);
+			//for(int i=0; i<matcher2.groupCount(); i++)
+				//logger.debug("group "+i+"= "+matcher2.group(i));
+			
+			
+			if (matcher2.group(29)!=null && matcher2.group(1)!=null && matcher2.group(31)!=null) {
+				String monthString = matcher2.group(29);
 				String dayString = matcher2.group(1);
 				
 				if (dayString.length()==3)
@@ -263,7 +262,7 @@ public class DateParser {
 					dayString = dayString.substring(0, 2);
 					
 				int dayInt = Integer.parseInt(dayString);
-				int yearInt = Integer.parseInt(matcher2.group(29));
+				int yearInt = Integer.parseInt(matcher2.group(31));
 				int monthInt = -1;
 
 				if (monthString.matches(JAN))		monthInt = 1;
@@ -279,9 +278,9 @@ public class DateParser {
 				if (monthString.matches(NOV))		monthInt = 11;
 				if (monthString.matches(DEC))		monthInt = 12;
 				
-				logger.debug("inputDay= "+dayInt);
-				logger.debug("inputMon= "+monthInt);
-				logger.debug("inputYear= "+yearInt);
+				//logger.debug("inputDay= "+dayInt);
+				//logger.debug("inputMon= "+monthInt);
+				//logger.debug("inputYear= "+yearInt);
 				
 				return setDummyDate(dayInt, monthInt, yearInt);
 			}
@@ -305,8 +304,8 @@ public class DateParser {
 				int dayInt = Integer.parseInt(dayString);
 				int monthInt = Integer.parseInt(monthString);
 				
-				logger.debug("inputDay= "+dayInt);
-				logger.debug("inputMon= "+monthInt);
+				//logger.debug("inputDay= "+dayInt);
+				//logger.debug("inputMon= "+monthInt);
 				
 				return setDummyDate(dayInt, monthInt);
 			}
@@ -338,12 +337,12 @@ public class DateParser {
 		if (matcher4.matches()) {
 			
 			for(int i=0; i<matcher4.groupCount(); i++)
-				logger.debug("group "+i+"= "+matcher4.group(i));
+				//logger.debug("group "+i+"= "+matcher4.group(i));
 			
 			
-			if (matcher4.group(1)!=null && matcher4.group(27)!=null) {
+			if (matcher4.group(1)!=null && matcher4.group(29)!=null) {
 				String dayString = matcher4.group(1);
-				String monthString = matcher4.group(27);
+				String monthString = matcher4.group(29);
 				
 				if (dayString.length()==3)
 					dayString = dayString.substring(0, 1);
@@ -366,8 +365,8 @@ public class DateParser {
 				if (monthString.matches(NOV))		monthInt = 11;
 				if (monthString.matches(DEC))		monthInt = 12;
 				
-				logger.debug("inputDay= "+dayInt);
-				logger.debug("inputMon= "+monthInt);
+				//logger.debug("inputDay= "+dayInt);
+				//logger.debug("inputMon= "+monthInt);
 				
 				return setDummyDate(dayInt, monthInt);
 			}
@@ -407,8 +406,8 @@ public class DateParser {
 			else if (s.matches(WEEKDAY)) {
 				//logger.debug("inside else if statement of setByWeekDay");
 				
-				for (int i=0; i<matcher5.groupCount(); i++)
-					logger.debug("group "+i+": "+matcher5.group(i));
+				//for (int i=0; i<matcher5.groupCount(); i++)
+					//logger.debug("group "+i+": "+matcher5.group(i));
 				
 				String nextString = matcher5.group(6);
 				String inputWeekString = matcher5.group(8);
@@ -530,9 +529,9 @@ public class DateParser {
 		dummyMonth = c.get(GregorianCalendar.MONTH) + 1 ;
 		dummyYear = c.get(GregorianCalendar.YEAR);
 
-		logger.debug("dummyDay:"+dummyDay);
-		logger.debug("dummyMonth:"+dummyMonth);
-		logger.debug("dummyYear:"+dummyYear);
+		//logger.debug("dummyDay:"+dummyDay);
+		//logger.debug("dummyMonth:"+dummyMonth);
+		//logger.debug("dummyYear:"+dummyYear);
 	}
 
 }

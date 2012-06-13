@@ -21,7 +21,8 @@ public class ParserEngine {
 		}
 		*/
 		Parser parserObject = new Parser();
-		parserObject.parseForSearch("'first' 'second' dretahbhbh '  hb ' ");
+		parserObject.parseForAdd("play 'ssdfds' 5pm on 31st june to 6pm on 3rd july");
+		//System.out.println(parserObject.validateEmailAdd("1.shubhm@in.in"));
 		/*
 		ArrayList<Task> tArr = new ArrayList<Task>();
 		//Task tempTask = null;

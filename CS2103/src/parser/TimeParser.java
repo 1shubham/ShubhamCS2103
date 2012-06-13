@@ -7,7 +7,7 @@ import logic.JIDLogic;
 import org.apache.log4j.Logger;
 
 public class TimeParser {
-	private Logger logger=Logger.getLogger(JIDLogic.class);
+	private Logger logger=Logger.getLogger(TimeParser.class);
 	
 	int startHour, endHour, startMin, endMin;
 	int dummyHour, dummyMin;
@@ -271,12 +271,12 @@ public class TimeParser {
 				dummyHour = Integer.parseInt(hour);
 				dummyMin = Integer.parseInt(min);
 				return true;
-			}
+			}/*
 			else {
 				dummyHour = Integer.parseInt(hour);
 				dummyMin = 0;
 				return true;
-			}
+			}*/
 		}
 		//logger.debug("false of set24hour");
 		return false;

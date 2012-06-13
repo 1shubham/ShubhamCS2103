@@ -14,6 +14,7 @@ public class Parser {
 	
 	private final int RECUR_TIMES_CAP = 61;
 	private final int DEFAULT_RECUR_TIMES = 10;
+	private final String EMAIL_ADD = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private final String DONT_PARSE = "(\'(\\s?\\w+\\s?)*\')";
 	private final String RECUR_REGEX = "((?i)(daily|weekly|monthly|yearly))[ ]?(-[ ]?(\\d+)[ ]?(times?)?)?";
 	private final String LABEL_REGEX = "@(\\w+)";
@@ -36,6 +37,7 @@ public class Parser {
 	private String FROM_DATE_TIME_TO_DATE;
 	private String FROM_DATE_TO_DATE_TIME;
 	private String FROM_TIME_DATE_TO_TIME;
+	private String DATE_FROM_TIME_TO_TIME;
 	
 	private boolean important;
 	private boolean deadline;
@@ -49,7 +51,7 @@ public class Parser {
 	private String command;
 	private OperationFeedback error;
 	
-	private Logger logger=Logger.getLogger(JIDLogic.class);
+	private Logger logger=Logger.getLogger(Parser.class);
 	
 	/**
 	 * Default constructor
@@ -102,6 +104,8 @@ public class Parser {
 		FROM_DATE_TIME_TO_DATE = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")";
 		FROM_DATE_TO_DATE_TIME = "([ ]((?i)(from)))?[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+DateParser.getGeneralPattern()+")[ ]((((?i)(at)))[ ])?("+TimeParser.getGeneralPattern()+")";
 		FROM_TIME_DATE_TO_TIME = "([ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ]("+DateParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		//DATE_FROM_TIME_TO_TIME = "([ ]("+DateParser.getGeneralPattern()+")[ ]((?i)(from)))?[ ]("+TimeParser.getGeneralPattern()+")[ ](((?i)(to)))[ ]("+TimeParser.getGeneralPattern()+")";
+		
 	}
 	/**Initializes REGEX strings for Search function
 	 * 
@@ -576,11 +580,13 @@ public class Parser {
 		//for(int i=1; i<m.groupCount(); i++)
 			//logger.debug("group"+i+": "+m.group(i));
 		
-		arr = new String[6];
+		arr = new String[] {"","","","","",""};
 		for (int i=0; i<5; i++) {
-			arr[i] = m.group(i+1);
+			if (m.group(i+1)!=null)
+				arr[i] = m.group(i+1);
 		}
-		arr[5] = m.group(9);
+		if (m.group(9)!=null)
+			arr[5] = m.group(9);
 		
 		//for (int i=0; i<arr.length; i++)
 			//logger.debug("arr: "+arr[i]);
@@ -801,8 +807,8 @@ public class Parser {
 			
 			startTimeString = mFromTimeDateToTimeDate.group(4);
 			startDateString = mFromTimeDateToTimeDate.group(19);
-			endTimeString = mFromTimeDateToTimeDate.group(101);
-			endDateString = mFromTimeDateToTimeDate.group(116);
+			endTimeString = mFromTimeDateToTimeDate.group(105);
+			endDateString = mFromTimeDateToTimeDate.group(120);
 			
 			startTimeString = startTimeString.trim();
 			endTimeString = endTimeString.trim();
@@ -1342,6 +1348,10 @@ public class Parser {
 			logger.debug("it is not recurring");
 		
 		logger.debug("task details: "+taskDetails);
+	}
+	
+	public boolean validateEmailAdd (String inputEmail) {
+		return inputEmail.matches(EMAIL_ADD);
 	}
 }
 
