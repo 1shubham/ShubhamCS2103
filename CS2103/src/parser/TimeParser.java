@@ -10,12 +10,8 @@ package parser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import logic.JIDLogic;
-import org.apache.log4j.Logger;
 
-public class TimeParser {
-	private Logger logger=Logger.getLogger(TimeParser.class);
-	
+class TimeParser {
 	int startHour, endHour, startMin, endMin;
 	int dummyHour, dummyMin;
 	private Pattern pattern12, pattern24;
@@ -31,7 +27,6 @@ public class TimeParser {
 	public TimeParser( ) {
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
-		//pattern = Pattern.compile(GENERAL_TIME_PATTERN);
 		startHour = -1; endHour = -1; startMin = -1; endMin = -1;
 		dummyHour = -1; dummyMin = -1;
 		
@@ -77,33 +72,7 @@ public class TimeParser {
 	private void resetDummyTime() {
 		dummyHour = -1; dummyMin = -1;
 	}
-	/*
-	public void printTimes() { //for your testing
-		if ((startHour>=0 && startMin>=0)) {
-			logger.debug("startHour: "+startHour);
-			logger.debug("startMin: "+startMin);
-			return;
-		}
-		
-		if ((endHour>=0 && endMin>=0)) {
-			logger.debug("endHour: "+endHour);
-			logger.debug("endMin: "+endMin);
-			return;
-		}
-		
-		logger.debug("no attributes exist!");
-	}
 	
-	public String extractTime(String inputS) {
-		String s = null;
-		matcher = pattern.matcher(inputS);
-		
-		if(matcher.find())
-			s = matcher.group(0);
-		
-		return s;
-	}
-	*/
 	/**Tries to set the local start time attributes
 	 * 
 	 * @param String Obj representing start time 
@@ -119,14 +88,11 @@ public class TimeParser {
 					return true;
 				}
 				else {
-					//logger.debug("1st return of setStartDate: false");
 					return false;
 				}
 			}
-			//logger.debug("2nd return of setStartDate: false");
 			return false;
 		}
-		//logger.debug("3rd return of setStartDate: false");
 		return false;
 	}/**Tries to set the local end time attributes
 	 * 
@@ -144,14 +110,11 @@ public class TimeParser {
 				}
 				
 				else {
-					//logger.debug("1st return of setStartDate: false");
 					return false;
 				}
 			}
-			//logger.debug("2nd return of setStartDate: false");
 			return false;
 		}
-		//logger.debug("3rd return of setStartDate: false");
 		return false;
 	}
 	/**validates the time represented by a string
@@ -173,7 +136,6 @@ public class TimeParser {
 		final String PM_REGEX = "(?i)(pm)";
 		
 		if(matcher12.matches()) {
-			//logger.debug("groupcount "+matcher12.groupCount());
 			
 			String hour = matcher12.group(1);
 			String min = matcher12.group(2);
@@ -185,17 +147,11 @@ public class TimeParser {
 					if(hour.matches("12")) {
 						dummyHour = 0;
 						dummyMin = Integer.parseInt(min);
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 					else {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = Integer.parseInt(min);
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 				}
@@ -203,17 +159,11 @@ public class TimeParser {
 					if(hour.matches("12")) {
 						dummyHour = 0;
 						dummyMin = 0;
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 					else {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = 0;
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
-						
 						return true;
 					}
 				}
@@ -225,15 +175,11 @@ public class TimeParser {
 					if(hour.matches("12")) {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = Integer.parseInt(min);
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
 						return true;
 					}
 					else {
 						dummyHour = Integer.parseInt(hour) +12;
 						dummyMin = Integer.parseInt(min);
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
 						return true;
 					}
 				}
@@ -241,24 +187,17 @@ public class TimeParser {
 					if(hour.matches("12")) {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = 0;
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
 						return true;
 					}
 					else {
 						dummyHour = Integer.parseInt(hour) +12;
 						dummyMin = 0;
-
-						//logger.debug("dummy time is "+dummyHour+":"+dummyMin);
 						return true;
 					}
 				}
 			}
-			
-			//logger.debug("first false of set12hour");
 			return false;
 		}
-		//logger.debug("second false of set12hour");
 		return false;
 	}
 	/**Tries to set the dummy time attributes based on the 24 hour time format
@@ -277,14 +216,8 @@ public class TimeParser {
 				dummyHour = Integer.parseInt(hour);
 				dummyMin = Integer.parseInt(min);
 				return true;
-			}/*
-			else {
-				dummyHour = Integer.parseInt(hour);
-				dummyMin = 0;
-				return true;
-			}*/
+			}
 		}
-		//logger.debug("false of set24hour");
 		return false;
 	}
 	

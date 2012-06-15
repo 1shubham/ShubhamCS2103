@@ -83,3 +83,6 @@
 2012-06-15 14:30:40,580 - parser.Parser - DEBUG - task details: play on tuesday
 2012-06-15 14:30:40,587 - parser.Parser - DEBUG - startdate: 4:00 PM 13 Mar 2012
 2012-06-15 14:30:40,588 - parser.Parser - DEBUG - enddate: 5:00 PM 13 Mar 2012
+2012-06-15 15:53:01,717 - parser.Parser - DEBUG - task details: play on tuesday
+2012-06-15 15:53:01,722 - parser.Parser - DEBUG - startdate: 4:00 PM 13 Mar 2012
+2012-06-15 15:53:01,722 - parser.Parser - DEBUG - enddate: 5:00 PM 13 Mar 2012

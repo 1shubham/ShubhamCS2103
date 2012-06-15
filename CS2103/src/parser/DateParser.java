@@ -11,11 +11,8 @@ package parser;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import logic.JIDLogic;
-import org.apache.log4j.Logger;
 
-public class DateParser {
-	private Logger logger=Logger.getLogger(DateParser.class);
+class DateParser {
 	
 	private Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern;
 	private Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher;
@@ -106,43 +103,7 @@ public class DateParser {
 	public static String getGeneralPattern() {
 		return GENERAL_DATE_PATTERN;
 	}
-	/*
-	public String extractDate(String inputS) {
-		String s = null;
-		matcher = pattern.matcher(inputS);
-
-		if (matcher.find())
-			if (matcher.group(4)!=null)
-				s = matcher.group(4);
-		
-		
-		logger.debug("no. of groups in date string: "+matcher.groupCount());
-		logger.debug("group 1 string: "+matcher.group(1));
-		logger.debug("group 2 string: "+matcher.group(2));
-		logger.debug("group 3 string: "+matcher.group(3));
-		logger.debug("group 4 string: "+matcher.group(4));
-		logger.debug("group 5 string: "+matcher.group(5));
 	
-		return s;
-	}
-	
-	public void printDates() { //for your testing
-		if ((startDay>0 && startMonth>0 && startYear>0)) {
-			logger.debug("startDay: "+startDay);
-			logger.debug("startMon: "+startMonth);
-			logger.debug("startYear: "+startYear);
-		}
-		
-		if ((endDay>0 && endMonth>0 && endYear>0)) {
-			logger.debug("endDay: "+startDay);
-			logger.debug("endMon: "+endMonth);
-			logger.debug("endYear: "+endYear);
-		}
-		
-		else
-			logger.debug("no attributes exist!");
-	}
-	*/
 	/**Tries to set the local attributes representing start date
 	 * 
 	 * @param String Obj representing start date
@@ -162,11 +123,9 @@ public class DateParser {
 			}
 			
 			else {
-				//logger.debug("1st return of setStartDate: false");
 				return false;
 			}
 		}
-		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
 	/**Tries to set the local attributes representing end date
@@ -188,11 +147,9 @@ public class DateParser {
 			}
 			
 			else {
-				//logger.debug("1st return of setStartDate: false");
 				return false;
 			}
 		}
-		//logger.debug("2nd return of setStartDate: false");
 		return false;
 	}
 	/**Validates an input String Date
@@ -221,15 +178,10 @@ public class DateParser {
 				
 				if (matcher1.group(4)==null)
 					yearString = "20" + yearString;
-				//logger.debug("group 4:"+matcher1.group(4));
 				
 				int dayInt = Integer.parseInt(dayString);
 				int monthInt = Integer.parseInt(monthString);
 				int yearInt = Integer.parseInt(yearString);
-				
-				//logger.debug("inputDay= "+dayInt);
-				//logger.debug("inputMon= "+monthInt);
-				//logger.debug("inputYear= "+yearInt);
 				 
 				return setDummyDate(dayInt, monthInt, yearInt);
 			}
@@ -258,10 +210,6 @@ public class DateParser {
 		matcher2 = pattern2.matcher(date);
 
 		if (matcher2.matches()) {
-			
-			//for(int i=0; i<matcher2.groupCount(); i++)
-				//logger.debug("group "+i+"= "+matcher2.group(i));
-			
 			
 			if (matcher2.group(29)!=null && matcher2.group(1)!=null && matcher2.group(31)!=null) {
 				String monthString = matcher2.group(29);
@@ -293,10 +241,6 @@ public class DateParser {
 				if (monthString.matches(NOV))		monthInt = 11;
 				if (monthString.matches(DEC))		monthInt = 12;
 				
-				//logger.debug("inputDay= "+dayInt);
-				//logger.debug("inputMon= "+monthInt);
-				//logger.debug("inputYear= "+yearInt);
-				
 				return setDummyDate(dayInt, monthInt, yearInt);
 			}
 			
@@ -318,9 +262,6 @@ public class DateParser {
 				String monthString = matcher3.group(2);
 				int dayInt = Integer.parseInt(dayString);
 				int monthInt = Integer.parseInt(monthString);
-				
-				//logger.debug("inputDay= "+dayInt);
-				//logger.debug("inputMon= "+monthInt);
 				
 				return setDummyDate(dayInt, monthInt);
 			}
@@ -352,9 +293,7 @@ public class DateParser {
 		if (matcher4.matches()) {
 			
 			for(int i=0; i<matcher4.groupCount(); i++)
-				//logger.debug("group "+i+"= "+matcher4.group(i));
-			
-			
+				
 			if (matcher4.group(1)!=null && matcher4.group(29)!=null) {
 				String dayString = matcher4.group(1);
 				String monthString = matcher4.group(29);
@@ -379,9 +318,6 @@ public class DateParser {
 				if (monthString.matches(OCT))		monthInt = 10;
 				if (monthString.matches(NOV))		monthInt = 11;
 				if (monthString.matches(DEC))		monthInt = 12;
-				
-				//logger.debug("inputDay= "+dayInt);
-				//logger.debug("inputMon= "+monthInt);
 				
 				return setDummyDate(dayInt, monthInt);
 			}
@@ -419,10 +355,6 @@ public class DateParser {
 				return true;
 			}
 			else if (s.matches(WEEKDAY)) {
-				//logger.debug("inside else if statement of setByWeekDay");
-				
-				//for (int i=0; i<matcher5.groupCount(); i++)
-					//logger.debug("group "+i+": "+matcher5.group(i));
 				
 				String nextString = matcher5.group(6);
 				String inputWeekString = matcher5.group(8);
@@ -483,12 +415,12 @@ public class DateParser {
 		} 
 		else
 			yearInt = calen.get(GregorianCalendar.YEAR);
-
+		
+		// only 1,3,5,7,8,10,12 has 31 days
 		if (dayInt == 31 && ((monthInt == 4) || (monthInt == 6) || (monthInt == 9) || (monthInt == 11)))
-			return false; // only 1,3,5,7,8,10,12 has 31 days
-
-		// ----ATTENTION!------add the correct definition of leap year!!!
-		// -----current=julian calender-----
+			return false; 
+		
+		// leap year testing
 		else if (monthInt == 2) { // leap year testing
 			if (yearInt%4==0) {
 				if (dayInt == 30 || dayInt == 31)
@@ -514,12 +446,12 @@ public class DateParser {
 	 * @return TRUE/FALSE
 	 */
 	private boolean setDummyDate (int dayInt, int monthInt, int yearInt) {
+		// only 1,3,5,7,8,10,12 has 31 days
 		if (dayInt == 31 && ((monthInt == 4) || (monthInt == 6) || (monthInt == 9) || (monthInt == 11)))
-			return false; // only 1,3,5,7,8,10,12 has 31 days
-
-		// ----ATTENTION!------add the correct definition of leap year!!!
-		// -----current=julian calender-----
-		else if (monthInt == 2) { // leap year testing
+			return false; 
+		
+		 // leap year testing
+		else if (monthInt == 2) {
 			if (yearInt % 4 == 0) {
 				if (dayInt == 30 || dayInt == 31)
 					return false;
@@ -544,10 +476,6 @@ public class DateParser {
 		dummyDay = c.get(GregorianCalendar.DATE);
 		dummyMonth = c.get(GregorianCalendar.MONTH) + 1 ;
 		dummyYear = c.get(GregorianCalendar.YEAR);
-
-		//logger.debug("dummyDay:"+dummyDay);
-		//logger.debug("dummyMonth:"+dummyMonth);
-		//logger.debug("dummyYear:"+dummyYear);
 	}
 
 }
