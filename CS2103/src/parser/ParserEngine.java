@@ -21,7 +21,7 @@ public class ParserEngine {
 		}
 		*/
 		Parser parserObject = new Parser();
-		parserObject.parseForAdd("play on tuesday from 4pm to 5pm 13th march 2012");
+		parserObject.parseForSearch("go to school from 4pm to 5pm tmr @work @play");
 		/*
 		ArrayList<Task> tArr = new ArrayList<Task>();
 		//Task tempTask = null;

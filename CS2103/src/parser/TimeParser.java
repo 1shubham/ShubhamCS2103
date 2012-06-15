@@ -11,7 +11,7 @@ package parser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class TimeParser {
+public class TimeParser {
 	int startHour, endHour, startMin, endMin;
 	int dummyHour, dummyMin;
 	private Pattern pattern12, pattern24;
@@ -24,25 +24,29 @@ class TimeParser {
 	/**
 	 * Constructor
 	 */
-	public TimeParser( ) {
+	public TimeParser( ) 
+	{
 		pattern12 = Pattern.compile(TIME_12_PATTERN);
 		pattern24 = Pattern.compile(TIME_24_PATTERN);
 		startHour = -1; endHour = -1; startMin = -1; endMin = -1;
 		dummyHour = -1; dummyMin = -1;
-		
 	}
+	
 	/**Returns a string representing the regular expression for acceptable time formats
 	 * 
 	 * @return StringObj
 	 */
-	public static String getGeneralPattern() {
+	public static String getGeneralPattern() 
+	{
 		return GENERAL_TIME_PATTERN;
 	}
+	
 	/**fetches the local integer attributes representing the Start time
 	 * 
 	 * @return int[] 
 	 */
-	public int[] getStartTime() {
+	public int[] getStartTime() 
+	{
 		int[] startTimeArr = {-1,-1};
 		
 		if (startHour>=0 && startMin>=0) {
@@ -52,11 +56,13 @@ class TimeParser {
 		
 		return startTimeArr;
 	}
+	
 	/**fetches the local integer attributes representing the End time
 	 * 
 	 * @return int[] 
 	 */
-	public int[] getEndTime() {
+	public int[] getEndTime() 
+	{
 		int[] endTimeArr = {-1,-1};
 		
 		if (endHour>=0 && endMin>=0) {
@@ -66,10 +72,12 @@ class TimeParser {
 		
 		return endTimeArr;
 	}
+	
 	/**
 	 * resets the local dummy time attributes
 	 */
-	private void resetDummyTime() {
+	private void resetDummyTime() 
+	{
 		dummyHour = -1; dummyMin = -1;
 	}
 	
@@ -78,7 +86,8 @@ class TimeParser {
 	 * @param String Obj representing start time 
 	 * @return TRUE/FALSE
 	 */
-	public boolean setStartTime (String startT) {
+	public boolean setStartTime (String startT) 
+	{
 		if (startT != null) {
 			if (set12Hour(startT) || (set24Hour(startT))) {
 				if (dummyHour>=0 && dummyMin>=0){
@@ -86,30 +95,33 @@ class TimeParser {
 					startMin = dummyMin;
 					resetDummyTime();
 					return true;
-				}
-				else {
+					
+				} else {
 					return false;
 				}
 			}
 			return false;
 		}
 		return false;
-	}/**Tries to set the local end time attributes
+	}
+	
+	/**Tries to set the local end time attributes
 	 * 
 	 * @param String Obj representing end time 
 	 * @return TRUE/FALSE
 	 */
-	public boolean setEndTime (String endT) {
-		if (endT != null) {
+	public boolean setEndTime (String endT) 
+	{
+		if (endT != null) 
+		{
 			if (set12Hour(endT) || (set24Hour(endT))) {
 				if (dummyHour>=0 && dummyMin>=0){
 					endHour = dummyHour;
 					endMin = dummyMin;
 					resetDummyTime();
 					return true;
-				}
-				
-				else {
+					
+				} else {
 					return false;
 				}
 			}
@@ -117,20 +129,24 @@ class TimeParser {
 		}
 		return false;
 	}
+	
 	/**validates the time represented by a string
 	 * 
 	 * @param String Obj representing time
 	 * @return TRUE/FALSE
 	 */
-	public boolean isValid(String time) {
+	public boolean isValid(String time) 
+	{
 		return time.matches(GENERAL_TIME_PATTERN);
 	}
+	
 	/**Tries to set the dummy time attributes based on the 12 hour time format
 	 * 
 	 * @param String Obj representing time
 	 * @return TRUE/FALSE
 	 */
-	private boolean set12Hour (String time) {
+	private boolean set12Hour (String time) 
+	{
 		matcher12 = pattern12.matcher(time);
 		final String AM_REGEX = "(?i)(am)";
 		final String PM_REGEX = "(?i)(pm)";
@@ -148,28 +164,26 @@ class TimeParser {
 						dummyHour = 0;
 						dummyMin = Integer.parseInt(min);
 						return true;
-					}
-					else {
+					
+					} else {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = Integer.parseInt(min);
 						return true;
 					}
-				}
-				else {
+				} else {
 					if(hour.matches("12")) {
 						dummyHour = 0;
 						dummyMin = 0;
 						return true;
-					}
-					else {
+					
+					} else {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = 0;
 						return true;
 					}
 				}
-			}
 			
-			else if (AMPM.matches(PM_REGEX)){
+			} else if (AMPM.matches(PM_REGEX)) {
 				if(min != null) {
 					min = min.replaceAll("[:.]", "");
 					if(hour.matches("12")) {
@@ -182,14 +196,13 @@ class TimeParser {
 						dummyMin = Integer.parseInt(min);
 						return true;
 					}
-				}
-				else {
+				} else {
 					if(hour.matches("12")) {
 						dummyHour = Integer.parseInt(hour);
 						dummyMin = 0;
 						return true;
-					}
-					else {
+					
+					} else {
 						dummyHour = Integer.parseInt(hour) +12;
 						dummyMin = 0;
 						return true;
@@ -200,6 +213,7 @@ class TimeParser {
 		}
 		return false;
 	}
+	
 	/**Tries to set the dummy time attributes based on the 24 hour time format
 	 * 
 	 * @param String Obj representing time
@@ -212,7 +226,7 @@ class TimeParser {
 			String hour = matcher24.group(1);
 			String min = matcher24.group(2);
 			
-			if (min!=null) {
+			if (min != null) {
 				dummyHour = Integer.parseInt(hour);
 				dummyMin = Integer.parseInt(min);
 				return true;
@@ -220,5 +234,4 @@ class TimeParser {
 		}
 		return false;
 	}
-	
 }
