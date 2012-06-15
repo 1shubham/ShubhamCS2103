@@ -387,7 +387,7 @@ public class DateParser {
 				return true;
 			
 			} else if (s.matches(WEEKDAY)) {
-				String nextString = matcher5.group(6);
+				String nextString = matcher5.group(7);
 				String inputWeekString = matcher5.group(8);
 				
 				int inputWeekDay = -1;
@@ -402,7 +402,6 @@ public class DateParser {
 				
 				if (inputWeekDay>0) {
 					int dayDiff = (inputWeekDay - calen.get(GregorianCalendar.DAY_OF_WEEK));
-					
 					if (nextString != null && nextString.matches(NEXT)) {
 						calen.add(GregorianCalendar.DATE, 7);
 					}

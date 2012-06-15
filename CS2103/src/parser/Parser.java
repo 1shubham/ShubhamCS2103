@@ -922,13 +922,13 @@ public class Parser {
 			return false;
 		}
 			
-		if (startTimeString != null && !timeParser.setStartTime(startTimeString))
+		if (startTimeString != null && !timeParser.setStartTime(startTimeString)) 
 			setErrorCode (OperationFeedback.INVALID_DATE_TIME);
-			
-		if (endTimeString != null && !timeParser.setEndTime(endTimeString))
+		
+		if (endTimeString != null && !timeParser.setEndTime(endTimeString)) 
 			setErrorCode (OperationFeedback.INVALID_DATE_TIME);
-			
-		if (startDateString != null && !dateParser.setStartDate(startDateString))
+		
+		if (startDateString != null && !dateParser.setStartDate(startDateString)) 
 			setErrorCode (OperationFeedback.INVALID_DATE_TIME);
 			
 		if (endDateString != null && !dateParser.setEndDate(endDateString))
@@ -947,4 +947,16 @@ public class Parser {
 		return inputEmail.matches(EMAIL_ADD);
 	}
 }
+/*
+ 
+		if (startTimeString != null)
+			System.out.println("startTimeString: "+startTimeString);
+		if (endTimeString != null)
+			System.out.println("endTimeString: "+endTimeString);
+		if (startDateString != null)
+			System.out.println("startDateString: "+startDateString);
+		if (endDateString != null)
+			System.out.println("endDateString: "+endDateString);
+		
+ */
 
