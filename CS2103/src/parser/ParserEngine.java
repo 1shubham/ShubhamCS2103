@@ -20,9 +20,8 @@ public class ParserEngine {
 			System.out.println("An unexpected error occured for your input");
 		}
 		*/
-		//Parser parserObject = new Parser();
-		//parserObject.parseForAdd("play on tuesday from at 4pm to 5pm");
-		//System.out.println(parserObject.validateEmailAdd("1.shubhm@in.in"));
+		Parser parserObject = new Parser();
+		parserObject.parseForAdd("play on tuesday from 4pm to 5pm 13th march 2012");
 		/*
 		ArrayList<Task> tArr = new ArrayList<Task>();
 		//Task tempTask = null;

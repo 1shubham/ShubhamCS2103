@@ -29,8 +29,8 @@ public class DateParser {
 	private static final String ND ="((?i)(nd)?)";
 	private static final String RD ="((?i)(rd)?)";
 	private static final String MONTH_TEXT = "((?i)(January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|August|Aug|September|Sep|October|Oct|November|Nov|December|Dec))";
-	private static final String MONTH_IN_DIGIT_DATE_WITH_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ \\-](0?[1-9]|1[012])[/ \\-]((19|20)\\d\\d)";
-	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(0"+TH+"|1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT+"[/ \\-\\,]((19|20)\\d\\d)";
+	private static final String MONTH_IN_DIGIT_DATE_WITH_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ \\-](0?[1-9]|1[012])[/ \\-]((19|20)?\\d\\d)";
+	private static final String MONTH_IN_TEXT_DATE_WITH_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(0"+TH+"|1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT+"[/ \\-\\,]((19|20)?\\d\\d)";
 	private static final String MONTH_IN_DIGIT_DATE_WITHOUT_YEAR = "(0?[1-9]|[12][0-9]|3[01])[/ \\-](0?[1-9]|1[012])";
 	private static final String MONTH_IN_TEXT_DATE_WITHOUT_YEAR = "((0?(1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|1[0-9]"+TH+"|2(0"+TH+"|1"+ST+"|2"+ND+"|3"+RD+"|[4-9]"+TH+")|30"+TH+")|31"+ST+")[/ \\-\\,]"+MONTH_TEXT;
 	
@@ -218,6 +218,11 @@ public class DateParser {
 				String dayString = matcher1.group(1);
 				String monthString = matcher1.group(2);
 				String yearString = matcher1.group(3);
+				
+				if (matcher1.group(4)==null)
+					yearString = "20" + yearString;
+				//logger.debug("group 4:"+matcher1.group(4));
+				
 				int dayInt = Integer.parseInt(dayString);
 				int monthInt = Integer.parseInt(monthString);
 				int yearInt = Integer.parseInt(yearString);
@@ -261,6 +266,10 @@ public class DateParser {
 			if (matcher2.group(29)!=null && matcher2.group(1)!=null && matcher2.group(31)!=null) {
 				String monthString = matcher2.group(29);
 				String dayString = matcher2.group(1);
+				String yearString = matcher2.group(31);
+				
+				if (matcher2.group(32)==null)
+					yearString = "20" + yearString;
 				
 				if (dayString.length()==3)
 					dayString = dayString.substring(0, 1);
@@ -268,7 +277,7 @@ public class DateParser {
 					dayString = dayString.substring(0, 2);
 					
 				int dayInt = Integer.parseInt(dayString);
-				int yearInt = Integer.parseInt(matcher2.group(31));
+				int yearInt = Integer.parseInt(yearString);
 				int monthInt = -1;
 
 				if (monthString.matches(JAN))		monthInt = 1;

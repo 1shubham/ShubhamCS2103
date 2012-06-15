@@ -56,6 +56,8 @@ public class Parser {
 	private int recurringTimes;
 	private ArrayList<String> labelList;
 	private String taskDetails;
+	String[] dontParse;
+	String[] tempReplace;
 	
 	private Task taskForSearch;
 	private String command;
@@ -78,8 +80,10 @@ public class Parser {
 		startDateTime=null; endDateTime=null;
 		recurring = null;
 		recurringTimes = -1;
-		labelList = null;
+		labelList = new ArrayList<String>();
 		taskDetails=null;
+		dontParse=null;
+		tempReplace=null;
 		
 		error=OperationFeedback.VALID;
 		
@@ -338,103 +342,52 @@ public class Parser {
 		String []ids = idList.toArray(new String[idList.size()]);
 		return ids;
 	}
-	/**FOR ADD FUNCTION
-	 * creates a Task Obj based on local attributes to be returned to the Logic component
-	 * 
-	 * @param String userCommand
-	 * @return Task Obj
+	/**
+	 * extracts the strings in the user input which are not supposed to be parsed into the local attribute dontParse[]
 	 */
-	public Task parseForSearch (String userCommand) {
+	private void extractDontParseStrings()  {
+		ArrayList<String> dontParseList = new ArrayList<String>();
+		ArrayList<String> tempReplaceList = new ArrayList<String>();
+		Matcher mDontParse = Pattern.compile(DONT_PARSE).matcher(command);
+		String temp;
+		//int currIndex = 0;
 		
-		initForSearch(userCommand);
-		
-		parse (userCommand);
-		
-		//logger.debug("this is parse for SEARCH before initializing task obj");
-		
-		taskForSearch = new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important);
-
-		//logger.debug("task before returning: "+taskForSearch.toString());
-		
-		return taskForSearch;
-	}
-	/**FOR SEARCH FUNCTIONS
-	 * creates a Task Obj based on local attributes to be returned to the Logic component
-	 * 
-	 * @param String userCommand
-	 * @return Task Obj
-	 */
-	public Task[] parseForAdd (String userCommand) {
-		
-		initForAdd(userCommand);
-		
-		parse (userCommand);
-		
-		//logger.debug("this is parse for ADD before initializing task[]");
-		
-		Task[] taskArr=null;//- have a fetchTaskArr(ArrayList<Task> taskList) instead
-		
-		////logger.debug("startDateTime: "+startDateTime.toString());
-		
-		if (startDateTime!=null && !startDateTime.getHasDate()) {
-			setDefaultDateForAdd (startDateTime);
-		}
-		
-		if (endDateTime!=null && !endDateTime.getHasDate())
-			setDefaultDateForAdd (endDateTime);
-		
-		if (startDateTime!=null && endDateTime!=null) {
-			if (startDateTime.getTimeMilli() >= endDateTime.getTimeMilli())
-				setErrorCode(OperationFeedback.START_DATE_TIME_MORE_THAN_END_DATE_TIME);
-			if (startDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
-				setErrorCode(OperationFeedback.START_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);
-		}
-		else if(startDateTime==null && endDateTime!=null) {
-			if (endDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
-				setErrorCode(OperationFeedback.END_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);		
-		}
-		else if (endDateTime==null && startDateTime!=null){
-			if (startDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
-				setErrorCode(OperationFeedback.START_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);		
-		}
-		
-		
-		if (error==OperationFeedback.VALID) {
-			if (recurringTimes>0) {
-				if (recurringTimes < RECUR_TIMES_CAP) {
-					taskArr = fetchTaskArray(recurringTimes);
-				}
-				else
-					setErrorCode(OperationFeedback.RECURRING_TIMES_EXCEEDED);
-			}
-	
-			if (recurringTimes<0 && error==OperationFeedback.VALID)
-				taskArr = fetchTaskArray(DEFAULT_RECUR_TIMES);
+		while (mDontParse.find()) {
+			dontParseList.add(mDontParse.group());
 			
-		}
-		
-		//if the error != valid, return null; ??? do u need to say this? cant u just return taskArray?
-		
-		//logger.debug("any error?: "+error);
-		//logger.debug("recurring: "+recurring);
-		//logger.debug("recurring times: "+recurringTimes);
-		
-		
-		if (taskArr!=null) {
-			for (int i=0; i<taskArr.length; i++) {
-				//logger.debug("task number "+(i+1)+": "+taskArr[i].toString());
+			//logger.debug("current dont parse string extracted: "+dontParseList.get(dontParseList.size()-1));
+			
+			temp = "&";
+			for (int j=2; j<dontParseList.get(dontParseList.size()-1).length(); j++) {
+				temp += "%";
 			}
-		}
-		else
-			;//logger.debug("taskArray is null!");
+			temp += "&";
+			tempReplaceList.add(temp);
+			
+			//logger.debug("current temp replacement string: "+tempReplaceList.get(dontParseList.size()-1));
+			
+			command = command.replaceFirst(dontParseList.get(dontParseList.size()-1), tempReplaceList.get(tempReplaceList.size()-1));
+			command = removeExtraSpaces(command);
 		
-		//return only if error=valid?
-		//return new Task();
-		return taskArr;
+			//logger.debug("input right now:" +command);
+		}
+		
+		if (!dontParseList.isEmpty()) {
+			dontParse = dontParseList.toArray(new String[dontParseList.size()]);
+			tempReplace = tempReplaceList.toArray(new String[dontParseList.size()]);
+		}
+		
+	}
+	/**
+	 * restores the strings in the user input which are not supposed to be parsed back to the task details
+	 */
+	private void restoreDontParseStrings () {
+		for (int k=0; k<dontParse.length; k++)
+			command = command.replaceFirst(tempReplace[k], dontParse[k].substring(1, dontParse[k].length()-1));
 	}
 	/**Returns a task[] based on the number of recurring times
 	 * 
-	 * @param number of reccuring times
+	 * @param number of recurring times
 	 * @return Task[]
 	 */
 	private Task[] fetchTaskArray (int numRecurr) {
@@ -605,6 +558,101 @@ public class Parser {
 		else
 			return taskList.toArray(new Task[taskList.size()]);
 	}
+	/**FOR SEARCH OPERATION
+	 * creates a Task Obj based on local attributes to be returned to the Logic component
+	 * 
+	 * @param String userCommand
+	 * @return Task Obj
+	 */
+	public Task parseForSearch (String userCommand) {
+		
+		initForSearch(userCommand);
+		
+		parse (userCommand);
+		
+		//logger.debug("this is parse for SEARCH before initializing task obj");
+		
+		taskForSearch = new Task(taskDetails,"",startDateTime,endDateTime,labelList,recurring,deadline,important);
+
+		//logger.debug("task before returning: "+taskForSearch.toString());
+		
+		return taskForSearch;
+	}
+	
+	/**FOR ADD FUNCTIONS
+	 * creates a Task Obj[] based on local attributes to be returned to the Logic component
+	 * 
+	 * @param String userCommand
+	 * @return Task Obj[]
+	 */
+	public Task[] parseForAdd (String userCommand) {
+		
+		initForAdd(userCommand);
+		
+		parse (userCommand);
+		
+		//logger.debug("this is parse for ADD before initializing task[]");
+		
+		Task[] taskArr=null;//- have a fetchTaskArr(ArrayList<Task> taskList) instead
+		
+		////logger.debug("startDateTime: "+startDateTime.toString());
+		
+		if (startDateTime!=null && !startDateTime.getHasDate()) {
+			setDefaultDateForAdd (startDateTime);
+		}
+		
+		if (endDateTime!=null && !endDateTime.getHasDate())
+			setDefaultDateForAdd (endDateTime);
+		
+		if (startDateTime!=null && endDateTime!=null) {
+			if (startDateTime.getTimeMilli() >= endDateTime.getTimeMilli())
+				setErrorCode(OperationFeedback.START_DATE_TIME_MORE_THAN_END_DATE_TIME);
+			if (startDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
+				setErrorCode(OperationFeedback.START_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);
+		}
+		else if(startDateTime==null && endDateTime!=null) {
+			if (endDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
+				setErrorCode(OperationFeedback.END_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);		
+		}
+		else if (endDateTime==null && startDateTime!=null){
+			if (startDateTime.getTimeMilli() <= TaskDateTime.getCurrentDateTime().getTimeMilli())
+				setErrorCode(OperationFeedback.START_DATE_TIME_LESS_THAN_CURRENT_DATE_TIME);		
+		}
+		
+		
+		if (error==OperationFeedback.VALID) {
+			if (recurringTimes>0) {
+				if (recurringTimes < RECUR_TIMES_CAP) {
+					taskArr = fetchTaskArray(recurringTimes);
+				}
+				else
+					setErrorCode(OperationFeedback.RECURRING_TIMES_EXCEEDED);
+			}
+	
+			if (recurringTimes<0 && error==OperationFeedback.VALID)
+				taskArr = fetchTaskArray(DEFAULT_RECUR_TIMES);
+			
+		}
+		
+		//if the error != valid, return null; ??? do u need to say this? cant u just return taskArray?
+		
+		//logger.debug("any error?: "+error);
+		//logger.debug("recurring: "+recurring);
+		//logger.debug("recurring times: "+recurringTimes);
+		
+		
+		if (taskArr!=null) {
+			for (int i=0; i<taskArr.length; i++) {
+				//logger.debug("task number "+(i+1)+": "+taskArr[i].toString());
+			}
+		}
+		else
+			;//logger.debug("taskArray is null!");
+		
+		//return only if error=valid?
+		//return new Task();
+		return taskArr;
+	}
 	/**Returns a found GCal description in the inputString
 	 * 
 	 * @param inputString
@@ -633,12 +681,15 @@ public class Parser {
 		
 		return arr;
 	}
+	
 	/**Understands the user input and sets local attributes for Task Obj to be created
 	 * 
 	 * @param String userCommand
 	 */
 	private void parse (String userCommand) {
-		
+	
+		extractDontParseStrings();
+		/*
 		Matcher mDontParse = Pattern.compile(DONT_PARSE).matcher(command);
 		String[] dontParseStrings = {null,null,null,null,null,null,null,null,null,null};
 		int currIndex=0;
@@ -665,7 +716,7 @@ public class Parser {
 			
 			////logger.debug("input now after extracting "+currIndex+"th dont parse string:" +command);
 		}
-		
+		*/
 		setImportant();
 		
 		extractRecur();
@@ -676,7 +727,6 @@ public class Parser {
 			//logger.debug("this task is not recurring");
 		//logger.debug("left over string after checking for recurring: "+command);
 		*/	
-		labelList =new ArrayList<String>();
 		setLabels();
 		
 		if(labelList.size()!=0) {
@@ -701,8 +751,8 @@ public class Parser {
 		setDeadline();
 		
 		//restoring don't parse Strings
-		for (int k=0; k<currIndex; k++)
-			command = command.replaceFirst(tempReplaceStrings[k], dontParseStrings[k]);
+		if (dontParse!=null)
+			restoreDontParseStrings();
 		
 		taskDetails = command;
 		taskDetails = taskDetails.trim();
@@ -1411,7 +1461,9 @@ public class Parser {
 		else
 			;//logger.debug("it is not recurring");
 		
-		//logger.debug("task details: "+taskDetails);
+		logger.debug("task details: "+taskDetails);
+		logger.debug("startdate: "+startDateTime.formattedToString());
+		logger.debug("enddate: "+endDateTime.formattedToString());
 	}
 	/**Validates an email address format
 	 * 
